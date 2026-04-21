@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PropifyAI — Nigeria's Smartest Property Intelligence Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<!-- UPDATED: Poppins & League Spartan instead of Syne & Instrument Sans (as primary headers) -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=League+Spartan:wght@400;500;600;700;800&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+
+<style>
+:root {
+  --bg:       #080909;
+  --surface:  #0f1010;
+  --surface2: #151717;
+  --border:   rgba(255,255,255,0.07);
+  --border2:  rgba(255,255,255,0.12);
+  /* UPDATED: deep purple instead of green */
+  --accent:   #9D4EDD;        /* deep purple */
+  --accent-dim:#7B2CBF;       /* darker purple */
+  --accent-glow:rgba(157,78,221,0.18);
+  --white:    #f4f4f2;
+  --muted:    #6b6f6e;
+  --muted2:   #9a9e9d;
+  --red:      #FF4D4D;
+  --amber:    #F5A623;
+  /* UPDATED: font stack — Poppins / Spartan for display, body stays Instrument Sans */
+  --font-display: 'Poppins', 'League Spartan', sans-serif;
+  --font-body:    'Instrument Sans', sans-serif;
+  --radius:   12px;
+  --radius-sm:8px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 300;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ── Custom cursor ── */
+#cursor {
+  position: fixed;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--accent);   /* deep purple */
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: width .2s, height .2s, background .2s;
+  mix-blend-mode: screen;
+}
+#cursor-ring {
+  position: fixed;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(157,78,221,0.4);  /* deep purple */
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%,-50%);
+  transition: transform .08s ease, width .25s, height .25s, opacity .25s;
+}
+body:hover #cursor { opacity:1; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 2px; }
+
+/* ── Noise grain ── */
+body::after {
+  content:'';
+  position:fixed; inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity:.45; pointer-events:none; z-index:1000;
+}
+
+/* ── Typography ── */
+.display { font-family: var(--font-display); }
+h1,h2,h3,h4 { font-family: var(--font-display); font-weight:800; line-height:1; }
+
+/* ── Utility ── */
+.green { color: var(--accent); }   /* keep class name for compatibility */
+.muted { color: var(--muted); }
+.muted2 { color: var(--muted2); }
+.border-line { border: 1px solid var(--border); }
+.border-line2 { border: 1px solid var(--border2); }
+
+/* ── Reveal animations ── */
+.reveal { opacity:0; transform:translateY(24px); transition:opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+.reveal.on { opacity:1; transform:none; }
+.d1 { transition-delay:.08s; }
+.d2 { transition-delay:.16s; }
+.d3 { transition-delay:.24s; }
+.d4 { transition-delay:.32s; }
+.d5 { transition-delay:.40s; }
+
+/* ════════════════════════════════
+   NAV
+════════════════════════════════ */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:500;
+  padding:0 40px;
+  height:64px;
+  display:flex; align-items:center; justify-content:space-between;
+  border-bottom:1px solid transparent;
+  transition:border-color .3s, background .3s, backdrop-filter .3s;
+}
+nav.stuck {
+  background:rgba(8,9,9,0.85);
+  backdrop-filter:blur(16px);
+  border-color:var(--border);
+}
+
+.nav-logo {
+  display:flex; align-items:center; gap:10px;
+  text-decoration:none;
+}
+.nav-logo-icon {
+  width:30px; height:30px;
+  background:var(--accent);   /* deep purple */
+  border-radius:7px;
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+}
+.nav-logo-text {
+  font-family:var(--font-display);
+  font-weight:800;
+  font-size:1.05rem;
+  color:var(--white);
+  letter-spacing:-.02em;
+}
+.nav-logo-text span { color:var(--accent); }  /* deep purple */
+
+.nav-links {
+  display:flex; gap:36px; list-style:none;
+}
+.nav-links a {
+  font-size:.82rem;
+  color:var(--muted);
+  text-decoration:none;
+  letter-spacing:.02em;
+  transition:color .2s;
+}
+.nav-links a:hover { color:var(--white); }
+
+.nav-cta {
+  display:flex; align-items:center; gap:12px;
+}
+.btn-ghost {
+  font-family:var(--font-display);
+  font-size:.82rem;
+  font-weight:600;
+  color:var(--muted2);
+  background:none;
+  border:none;
+  cursor:none;
+  padding:8px 0;
+  text-decoration:none;
+  transition:color .2s;
+}
+.btn-ghost:hover { color:var(--white); }
+
+.btn-green {
+  font-family:var(--font-display);
+  font-size:.82rem;
+  font-weight:700;
+  color:#000;
+  background:var(--accent);   /* deep purple */
+  border:none;
+  cursor:none;
+  padding:9px 20px;
+  border-radius:6px;
+  text-decoration:none;
+  letter-spacing:.01em;
+  transition:background .2s, box-shadow .2s, transform .15s;
+  box-shadow:0 0 0 0 var(--accent-glow);
+}
+.btn-green:hover {
+  background:#b46ff0;        /* lighter purple */
+  box-shadow:0 0 24px var(--accent-glow);
+  transform:translateY(-1px);
+}
+
+.hamburger {
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  background:none;
+  border:none;
+  cursor:none;
+  padding:4px;
+}
+.hamburger span {
+  display:block;
+  width:22px; height:1.5px;
+  background:var(--white);
+  border-radius:2px;
+  transition:transform .3s, opacity .3s;
+}
+
+@media(max-width:768px){
+  nav { padding:0 24px; }
+  .nav-links, .nav-cta .btn-ghost { display:none; }
+  .hamburger { display:flex; }
+  .nav-cta { gap:8px; }
+}
+
+/* Mobile drawer */
+#mob-drawer {
+  position:fixed;
+  top:64px; left:0; right:0; bottom:0;
+  background:rgba(8,9,9,0.98);
+  backdrop-filter:blur(20px);
+  z-index:499;
+  display:flex; flex-direction:column;
+  padding:40px 24px;
+  gap:32px;
+  transform:translateX(100%);
+  transition:transform .35s cubic-bezier(.16,1,.3,1);
+}
+#mob-drawer.open { transform:translateX(0); }
+#mob-drawer a {
+  font-family:var(--font-display);
+  font-size:2rem;
+  font-weight:700;
+  color:var(--white);
+  text-decoration:none;
+  opacity:.5;
+  transition:opacity .2s;
+}
+#mob-drawer a:hover { opacity:1; }
+
+/* ════════════════════════════════
+   HERO
+════════════════════════════════ */
+.hero {
+  position:relative;
+  min-height:100svh;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  padding:0 40px 80px;
+  overflow:hidden;
+}
+
+/* Grid background */
+.hero-grid {
+  position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+}
+
+/* Deep purple radial glow */
+.hero-glow {
+  position:absolute;
+  top:-20%; left:50%;
+  transform:translateX(-50%);
+  width:800px; height:800px;
+  background:radial-gradient(circle, rgba(157,78,221,.12) 0%, transparent 65%);
+  pointer-events:none;
+}
+
+/* Floating badge */
+.hero-badge {
+  position:absolute;
+  top:120px; right:40px;
+  background:var(--surface2);
+  border:1px solid var(--border2);
+  border-radius:100px;
+  padding:8px 16px 8px 10px;
+  display:flex; align-items:center; gap:8px;
+  font-size:.72rem;
+  color:var(--muted2);
+  letter-spacing:.04em;
+  animation:floatBadge 4s ease-in-out infinite;
+}
+@keyframes floatBadge {
+  0%,100% { transform:translateY(0); }
+  50% { transform:translateY(-8px); }
+}
+.badge-dot {
+  width:7px; height:7px;
+  border-radius:50%;
+  background:var(--accent);   /* deep purple */
+  box-shadow:0 0 8px var(--accent);
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity:1; }
+  50% { opacity:.4; }
+}
+
+/* Big number watermark */
+.hero-watermark {
+  position:absolute;
+  bottom:-40px; right:-20px;
+  font-family:var(--font-display);
+  font-size:clamp(160px, 22vw, 320px);
+  font-weight:800;
+  line-height:1;
+  color:rgba(255,255,255,.025);
+  pointer-events:none;
+  user-select:none;
+  letter-spacing:-.05em;
+}
+
+.hero-eyebrow {
+  display:flex; align-items:center; gap:12px;
+  margin-bottom:28px;
+  font-size:.75rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);   /* deep purple */
+  font-weight:500;
+}
+.hero-eyebrow::before {
+  content:'';
+  display:block;
+  width:32px; height:1px;
+  background:var(--accent);
+}
+
+.hero h1 {
+  font-size:clamp(2.8rem, 7vw, 6.5rem);
+  letter-spacing:-.04em;
+  line-height:.96;
+  max-width:900px;
+  margin-bottom:40px;
+}
+.hero h1 em {
+  font-style:normal;
+  color:var(--accent);   /* deep purple */
+  position:relative;
+}
+
+.hero-sub {
+  font-size:clamp(.95rem, 1.5vw, 1.1rem);
+  color:var(--muted2);
+  max-width:480px;
+  line-height:1.65;
+  margin-bottom:48px;
+  font-weight:300;
+}
+
+.hero-actions {
+  display:flex; align-items:center; gap:20px; flex-wrap:wrap;
+}
+
+.btn-primary-lg {
+  font-family:var(--font-display);
+  font-size:.9rem;
+  font-weight:700;
+  color:#000;
+  background:var(--accent);
+  border:none; cursor:none;
+  padding:15px 32px;
+  border-radius:8px;
+  text-decoration:none;
+  letter-spacing:.01em;
+  display:flex; align-items:center; gap:10px;
+  transition:background .2s, box-shadow .2s, transform .15s;
+  box-shadow:0 0 0 0 var(--accent-glow);
+}
+.btn-primary-lg:hover {
+  background:#b46ff0;
+  box-shadow:0 8px 40px rgba(157,78,221,.35);
+  transform:translateY(-2px);
+}
+.btn-primary-lg svg { transition:transform .2s; }
+.btn-primary-lg:hover svg { transform:translateX(3px); }
+
+.btn-text-link {
+  font-family:var(--font-display);
+  font-size:.88rem;
+  font-weight:600;
+  color:var(--muted2);
+  text-decoration:none;
+  display:flex; align-items:center; gap:6px;
+  transition:color .2s;
+}
+.btn-text-link:hover { color:var(--white); }
+
+/* Hero bottom strip */
+.hero-strip {
+  position:absolute; bottom:0; left:0; right:0;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--border2) 30%, var(--border2) 70%, transparent);
+}
+
+.hero-stats-row {
+  position:absolute; bottom:0; left:0; right:0;
+  display:grid; grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--border);
+}
+.hero-stat {
+  padding:24px 40px;
+  border-right:1px solid var(--border);
+}
+.hero-stat:last-child { border-right:none; }
+.hero-stat-num {
+  font-family:var(--font-display);
+  font-size:1.9rem;
+  font-weight:800;
+  color:var(--white);
+  letter-spacing:-.03em;
+  line-height:1;
+  margin-bottom:4px;
+}
+.hero-stat-num span { color:var(--accent); }
+.hero-stat-label { font-size:.75rem; color:var(--muted); letter-spacing:.02em; }
+
+@media(max-width:768px){
+  .hero { padding:0 24px 180px; }
+  .hero-badge { top:80px; right:24px; display:none; }
+  .hero-stats-row { grid-template-columns:1fr 1fr; }
+  .hero-stat { padding:20px 24px; }
+  .hero-stat:nth-child(3) { grid-column:1/-1; border-right:none; border-top:1px solid var(--border); }
+}
+
+/* ════════════════════════════════
+   SECTION SCAFFOLDING
+════════════════════════════════ */
+section { position:relative; }
+.section-inner { max-width:1140px; margin:0 auto; padding:0 40px; }
+@media(max-width:768px){ .section-inner { padding:0 24px; } }
+
+.section-tag {
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:.7rem;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:20px;
+}
+.section-tag::before {
+  content:'';
+  width:18px; height:1px;
+  background:var(--accent);
+}
+
+/* ════════════════════════════════
+   PROBLEM
+════════════════════════════════ */
+#problem {
+  padding:120px 0;
+  border-top:1px solid var(--border);
+}
+
+.problem-layout {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:start;
+}
+
+.problem-left h2 {
+  font-size:clamp(2rem,3.5vw,3rem);
+  letter-spacing:-.04em;
+  line-height:1.05;
+  margin-bottom:24px;
+  color:var(--white);
+}
+
+.problem-left p {
+  font-size:1rem;
+  color:var(--muted2);
+  line-height:1.7;
+  margin-bottom:32px;
+}
+
+.stat-highlight {
+  display:inline-flex; align-items:baseline; gap:8px;
+  padding:12px 20px;
+  background:var(--surface2);
+  border:1px solid var(--border2);
+  border-radius:8px;
+  margin-bottom:12px;
+}
+.stat-highlight-num {
+  font-family:var(--font-display);
+  font-size:2rem;
+  font-weight:800;
+  color:var(--accent);
+  letter-spacing:-.04em;
+}
+.stat-highlight-label { font-size:.82rem; color:var(--muted2); }
+
+.problem-pains { display:flex; flex-direction:column; gap:1px; }
+
+.pain-row {
+  display:flex; align-items:flex-start; gap:16px;
+  padding:24px 0;
+  border-bottom:1px solid var(--border);
+  transition:background .2s;
+  cursor:default;
+}
+.pain-row:first-child { border-top:1px solid var(--border); }
+.pain-row:hover .pain-icon { background:var(--accent-glow); border-color:var(--accent-dim); }
+
+.pain-idx {
+  font-family:var(--font-display);
+  font-size:.7rem;
+  font-weight:700;
+  color:var(--muted);
+  min-width:28px;
+  padding-top:3px;
+  letter-spacing:.06em;
+}
+.pain-icon {
+  width:40px; height:40px; flex-shrink:0;
+  border:1px solid var(--border2);
+  border-radius:8px;
+  display:flex; align-items:center; justify-content:center;
+  transition:background .2s, border-color .2s;
+}
+.pain-content h4 {
+  font-family:var(--font-display);
+  font-size:.95rem;
+  font-weight:700;
+  color:var(--white);
+  margin-bottom:4px;
+}
+.pain-content p { font-size:.83rem; color:var(--muted); line-height:1.55; }
+
+@media(max-width:900px){
+  .problem-layout { grid-template-columns:1fr; gap:60px; }
+}
+
+/* ════════════════════════════════
+   SOLUTION / FEATURES
+════════════════════════════════ */
+#features {
+  padding:120px 0;
+  border-top:1px solid var(--border);
+}
+
+.features-header {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:end;
+  margin-bottom:72px;
+}
+.features-header h2 {
+  font-size:clamp(2rem,3.5vw,3rem);
+  letter-spacing:-.04em;
+  line-height:1.05;
+}
+.features-header p { font-size:1rem; color:var(--muted2); line-height:1.7; }
+
+@media(max-width:900px){
+  .features-header { grid-template-columns:1fr; gap:24px; margin-bottom:48px; }
+}
+
+/* Feature cards — bento grid */
+.bento {
+  display:grid;
+  grid-template-columns:repeat(12, 1fr);
+  grid-template-rows:auto auto;
+  gap:12px;
+}
+
+.bento-card {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:36px;
+  overflow:hidden;
+  position:relative;
+  transition:border-color .3s, box-shadow .3s;
+}
+.bento-card:hover {
+  border-color:var(--border2);
+  box-shadow:0 0 40px rgba(0,0,0,.4);
+}
+.bento-card::before {
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(157,78,221,.3),transparent);
+  opacity:0;
+  transition:opacity .3s;
+}
+.bento-card:hover::before { opacity:1; }
+
+/* Layout slots */
+.bento-a { grid-column:span 7; }
+.bento-b { grid-column:span 5; }
+.bento-c { grid-column:span 4; }
+.bento-d { grid-column:span 4; }
+.bento-e { grid-column:span 4; }
+
+@media(max-width:900px){
+  .bento { grid-template-columns:1fr; }
+  .bento-a,.bento-b,.bento-c,.bento-d,.bento-e { grid-column:span 1; }
+}
+
+.card-eyebrow {
+  font-size:.68rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:500;
+  margin-bottom:14px;
+  display:flex; align-items:center; gap:8px;
+}
+.card-eyebrow::before { content:''; width:14px; height:1px; background:var(--accent); }
+
+.bento-card h3 {
+  font-size:1.25rem;
+  font-weight:700;
+  color:var(--white);
+  letter-spacing:-.03em;
+  margin-bottom:12px;
+  line-height:1.2;
+}
+.bento-card p { font-size:.85rem; color:var(--muted); line-height:1.6; }
+
+/* Card A — AI Q&A — wide, has mock UI */
+.card-a-visual {
+  margin-top:28px;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:8px;
+  overflow:hidden;
+}
+.card-a-bar {
+  display:flex; align-items:center; gap:6px;
+  padding:10px 14px;
+  border-bottom:1px solid var(--border);
+}
+.card-a-bar span { width:8px;height:8px;border-radius:50%; }
+.card-a-messages { padding:16px; display:flex; flex-direction:column; gap:10px; }
+.msg {
+  padding:10px 14px;
+  border-radius:8px;
+  font-size:.78rem;
+  line-height:1.5;
+  max-width:85%;
+}
+.msg-user {
+  background:var(--surface);
+  border:1px solid var(--border);
+  color:var(--muted2);
+  align-self:flex-start;
+}
+.msg-ai {
+  background:rgba(157,78,221,.08);
+  border:1px solid rgba(157,78,221,.2);
+  color:var(--white);
+  align-self:flex-end;
+}
+.msg-ai strong { color:var(--accent); }
+
+/* Card B — Fraud — has score ring */
+.fraud-score-wrap {
+  margin-top:28px;
+  display:flex; align-items:center; gap:24px;
+}
+.fraud-ring { position:relative; width:100px; height:100px; flex-shrink:0; }
+.fraud-ring svg { transform:rotate(-90deg); }
+.fraud-ring-label {
+  position:absolute; inset:0;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+}
+.fraud-ring-num {
+  font-family:var(--font-display);
+  font-size:1.4rem;
+  font-weight:800;
+  color:var(--accent);
+  line-height:1;
+}
+.fraud-ring-sub { font-size:.6rem; color:var(--muted); letter-spacing:.05em; text-transform:uppercase; }
+.fraud-checks { flex:1; display:flex; flex-direction:column; gap:8px; }
+.fraud-check {
+  display:flex; align-items:center; gap:8px;
+  font-size:.75rem;
+  color:var(--muted2);
+}
+.fraud-check .dot {
+  width:6px; height:6px; border-radius:50%; flex-shrink:0;
+}
+.dot-green { background:var(--accent); box-shadow:0 0 6px var(--accent); }
+.dot-red { background:var(--red); box-shadow:0 0 6px var(--red); }
+.dot-amber { background:var(--amber); }
+
+/* Card C/D/E — small, icon + desc */
+.card-icon {
+  width:44px; height:44px;
+  border:1px solid var(--border2);
+  border-radius:10px;
+  display:flex; align-items:center; justify-content:center;
+  margin-bottom:20px;
+  background:var(--surface2);
+}
+
+/* ════════════════════════════════
+   HOW IT WORKS
+════════════════════════════════ */
+#how {
+  padding:120px 0;
+  border-top:1px solid var(--border);
+  background:var(--surface);
+}
+
+.how-header { text-align:center; margin-bottom:80px; }
+.how-header h2 {
+  font-size:clamp(2rem,4vw,3.2rem);
+  letter-spacing:-.04em;
+  margin-bottom:16px;
+}
+.how-header p { font-size:1rem; color:var(--muted2); max-width:440px; margin:0 auto; line-height:1.65; }
+
+.how-steps {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  position:relative;
+}
+/* Connector line */
+.how-steps::before {
+  content:'';
+  position:absolute;
+  top:28px; left:calc(16.66% + 16px); right:calc(16.66% + 16px);
+  height:1px;
+  background:linear-gradient(90deg, var(--accent-dim), rgba(157,78,221,.2));
+}
+
+.how-step {
+  padding:0 40px 0 0;
+  position:relative;
+}
+.how-step:last-child { padding-right:0; }
+
+.step-num-wrap {
+  display:flex; align-items:center; gap:16px;
+  margin-bottom:28px;
+}
+.step-num {
+  width:56px; height:56px;
+  border-radius:50%;
+  border:1px solid var(--border2);
+  background:var(--surface);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-display);
+  font-size:1.1rem;
+  font-weight:800;
+  color:var(--accent);
+  flex-shrink:0;
+  z-index:1;
+  position:relative;
+}
+.how-step h4 {
+  font-size:1.05rem;
+  font-weight:700;
+  letter-spacing:-.02em;
+  line-height:1.2;
+}
+.how-step p {
+  font-size:.84rem;
+  color:var(--muted);
+  line-height:1.65;
+  padding-left:72px;
+}
+
+@media(max-width:768px){
+  .how-steps { grid-template-columns:1fr; gap:48px; }
+  .how-steps::before { display:none; }
+  .how-step { padding:0; }
+  .how-step p { padding-left:0; margin-top:12px; }
+}
+
+/* ════════════════════════════════
+   SOCIAL PROOF
+════════════════════════════════ */
+#proof {
+  padding:120px 0;
+  border-top:1px solid var(--border);
+}
+
+.proof-header { margin-bottom:60px; }
+.proof-header h2 {
+  font-size:clamp(1.8rem,3vw,2.6rem);
+  letter-spacing:-.04em;
+  max-width:500px;
+}
+
+.testimonials {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.tcard {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:32px;
+  display:flex; flex-direction:column; gap:20px;
+  transition:border-color .3s;
+}
+.tcard:hover { border-color:var(--border2); }
+
+.tcard-stars { color:var(--accent); font-size:.8rem; letter-spacing:2px; }
+
+.tcard-quote {
+  font-size:.88rem;
+  color:var(--muted2);
+  line-height:1.68;
+  flex:1;
+  font-style:italic;
+}
+
+.tcard-author { display:flex; align-items:center; gap:12px; }
+.tcard-avatar {
+  width:38px; height:38px;
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-display);
+  font-size:.85rem;
+  font-weight:800;
+  flex-shrink:0;
+}
+.av-a { background:rgba(157,78,221,.15); color:var(--accent); }
+.av-b { background:rgba(245,166,35,.12); color:var(--amber); }
+.av-c { background:rgba(255,255,255,.07); color:var(--white); }
+
+.tcard-name { font-family:var(--font-display); font-size:.85rem; font-weight:700; color:var(--white); }
+.tcard-role { font-size:.72rem; color:var(--muted); }
+
+@media(max-width:900px){
+  .testimonials { grid-template-columns:1fr; }
+}
+
+/* ════════════════════════════════
+   TRUST BADGES
+════════════════════════════════ */
+#trust {
+  padding:80px 0;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+
+.trust-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  overflow:hidden;
+}
+.trust-item {
+  background:var(--surface);
+  padding:32px 28px;
+  display:flex; flex-direction:column; gap:10px;
+  transition:background .2s;
+}
+.trust-item:hover { background:var(--surface2); }
+.trust-num {
+  font-family:var(--font-display);
+  font-size:1.7rem;
+  font-weight:800;
+  color:var(--accent);
+  letter-spacing:-.04em;
+  line-height:1;
+}
+.trust-label { font-size:.78rem; color:var(--muted); line-height:1.4; }
+
+@media(max-width:900px){
+  .trust-grid { grid-template-columns:repeat(2,1fr); }
+}
+@media(max-width:500px){
+  .trust-grid { grid-template-columns:1fr; }
+}
+
+/* ════════════════════════════════
+   CTA
+════════════════════════════════ */
+#cta {
+  padding:140px 0;
+}
+
+.cta-inner {
+  text-align:center;
+  max-width:700px;
+  margin:0 auto;
+}
+.cta-inner h2 {
+  font-size:clamp(2.4rem,5vw,4.5rem);
+  letter-spacing:-.05em;
+  line-height:.98;
+  margin-bottom:24px;
+}
+.cta-inner p {
+  font-size:1rem;
+  color:var(--muted2);
+  line-height:1.65;
+  margin-bottom:48px;
+  max-width:440px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.cta-form {
+  display:flex;
+  gap:10px;
+  max-width:440px;
+  margin:0 auto 16px;
+}
+.cta-input {
+  flex:1;
+  background:var(--surface);
+  border:1px solid var(--border2);
+  border-radius:8px;
+  padding:14px 20px;
+  font-family:var(--font-body);
+  font-size:.88rem;
+  color:var(--white);
+  outline:none;
+  transition:border-color .2s, box-shadow .2s;
+}
+.cta-input::placeholder { color:var(--muted); }
+.cta-input:focus {
+  border-color:var(--accent-dim);
+  box-shadow:0 0 0 3px rgba(157,78,221,.1);
+}
+
+#cta-success {
+  display:none;
+  color:var(--accent);
+  font-size:.85rem;
+  margin-bottom:8px;
+  font-weight:500;
+}
+
+.cta-note { font-size:.72rem; color:var(--muted); letter-spacing:.02em; }
+
+/* Glow blob behind CTA */
+#cta::before {
+  content:'';
+  position:absolute;
+  left:50%; top:50%;
+  transform:translate(-50%,-50%);
+  width:600px; height:600px;
+  background:radial-gradient(circle, rgba(157,78,221,.06) 0%, transparent 70%);
+  pointer-events:none;
+}
+
+/* ════════════════════════════════
+   FOOTER
+════════════════════════════════ */
+footer {
+  border-top:1px solid var(--border);
+  padding:48px 40px;
+}
+.footer-inner {
+  max-width:1140px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:24px;
+}
+.footer-logo {
+  display:flex; align-items:center; gap:10px;
+  text-decoration:none;
+}
+.footer-logo-icon {
+  width:26px; height:26px;
+  background:var(--accent);
+  border-radius:6px;
+  display:flex; align-items:center; justify-content:center;
+}
+.footer-logo-text {
+  font-family:var(--font-display);
+  font-weight:800;
+  font-size:.95rem;
+  color:var(--white);
+  letter-spacing:-.02em;
+}
+.footer-logo-text span { color:var(--accent); }
+
+.footer-links {
+  display:flex; gap:28px; list-style:none;
+}
+.footer-links a {
+  font-size:.78rem;
+  color:var(--muted);
+  text-decoration:none;
+  transition:color .2s;
+}
+.footer-links a:hover { color:var(--white); }
+
+.footer-copy { font-size:.72rem; color:var(--muted); }
+
+@media(max-width:768px){
+  footer { padding:40px 24px; }
+  .footer-inner { flex-direction:column; align-items:flex-start; }
+  .footer-links { flex-wrap:wrap; gap:16px; }
+}
+
+/* ════════════════════════════════
+   ANIMATED UNDERLINE LINKS
+════════════════════════════════ */
+.ul-link {
+  position:relative; text-decoration:none; color:inherit;
+}
+.ul-link::after {
+  content:''; position:absolute; bottom:-1px; left:0;
+  width:0; height:1px; background:var(--accent);
+  transition:width .25s ease;
+}
+.ul-link:hover::after { width:100%; }
+
+/* ════════════════════════════════
+   MISC HELPERS
+════════════════════════════════ */
+.green-tag {
+  display:inline-flex; align-items:center; gap:6px;
+  background:rgba(157,78,221,.08);
+  border:1px solid rgba(157,78,221,.2);
+  color:var(--accent);
+  font-size:.68rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  padding:4px 10px;
+  border-radius:100px;
+  font-weight:500;
+}
+
+/* SVG icon wrapper used inline */
+svg { display:block; }
+</style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <span class="nav-logo-text">Propify<span>AI</span></span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#problem" class="ul-link">Problem</a></li>
+    <li><a href="#features" class="ul-link">Features</a></li>
+    <li><a href="#how" class="ul-link">How it works</a></li>
+    <li><a href="#proof" class="ul-link">Reviews</a></li>
+  </ul>
+
+  <div class="nav-cta">
+    <a href="#cta" class="btn-ghost ul-link">Sign in</a>
+    <a href="#cta" class="btn-green">Get Early Access</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile drawer -->
+<div id="mob-drawer">
+  <a href="#problem">Problem</a>
+  <a href="#features">Features</a>
+  <a href="#how">How it works</a>
+  <a href="#proof">Reviews</a>
+  <a href="#cta" style="color:var(--accent);opacity:1;">Get Early Access →</a>
+</div>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-watermark">NG</div>
+
+  <div class="hero-badge">
+    <div class="badge-dot"></div>
+    Now in Private Beta
+  </div>
+
+  <div style="position:relative; z-index:2; padding-bottom:100px;">
+    <div class="hero-eyebrow" style="animation:fadeUp .6s .1s both;">
+      Nigeria's Property Intelligence Layer
+    </div>
+
+    <h1 style="animation:fadeUp .7s .2s both;">
+      Buy Property<br/>in Nigeria<br/>with <em>Zero Doubt</em>.
+    </h1>
+
+    <p class="hero-sub" style="animation:fadeUp .7s .32s both;">
+      PropifyAI scans listings, verifies documents, and detects fraud before you sign anything — so you never lose a kobo to a fake agent or forged title.
+    </p>
+
+    <div class="hero-actions" style="animation:fadeUp .7s .44s both;">
+      <a href="#cta" class="btn-primary-lg">
+        Request Early Access
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#features" class="btn-text-link">
+        Explore features
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Stats bar pinned to hero bottom -->
+  <div class="hero-stats-row" style="position:relative; z-index:2;">
+    <div class="hero-stat reveal d1">
+      <div class="hero-stat-num">₦1.7<span>T</span></div>
+      <div class="hero-stat-label">Lost annually to real estate fraud in Nigeria</div>
+    </div>
+    <div class="hero-stat reveal d2">
+      <div class="hero-stat-num"><span>68</span>%</div>
+      <div class="hero-stat-label">Of buyers purchase without title verification</div>
+    </div>
+    <div class="hero-stat reveal d3">
+      <div class="hero-stat-num"><span>&lt;</span>30<span>s</span></div>
+      <div class="hero-stat-label">Time to get a PropifyAI fraud verdict</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PROBLEM ═══════════════ -->
+<section id="problem">
+  <div class="section-inner">
+    <div class="problem-layout">
+      <div class="problem-left reveal">
+        <div class="section-tag">The Problem</div>
+        <h2>Nigerian Real Estate Is Deliberately Opaque.</h2>
+        <p>Whether you're buying in Lekki, Gwarinpa, or GRA Port Harcourt — the information asymmetry between agents and buyers is engineered to exploit you.</p>
+        <div>
+          <div class="stat-highlight" style="display:flex; margin-bottom:10px;">
+            <span class="stat-highlight-num">3 in 5</span>
+            <span class="stat-highlight-label">first-time buyers report being deceived by their agent</span>
+          </div>
+          <div class="stat-highlight" style="display:flex; margin-bottom:10px;">
+            <span class="stat-highlight-num">40%</span>
+            <span class="stat-highlight-label">average price premium paid due to missing market data</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="problem-pains reveal d2">
+        <div class="pain-row">
+          <span class="pain-idx">01</span>
+          <div class="pain-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <div class="pain-content">
+            <h4>Ghost Agents & Omo-Onile Schemes</h4>
+            <p>Agents who collect deposits then vanish. Land sold to multiple buyers simultaneously. Properties encumbered with unresolved family disputes.</p>
+          </div>
+        </div>
+        <div class="pain-row">
+          <span class="pain-idx">02</span>
+          <div class="pain-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div class="pain-content">
+            <h4>Forged Certificates of Occupancy</h4>
+            <p>Sophisticated C of O forgeries that pass casual inspection. Plot numbers that don't exist in LASLAND or AGIS registries. Backdated Governor's Consent.</p>
+          </div>
+        </div>
+        <div class="pain-row">
+          <span class="pain-idx">03</span>
+          <div class="pain-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          </div>
+          <div class="pain-content">
+            <h4>No Reliable Price Benchmarks</h4>
+            <p>Market data is fragmented, guarded, and often manipulated. Without comps, buyers routinely overpay by 20–40% and have no recourse.</p>
+          </div>
+        </div>
+        <div class="pain-row">
+          <span class="pain-idx">04</span>
+          <div class="pain-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20"/></svg>
+          </div>
+          <div class="pain-content">
+            <h4>Zero Infrastructure Visibility</h4>
+            <p>Flood risk, government acquisition status, pending road expansion — critical location data is scattered across agencies with no unified access point.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FEATURES ═══════════════ -->
+<section id="features">
+  <div class="section-inner">
+    <div class="features-header">
+      <div class="reveal">
+        <div class="section-tag">What PropifyAI Does</div>
+        <h2>Four Capabilities. One Decisive Edge.</h2>
+      </div>
+      <p class="reveal d2">PropifyAI is not a listing aggregator. It is an intelligence layer — purpose-built for Nigerian property buyers who refuse to operate blind.</p>
+    </div>
+
+    <!-- Bento grid -->
+    <div class="bento">
+
+      <!-- A — AI Q&A (wide) -->
+      <div class="bento-card bento-a reveal d1">
+        <div class="card-eyebrow">AI Q&A Assistant</div>
+        <h3>Ask anything.<br/>Get a straight answer.</h3>
+        <p>Plain English questions about Nigerian property law, processes, agent red flags — answered instantly. No jargon, no billable hours.</p>
+
+        <div class="card-a-visual">
+          <div class="card-a-bar">
+            <span style="background:#ff5f57;"></span>
+            <span style="background:#febc2e;"></span>
+            <span style="background:#28c840;"></span>
+            <span style="flex:1; height:1px; background:var(--border); margin-left:8px;"></span>
+            <span style="font-size:.65rem; color:var(--muted); font-family:monospace;">propifyai.ng — chat</span>
+          </div>
+          <div class="card-a-messages">
+            <div class="msg msg-user">Does a Deed of Assignment give me full ownership in Lagos?</div>
+            <div class="msg msg-ai">Not automatically. A DoA transfers the <strong>seller's interest</strong> to you, but you still need to obtain <strong>Governor's Consent</strong> from the Lagos State government within 6 months to perfect the title. Without it, the transaction is not fully enforceable. Consent fees are typically 3–5% of the property value.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- B — Fraud (narrow) -->
+      <div class="bento-card bento-b reveal d2">
+        <div class="card-eyebrow">Fraud Detection</div>
+        <h3>Know your risk score before you negotiate.</h3>
+        <p>Cross-referenced against agent complaint databases, registry records, and known fraud patterns across Nigeria.</p>
+
+        <div class="fraud-score-wrap">
+          <div class="fraud-ring">
+            <svg width="100" height="100" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="8"/>
+              <circle cx="50" cy="50" r="42" fill="none" stroke="var(--accent)" stroke-width="8"
+                stroke-dasharray="264" stroke-dashoffset="66" stroke-linecap="round"
+                style="filter:drop-shadow(0 0 6px var(--accent));"/>
+            </svg>
+            <div class="fraud-ring-label">
+              <span class="fraud-ring-num">75</span>
+              <span class="fraud-ring-sub">Safe Score</span>
+            </div>
+          </div>
+          <div class="fraud-checks">
+            <div class="fraud-check"><div class="dot dot-green"></div>Agent profile verified</div>
+            <div class="fraud-check"><div class="dot dot-green"></div>No duplicate sales detected</div>
+            <div class="fraud-check"><div class="dot dot-amber"></div>Price 18% above area comps</div>
+            <div class="fraud-check"><div class="dot dot-red"></div>C of O survey # unmatched</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- C — Document Analysis -->
+      <div class="bento-card bento-c reveal d1">
+        <div class="card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+          </svg>
+        </div>
+        <div class="card-eyebrow">Document Analysis</div>
+        <h3>Upload. Understand. Decide.</h3>
+        <p>C of O, Deed of Assignment, Survey Plan, Excision documents — PropifyAI reads and explains them in plain language, flagging every inconsistency.</p>
+        <div class="green-tag" style="margin-top:20px;">Supports PDF & Images</div>
+      </div>
+
+      <!-- D — Location Insights -->
+      <div class="bento-card bento-d reveal d2">
+        <div class="card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <div class="card-eyebrow">Location Intelligence</div>
+        <h3>See what the agent won't tell you.</h3>
+        <p>Flood risk, govt acquisition status, price/sqm benchmarks, 5-year appreciation, nearby infrastructure. Every neighbourhood, decoded.</p>
+        <div class="green-tag" style="margin-top:20px;">Lagos · Abuja · Rivers</div>
+      </div>
+
+      <!-- E — Market Comps -->
+      <div class="bento-card bento-e reveal d3">
+        <div class="card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <div class="card-eyebrow">Market Pricing</div>
+        <h3>Know the real price before you haggle.</h3>
+        <p>Comparable transactions, median price bands, and over/under-pricing signals — so your first offer is already your smartest one.</p>
+        <div class="green-tag" style="margin-top:20px;">Updated Monthly</div>
+      </div>
+
+    </div><!-- /bento -->
+  </div>
+</section>
+
+<!-- ═══════════════ HOW IT WORKS ═══════════════ -->
+<section id="how">
+  <div class="section-inner" style="padding-top:120px; padding-bottom:120px;">
+    <div class="how-header reveal">
+      <div class="section-tag" style="justify-content:center; margin-bottom:16px;">How It Works</div>
+      <h2>Simple by design.<br/>Powerful by necessity.</h2>
+      <p style="margin-top:16px;">Three steps from uncertainty to a decision you can actually stand behind.</p>
+    </div>
+
+    <div class="how-steps">
+      <div class="how-step reveal d1">
+        <div class="step-num-wrap">
+          <div class="step-num">01</div>
+          <h4>Share the property</h4>
+        </div>
+        <p>Paste a listing URL, upload a document, or describe the deal in plain text. PropifyAI accepts any format — no templates required.</p>
+      </div>
+      <div class="how-step reveal d2">
+        <div class="step-num-wrap">
+          <div class="step-num">02</div>
+          <h4>AI runs the checks</h4>
+        </div>
+        <p>PropifyAI cross-references registry data, fraud databases, agent records, and location intelligence simultaneously — in seconds.</p>
+      </div>
+      <div class="how-step reveal d3">
+        <div class="step-num-wrap">
+          <div class="step-num">03</div>
+          <h4>Get your verdict</h4>
+        </div>
+        <p>A clear risk score, plain-language findings, negotiation guidance, and recommended next steps — before your next agent call.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SOCIAL PROOF ═══════════════ -->
+<section id="proof">
+  <div class="section-inner">
+    <div class="proof-header reveal">
+      <div class="section-tag">Early Feedback</div>
+      <h2>What Beta Users Are Saying</h2>
+    </div>
+
+    <div class="testimonials">
+      <div class="tcard reveal d1">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-quote">"PropifyAI flagged that the C of O my seller presented had a survey number that didn't exist in LASLAND records. I was three days from paying ₦14M. This tool literally saved my family."</p>
+        <div class="tcard-author">
+          <div class="tcard-avatar av-a">AO</div>
+          <div>
+            <div class="tcard-name">Adaeze O.</div>
+            <div class="tcard-role">First-time buyer · Lagos Island</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tcard reveal d2">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-quote">"I manage property investments from London. PropifyAI's location insights and document analysis mean I can due-diligence deals remotely without flying back every time. Game-changing for diaspora investors."</p>
+        <div class="tcard-author">
+          <div class="tcard-avatar av-b">TB</div>
+          <div>
+            <div class="tcard-name">Temi B.</div>
+            <div class="tcard-role">Property investor · UK / Abuja</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tcard reveal d3">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-quote">"As a registered estate agent, I use PropifyAI to pre-verify every listing I take on. It protects my reputation and builds trust with buyers. I've already referred five colleagues."</p>
+        <div class="tcard-author">
+          <div class="tcard-avatar av-c">KA</div>
+          <div>
+            <div class="tcard-name">Kunle A.</div>
+            <div class="tcard-role">Registered estate agent · Port Harcourt</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TRUST BADGES ═══════════════ -->
+<section id="trust">
+  <div class="section-inner">
+    <div class="trust-grid">
+      <div class="trust-item reveal d1">
+        <div class="trust-num">50K+</div>
+        <div class="trust-label">Nigerian property transactions in our training dataset</div>
+      </div>
+      <div class="trust-item reveal d2">
+        <div class="trust-num">Land Use Act</div>
+        <div class="trust-label">Full coverage of Nigeria's property legal framework</div>
+      </div>
+      <div class="trust-item reveal d3">
+        <div class="trust-num">Weekly</div>
+        <div class="trust-label">Fraud pattern database update frequency</div>
+      </div>
+      <div class="trust-item reveal d4">
+        <div class="trust-num">256-bit</div>
+        <div class="trust-label">AES encryption on all uploaded documents</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CTA ═══════════════ -->
+<section id="cta">
+  <div class="section-inner">
+    <div class="cta-inner">
+      <div class="reveal">
+        <div class="section-tag" style="justify-content:center; margin-bottom:20px;">Join the Waitlist</div>
+        <h2>Never Buy Blind<br/>in Nigeria Again.</h2>
+        <p>PropifyAI is opening to early users in Q3 2025. Free during beta. No credit card needed.</p>
+      </div>
+
+      <div class="reveal d2">
+        <div class="cta-form">
+          <input class="cta-input" type="email" id="cta-email" placeholder="your@email.com"/>
+          <a href="#" class="btn-primary-lg" onclick="handleCTA(event)" style="white-space:nowrap; text-decoration:none;">
+            Get Access
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div id="cta-success">✓ You're on the list. We'll be in touch soon.</div>
+        <p class="cta-note">No spam · No commitment · Unsubscribe anytime</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="footer-inner">
+    <a href="#" class="footer-logo">
+      <div class="footer-logo-icon">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="footer-logo-text">Propify<span>AI</span></span>
+    </a>
+
+    <ul class="footer-links">
+      <li><a href="#" class="ul-link">Privacy</a></li>
+      <li><a href="#" class="ul-link">Terms</a></li>
+      <li><a href="#" class="ul-link">Blog</a></li>
+      <li><a href="mailto:hello@propifyai.ng" class="ul-link">Contact</a></li>
+    </ul>
+
+    <div class="footer-copy">
+      © 2025 PropifyAI Technologies Ltd. Lagos, Nigeria.<br/>
+      <span style="opacity:.5;">Information only — not legal advice. Always consult a licensed professional.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════ JS ═══════════════ -->
+<script>
+/* ── Custom cursor ── */
+const cur = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX; my=e.clientY;
+  cur.style.left=mx+'px'; cur.style.top=my+'px';
+});
+(function animRing(){
+  rx+=(mx-rx)*.12; ry+=(my-ry)*.12;
+  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  requestAnimationFrame(animRing);
+})();
+document.querySelectorAll('a,button,.bento-card,.tcard,.trust-item,.pain-row').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{
+    cur.style.width='18px'; cur.style.height='18px';
+    ring.style.width='54px'; ring.style.height='54px';
+    ring.style.opacity='.5';
+  });
+  el.addEventListener('mouseleave',()=>{
+    cur.style.width='10px'; cur.style.height='10px';
+    ring.style.width='36px'; ring.style.height='36px';
+    ring.style.opacity='1';
+  });
+});
+
+/* ── Nav scroll ── */
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('stuck',window.scrollY>40);
+});
+
+/* ── Hamburger / drawer ── */
+const ham=document.getElementById('hamburger');
+const drawer=document.getElementById('mob-drawer');
+ham.addEventListener('click',()=>{
+  drawer.classList.toggle('open');
+  const spans=ham.querySelectorAll('span');
+  if(drawer.classList.contains('open')){
+    spans[0].style.transform='translateY(6.5px) rotate(45deg)';
+    spans[1].style.opacity='0';
+    spans[2].style.transform='translateY(-6.5px) rotate(-45deg)';
+  } else {
+    spans.forEach(s=>{ s.style.transform=''; s.style.opacity=''; });
+  }
+});
+drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  drawer.classList.remove('open');
+  ham.querySelectorAll('span').forEach(s=>{ s.style.transform=''; s.style.opacity=''; });
+}));
+
+/* ── Scroll reveal ── */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('on'); obs.unobserve(e.target); }
+  });
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* ── CTA form ── */
+function handleCTA(e){
+  e.preventDefault();
+  const input=document.getElementById('cta-email');
+  const msg=document.getElementById('cta-success');
+  const valid=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
+  if(!valid){
+    input.style.borderColor='var(--red)';
+    input.style.boxShadow='0 0 0 3px rgba(255,77,77,.1)';
+    input.placeholder='Enter a valid email first';
+    setTimeout(()=>{
+      input.style.borderColor=''; input.style.boxShadow='';
+      input.placeholder='your@email.com';
+    },2500);
+    return;
+  }
+  input.value='';
+  msg.style.display='block';
+  setTimeout(()=>msg.style.display='none',6000);
+}
+document.getElementById('cta-email').addEventListener('keydown',e=>{
+  if(e.key==='Enter') handleCTA({preventDefault:()=>{}});
+});
+
+/* ── Hero text animation keyframe injection ── */
+const s=document.createElement('style');
+s.textContent=`
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}`;
+document.head.appendChild(s);
+
+/* ── Animated fraud ring ── */
+setTimeout(()=>{
+  const circle=document.querySelector('.fraud-ring circle:last-child');
+  if(circle){
+    circle.style.transition='stroke-dashoffset 1.4s cubic-bezier(.16,1,.3,1)';
+    const io=new IntersectionObserver(([e])=>{
+      if(e.isIntersecting){ circle.style.strokeDashoffset='66'; io.disconnect(); }
+    },{threshold:.3});
+    circle.style.strokeDashoffset='264';
+    io.observe(circle);
+  }
+},200);
+</script>
+</body>
+</html>
