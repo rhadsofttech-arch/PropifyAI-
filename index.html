@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>PropifyAI — Nigeria's Smartest Property Intelligence Platform</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<!-- UPDATED: Poppins & League Spartan instead of Syne & Instrument Sans (as primary headers) -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=League+Spartan:wght@400;500;600;700;800&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
 
 <style>
@@ -15,16 +14,14 @@
   --surface2: #151717;
   --border:   rgba(255,255,255,0.07);
   --border2:  rgba(255,255,255,0.12);
-  /* UPDATED: deep purple instead of green */
-  --accent:   #9D4EDD;        /* deep purple */
-  --accent-dim:#7B2CBF;       /* darker purple */
+  --accent:   #9D4EDD;
+  --accent-dim:#7B2CBF;
   --accent-glow:rgba(157,78,221,0.18);
   --white:    #f4f4f2;
   --muted:    #6b6f6e;
   --muted2:   #9a9e9d;
   --red:      #FF4D4D;
   --amber:    #F5A623;
-  /* UPDATED: font stack — Poppins / Spartan for display, body stays Instrument Sans */
   --font-display: 'Poppins', 'League Spartan', sans-serif;
   --font-body:    'Instrument Sans', sans-serif;
   --radius:   12px;
@@ -44,12 +41,12 @@ body {
   cursor: none;
 }
 
-/* ── Custom cursor ── */
+/* Custom cursor */
 #cursor {
   position: fixed;
   width: 10px; height: 10px;
   border-radius: 50%;
-  background: var(--accent);   /* deep purple */
+  background: var(--accent);
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%,-50%);
@@ -60,7 +57,7 @@ body {
   position: fixed;
   width: 36px; height: 36px;
   border-radius: 50%;
-  border: 1px solid rgba(157,78,221,0.4);  /* deep purple */
+  border: 1px solid rgba(157,78,221,0.4);
   pointer-events: none;
   z-index: 9998;
   transform: translate(-50%,-50%);
@@ -68,12 +65,12 @@ body {
 }
 body:hover #cursor { opacity:1; }
 
-/* ── Scrollbar ── */
+/* Scrollbar */
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 2px; }
 
-/* ── Noise grain ── */
+/* Noise grain */
 body::after {
   content:'';
   position:fixed; inset:0;
@@ -81,18 +78,18 @@ body::after {
   opacity:.45; pointer-events:none; z-index:1000;
 }
 
-/* ── Typography ── */
+/* Typography */
 .display { font-family: var(--font-display); }
 h1,h2,h3,h4 { font-family: var(--font-display); font-weight:800; line-height:1; }
 
-/* ── Utility ── */
-.green { color: var(--accent); }   /* keep class name for compatibility */
+/* Utility */
+.green { color: var(--accent); }
 .muted { color: var(--muted); }
 .muted2 { color: var(--muted2); }
 .border-line { border: 1px solid var(--border); }
 .border-line2 { border: 1px solid var(--border2); }
 
-/* ── Reveal animations ── */
+/* Reveal animations */
 .reveal { opacity:0; transform:translateY(24px); transition:opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
 .reveal.on { opacity:1; transform:none; }
 .d1 { transition-delay:.08s; }
@@ -101,9 +98,7 @@ h1,h2,h3,h4 { font-family: var(--font-display); font-weight:800; line-height:1; 
 .d4 { transition-delay:.32s; }
 .d5 { transition-delay:.40s; }
 
-/* ════════════════════════════════
-   NAV
-════════════════════════════════ */
+/* NAV */
 nav {
   position:fixed; top:0; left:0; right:0; z-index:500;
   padding:0 40px;
@@ -124,7 +119,7 @@ nav.stuck {
 }
 .nav-logo-icon {
   width:30px; height:30px;
-  background:var(--accent);   /* deep purple */
+  background:var(--accent);
   border-radius:7px;
   display:flex; align-items:center; justify-content:center;
   flex-shrink:0;
@@ -136,7 +131,7 @@ nav.stuck {
   color:var(--white);
   letter-spacing:-.02em;
 }
-.nav-logo-text span { color:var(--accent); }  /* deep purple */
+.nav-logo-text span { color:var(--accent); }
 
 .nav-links {
   display:flex; gap:36px; list-style:none;
@@ -172,7 +167,7 @@ nav.stuck {
   font-size:.82rem;
   font-weight:700;
   color:#000;
-  background:var(--accent);   /* deep purple */
+  background:var(--accent);
   border:none;
   cursor:none;
   padding:9px 20px;
@@ -183,7 +178,7 @@ nav.stuck {
   box-shadow:0 0 0 0 var(--accent-glow);
 }
 .btn-green:hover {
-  background:#b46ff0;        /* lighter purple */
+  background:#b46ff0;
   box-shadow:0 0 24px var(--accent-glow);
   transform:translateY(-1px);
 }
@@ -237,14 +232,14 @@ nav.stuck {
 }
 #mob-drawer a:hover { opacity:1; }
 
-/* ════════════════════════════════
-   HERO
-════════════════════════════════ */
+/* HERO - COMPACT & PROPERLY SPACED */
 .hero {
   position:relative;
   min-height:100svh;
-  display:flex; flex-direction:column; justify-content:flex-end;
-  padding:0 40px 80px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:80px 40px 120px;
   overflow:hidden;
 }
 
@@ -268,10 +263,10 @@ nav.stuck {
   pointer-events:none;
 }
 
-/* Floating badge */
+/* Floating badge - repositioned for better balance */
 .hero-badge {
   position:absolute;
-  top:120px; right:40px;
+  top:100px; right:40px;
   background:var(--surface2);
   border:1px solid var(--border2);
   border-radius:100px;
@@ -281,15 +276,16 @@ nav.stuck {
   color:var(--muted2);
   letter-spacing:.04em;
   animation:floatBadge 4s ease-in-out infinite;
+  z-index:2;
 }
 @keyframes floatBadge {
   0%,100% { transform:translateY(0); }
-  50% { transform:translateY(-8px); }
+  50% { transform:translateY(-6px); }
 }
 .badge-dot {
   width:7px; height:7px;
   border-radius:50%;
-  background:var(--accent);   /* deep purple */
+  background:var(--accent);
   box-shadow:0 0 8px var(--accent);
   animation:pulse 2s ease-in-out infinite;
 }
@@ -298,7 +294,7 @@ nav.stuck {
   50% { opacity:.4; }
 }
 
-/* Big number watermark */
+/* Big number watermark - subtle */
 .hero-watermark {
   position:absolute;
   bottom:-40px; right:-20px;
@@ -306,7 +302,7 @@ nav.stuck {
   font-size:clamp(160px, 22vw, 320px);
   font-weight:800;
   line-height:1;
-  color:rgba(255,255,255,.025);
+  color:rgba(255,255,255,.02);
   pointer-events:none;
   user-select:none;
   letter-spacing:-.05em;
@@ -314,11 +310,11 @@ nav.stuck {
 
 .hero-eyebrow {
   display:flex; align-items:center; gap:12px;
-  margin-bottom:28px;
+  margin-bottom:20px;
   font-size:.75rem;
   letter-spacing:.14em;
   text-transform:uppercase;
-  color:var(--accent);   /* deep purple */
+  color:var(--accent);
   font-weight:500;
 }
 .hero-eyebrow::before {
@@ -329,29 +325,30 @@ nav.stuck {
 }
 
 .hero h1 {
-  font-size:clamp(2.8rem, 7vw, 6.5rem);
+  font-size:clamp(3rem, 6vw, 5.5rem);
   letter-spacing:-.04em;
   line-height:.96;
-  max-width:900px;
-  margin-bottom:40px;
+  max-width:800px;
+  margin-bottom:24px;
 }
 .hero h1 em {
   font-style:normal;
-  color:var(--accent);   /* deep purple */
+  color:var(--accent);
   position:relative;
 }
 
 .hero-sub {
-  font-size:clamp(.95rem, 1.5vw, 1.1rem);
+  font-size:clamp(.95rem, 1.2vw, 1rem);
   color:var(--muted2);
-  max-width:480px;
-  line-height:1.65;
-  margin-bottom:48px;
+  max-width:460px;
+  line-height:1.6;
+  margin-bottom:36px;
   font-weight:300;
 }
 
 .hero-actions {
   display:flex; align-items:center; gap:20px; flex-wrap:wrap;
+  margin-bottom:48px;
 }
 
 .btn-primary-lg {
@@ -361,7 +358,7 @@ nav.stuck {
   color:#000;
   background:var(--accent);
   border:none; cursor:none;
-  padding:15px 32px;
+  padding:14px 28px;
   border-radius:8px;
   text-decoration:none;
   letter-spacing:.01em;
@@ -388,46 +385,83 @@ nav.stuck {
 }
 .btn-text-link:hover { color:var(--white); }
 
-/* Hero bottom strip */
-.hero-strip {
-  position:absolute; bottom:0; left:0; right:0;
-  height:1px;
-  background:linear-gradient(90deg, transparent, var(--border2) 30%, var(--border2) 70%, transparent);
-}
-
+/* Hero stats row - now integrated as part of hero content */
 .hero-stats-row {
-  position:absolute; bottom:0; left:0; right:0;
-  display:grid; grid-template-columns:repeat(3,1fr);
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:0;
   border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  margin-top:20px;
+  position:relative;
+  z-index:2;
 }
 .hero-stat {
-  padding:24px 40px;
+  padding:24px 0;
   border-right:1px solid var(--border);
 }
-.hero-stat:last-child { border-right:none; }
+.hero-stat:first-child { padding-left:0; }
+.hero-stat:last-child { border-right:none; padding-right:0; }
 .hero-stat-num {
   font-family:var(--font-display);
-  font-size:1.9rem;
+  font-size:2.2rem;
   font-weight:800;
   color:var(--white);
   letter-spacing:-.03em;
   line-height:1;
-  margin-bottom:4px;
+  margin-bottom:6px;
 }
 .hero-stat-num span { color:var(--accent); }
-.hero-stat-label { font-size:.75rem; color:var(--muted); letter-spacing:.02em; }
-
-@media(max-width:768px){
-  .hero { padding:0 24px 180px; }
-  .hero-badge { top:80px; right:24px; display:none; }
-  .hero-stats-row { grid-template-columns:1fr 1fr; }
-  .hero-stat { padding:20px 24px; }
-  .hero-stat:nth-child(3) { grid-column:1/-1; border-right:none; border-top:1px solid var(--border); }
+.hero-stat-label { 
+  font-size:.75rem; 
+  color:var(--muted); 
+  letter-spacing:.02em;
+  max-width:200px;
 }
 
-/* ════════════════════════════════
-   SECTION SCAFFOLDING
-════════════════════════════════ */
+/* Hero content wrapper */
+.hero-content {
+  position:relative;
+  z-index:3;
+  max-width:1140px;
+  margin:0 auto;
+  width:100%;
+}
+
+@media(max-width:768px){
+  .hero { 
+    padding:100px 24px 80px; 
+    justify-content:flex-start;
+  }
+  .hero-badge { 
+    top:80px; 
+    right:24px; 
+    position:relative;
+    top:0;
+    right:0;
+    margin-bottom:24px;
+    align-self:flex-start;
+  }
+  .hero-content { padding-top:20px; }
+  .hero h1 { font-size:2.8rem; }
+  .hero-actions { margin-bottom:40px; }
+  .hero-stats-row { 
+    grid-template-columns:1fr 1fr;
+    border-bottom:none;
+  }
+  .hero-stat { 
+    padding:20px 0;
+    border-bottom:1px solid var(--border);
+  }
+  .hero-stat:nth-child(2) { border-right:none; }
+  .hero-stat:nth-child(3) { 
+    grid-column:1/-1; 
+    border-right:none; 
+    border-bottom:none;
+  }
+}
+
+/* SECTION SCAFFOLDING */
 section { position:relative; }
 .section-inner { max-width:1140px; margin:0 auto; padding:0 40px; }
 @media(max-width:768px){ .section-inner { padding:0 24px; } }
@@ -446,18 +480,16 @@ section { position:relative; }
   background:var(--accent);
 }
 
-/* ════════════════════════════════
-   PROBLEM
-════════════════════════════════ */
+/* PROBLEM */
 #problem {
-  padding:120px 0;
+  padding:100px 0;
   border-top:1px solid var(--border);
 }
 
 .problem-layout {
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:80px;
+  gap:60px;
   align-items:start;
 }
 
@@ -531,23 +563,21 @@ section { position:relative; }
 .pain-content p { font-size:.83rem; color:var(--muted); line-height:1.55; }
 
 @media(max-width:900px){
-  .problem-layout { grid-template-columns:1fr; gap:60px; }
+  .problem-layout { grid-template-columns:1fr; gap:40px; }
 }
 
-/* ════════════════════════════════
-   SOLUTION / FEATURES
-════════════════════════════════ */
+/* FEATURES */
 #features {
-  padding:120px 0;
+  padding:100px 0;
   border-top:1px solid var(--border);
 }
 
 .features-header {
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:80px;
+  gap:60px;
   align-items:end;
-  margin-bottom:72px;
+  margin-bottom:60px;
 }
 .features-header h2 {
   font-size:clamp(2rem,3.5vw,3rem);
@@ -557,10 +587,10 @@ section { position:relative; }
 .features-header p { font-size:1rem; color:var(--muted2); line-height:1.7; }
 
 @media(max-width:900px){
-  .features-header { grid-template-columns:1fr; gap:24px; margin-bottom:48px; }
+  .features-header { grid-template-columns:1fr; gap:24px; margin-bottom:40px; }
 }
 
-/* Feature cards — bento grid */
+/* Bento grid */
 .bento {
   display:grid;
   grid-template-columns:repeat(12, 1fr);
@@ -572,7 +602,7 @@ section { position:relative; }
   background:var(--surface);
   border:1px solid var(--border);
   border-radius:var(--radius);
-  padding:36px;
+  padding:32px;
   overflow:hidden;
   position:relative;
   transition:border-color .3s, box-shadow .3s;
@@ -592,7 +622,6 @@ section { position:relative; }
 }
 .bento-card:hover::before { opacity:1; }
 
-/* Layout slots */
 .bento-a { grid-column:span 7; }
 .bento-b { grid-column:span 5; }
 .bento-c { grid-column:span 4; }
@@ -625,9 +654,9 @@ section { position:relative; }
 }
 .bento-card p { font-size:.85rem; color:var(--muted); line-height:1.6; }
 
-/* Card A — AI Q&A — wide, has mock UI */
+/* Card A — AI Q&A */
 .card-a-visual {
-  margin-top:28px;
+  margin-top:24px;
   background:var(--surface2);
   border:1px solid var(--border);
   border-radius:8px;
@@ -661,12 +690,12 @@ section { position:relative; }
 }
 .msg-ai strong { color:var(--accent); }
 
-/* Card B — Fraud — has score ring */
+/* Card B — Fraud */
 .fraud-score-wrap {
-  margin-top:28px;
-  display:flex; align-items:center; gap:24px;
+  margin-top:24px;
+  display:flex; align-items:center; gap:20px;
 }
-.fraud-ring { position:relative; width:100px; height:100px; flex-shrink:0; }
+.fraud-ring { position:relative; width:90px; height:90px; flex-shrink:0; }
 .fraud-ring svg { transform:rotate(-90deg); }
 .fraud-ring-label {
   position:absolute; inset:0;
@@ -693,7 +722,7 @@ section { position:relative; }
 .dot-red { background:var(--red); box-shadow:0 0 6px var(--red); }
 .dot-amber { background:var(--amber); }
 
-/* Card C/D/E — small, icon + desc */
+/* Card icons */
 .card-icon {
   width:44px; height:44px;
   border:1px solid var(--border2);
@@ -703,16 +732,14 @@ section { position:relative; }
   background:var(--surface2);
 }
 
-/* ════════════════════════════════
-   HOW IT WORKS
-════════════════════════════════ */
+/* HOW IT WORKS */
 #how {
-  padding:120px 0;
+  padding:100px 0;
   border-top:1px solid var(--border);
   background:var(--surface);
 }
 
-.how-header { text-align:center; margin-bottom:80px; }
+.how-header { text-align:center; margin-bottom:60px; }
 .how-header h2 {
   font-size:clamp(2rem,4vw,3.2rem);
   letter-spacing:-.04em;
@@ -725,7 +752,6 @@ section { position:relative; }
   grid-template-columns:repeat(3,1fr);
   position:relative;
 }
-/* Connector line */
 .how-steps::before {
   content:'';
   position:absolute;
@@ -742,7 +768,7 @@ section { position:relative; }
 
 .step-num-wrap {
   display:flex; align-items:center; gap:16px;
-  margin-bottom:28px;
+  margin-bottom:24px;
 }
 .step-num {
   width:56px; height:56px;
@@ -772,21 +798,19 @@ section { position:relative; }
 }
 
 @media(max-width:768px){
-  .how-steps { grid-template-columns:1fr; gap:48px; }
+  .how-steps { grid-template-columns:1fr; gap:40px; }
   .how-steps::before { display:none; }
   .how-step { padding:0; }
   .how-step p { padding-left:0; margin-top:12px; }
 }
 
-/* ════════════════════════════════
-   SOCIAL PROOF
-════════════════════════════════ */
+/* SOCIAL PROOF */
 #proof {
-  padding:120px 0;
+  padding:100px 0;
   border-top:1px solid var(--border);
 }
 
-.proof-header { margin-bottom:60px; }
+.proof-header { margin-bottom:48px; }
 .proof-header h2 {
   font-size:clamp(1.8rem,3vw,2.6rem);
   letter-spacing:-.04em;
@@ -803,7 +827,7 @@ section { position:relative; }
   background:var(--surface);
   border:1px solid var(--border);
   border-radius:var(--radius);
-  padding:32px;
+  padding:28px;
   display:flex; flex-direction:column; gap:20px;
   transition:border-color .3s;
 }
@@ -840,11 +864,9 @@ section { position:relative; }
   .testimonials { grid-template-columns:1fr; }
 }
 
-/* ════════════════════════════════
-   TRUST BADGES
-════════════════════════════════ */
+/* TRUST BADGES */
 #trust {
-  padding:80px 0;
+  padding:60px 0;
   border-top:1px solid var(--border);
   border-bottom:1px solid var(--border);
 }
@@ -860,7 +882,7 @@ section { position:relative; }
 }
 .trust-item {
   background:var(--surface);
-  padding:32px 28px;
+  padding:28px 24px;
   display:flex; flex-direction:column; gap:10px;
   transition:background .2s;
 }
@@ -882,16 +904,14 @@ section { position:relative; }
   .trust-grid { grid-template-columns:1fr; }
 }
 
-/* ════════════════════════════════
-   CTA
-════════════════════════════════ */
+/* CTA */
 #cta {
-  padding:140px 0;
+  padding:120px 0;
 }
 
 .cta-inner {
   text-align:center;
-  max-width:700px;
+  max-width:640px;
   margin:0 auto;
 }
 .cta-inner h2 {
@@ -904,7 +924,7 @@ section { position:relative; }
   font-size:1rem;
   color:var(--muted2);
   line-height:1.65;
-  margin-bottom:48px;
+  margin-bottom:40px;
   max-width:440px;
   margin-left:auto;
   margin-right:auto;
@@ -944,7 +964,6 @@ section { position:relative; }
 
 .cta-note { font-size:.72rem; color:var(--muted); letter-spacing:.02em; }
 
-/* Glow blob behind CTA */
 #cta::before {
   content:'';
   position:absolute;
@@ -955,12 +974,10 @@ section { position:relative; }
   pointer-events:none;
 }
 
-/* ════════════════════════════════
-   FOOTER
-════════════════════════════════ */
+/* FOOTER */
 footer {
   border-top:1px solid var(--border);
-  padding:48px 40px;
+  padding:40px 40px;
 }
 .footer-inner {
   max-width:1140px;
@@ -1004,14 +1021,12 @@ footer {
 .footer-copy { font-size:.72rem; color:var(--muted); }
 
 @media(max-width:768px){
-  footer { padding:40px 24px; }
+  footer { padding:32px 24px; }
   .footer-inner { flex-direction:column; align-items:flex-start; }
   .footer-links { flex-wrap:wrap; gap:16px; }
 }
 
-/* ════════════════════════════════
-   ANIMATED UNDERLINE LINKS
-════════════════════════════════ */
+/* Animated underline */
 .ul-link {
   position:relative; text-decoration:none; color:inherit;
 }
@@ -1022,9 +1037,6 @@ footer {
 }
 .ul-link:hover::after { width:100%; }
 
-/* ════════════════════════════════
-   MISC HELPERS
-════════════════════════════════ */
 .green-tag {
   display:inline-flex; align-items:center; gap:6px;
   background:rgba(157,78,221,.08);
@@ -1036,19 +1048,18 @@ footer {
   padding:4px 10px;
   border-radius:100px;
   font-weight:500;
+  margin-top:16px;
 }
 
-/* SVG icon wrapper used inline */
 svg { display:block; }
 </style>
 </head>
 <body>
 
-<!-- Custom cursor -->
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
 
-<!-- ═══════════════ NAV ═══════════════ -->
+<!-- NAV -->
 <nav id="navbar">
   <a href="#" class="nav-logo">
     <div class="nav-logo-icon">
@@ -1075,7 +1086,6 @@ svg { display:block; }
   </div>
 </nav>
 
-<!-- Mobile drawer -->
 <div id="mob-drawer">
   <a href="#problem">Problem</a>
   <a href="#features">Features</a>
@@ -1084,7 +1094,7 @@ svg { display:block; }
   <a href="#cta" style="color:var(--accent);opacity:1;">Get Early Access →</a>
 </div>
 
-<!-- ═══════════════ HERO ═══════════════ -->
+<!-- HERO - RESTRUCTURED FOR BETTER SPACING -->
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
@@ -1095,7 +1105,7 @@ svg { display:block; }
     Now in Private Beta
   </div>
 
-  <div style="position:relative; z-index:2; padding-bottom:100px;">
+  <div class="hero-content">
     <div class="hero-eyebrow" style="animation:fadeUp .6s .1s both;">
       Nigeria's Property Intelligence Layer
     </div>
@@ -1118,26 +1128,26 @@ svg { display:block; }
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
       </a>
     </div>
-  </div>
 
-  <!-- Stats bar pinned to hero bottom -->
-  <div class="hero-stats-row" style="position:relative; z-index:2;">
-    <div class="hero-stat reveal d1">
-      <div class="hero-stat-num">₦1.7<span>T</span></div>
-      <div class="hero-stat-label">Lost annually to real estate fraud in Nigeria</div>
-    </div>
-    <div class="hero-stat reveal d2">
-      <div class="hero-stat-num"><span>68</span>%</div>
-      <div class="hero-stat-label">Of buyers purchase without title verification</div>
-    </div>
-    <div class="hero-stat reveal d3">
-      <div class="hero-stat-num"><span>&lt;</span>30<span>s</span></div>
-      <div class="hero-stat-label">Time to get a PropifyAI fraud verdict</div>
+    <!-- Stats row moved inside content wrapper for better integration -->
+    <div class="hero-stats-row">
+      <div class="hero-stat reveal d1">
+        <div class="hero-stat-num">₦1.7<span>T</span></div>
+        <div class="hero-stat-label">Lost annually to real estate fraud in Nigeria</div>
+      </div>
+      <div class="hero-stat reveal d2">
+        <div class="hero-stat-num"><span>68</span>%</div>
+        <div class="hero-stat-label">Of buyers purchase without title verification</div>
+      </div>
+      <div class="hero-stat reveal d3">
+        <div class="hero-stat-num"><span>&lt;</span>30<span>s</span></div>
+        <div class="hero-stat-label">Time to get a PropifyAI fraud verdict</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════ PROBLEM ═══════════════ -->
+<!-- PROBLEM -->
 <section id="problem">
   <div class="section-inner">
     <div class="problem-layout">
@@ -1203,7 +1213,7 @@ svg { display:block; }
   </div>
 </section>
 
-<!-- ═══════════════ FEATURES ═══════════════ -->
+<!-- FEATURES -->
 <section id="features">
   <div class="section-inner">
     <div class="features-header">
@@ -1214,15 +1224,11 @@ svg { display:block; }
       <p class="reveal d2">PropifyAI is not a listing aggregator. It is an intelligence layer — purpose-built for Nigerian property buyers who refuse to operate blind.</p>
     </div>
 
-    <!-- Bento grid -->
     <div class="bento">
-
-      <!-- A — AI Q&A (wide) -->
       <div class="bento-card bento-a reveal d1">
         <div class="card-eyebrow">AI Q&A Assistant</div>
         <h3>Ask anything.<br/>Get a straight answer.</h3>
         <p>Plain English questions about Nigerian property law, processes, agent red flags — answered instantly. No jargon, no billable hours.</p>
-
         <div class="card-a-visual">
           <div class="card-a-bar">
             <span style="background:#ff5f57;"></span>
@@ -1238,15 +1244,13 @@ svg { display:block; }
         </div>
       </div>
 
-      <!-- B — Fraud (narrow) -->
       <div class="bento-card bento-b reveal d2">
         <div class="card-eyebrow">Fraud Detection</div>
         <h3>Know your risk score before you negotiate.</h3>
         <p>Cross-referenced against agent complaint databases, registry records, and known fraud patterns across Nigeria.</p>
-
         <div class="fraud-score-wrap">
           <div class="fraud-ring">
-            <svg width="100" height="100" viewBox="0 0 100 100">
+            <svg width="90" height="90" viewBox="0 0 100 100">
               <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="8"/>
               <circle cx="50" cy="50" r="42" fill="none" stroke="var(--accent)" stroke-width="8"
                 stroke-dasharray="264" stroke-dashoffset="66" stroke-linecap="round"
@@ -1266,7 +1270,6 @@ svg { display:block; }
         </div>
       </div>
 
-      <!-- C — Document Analysis -->
       <div class="bento-card bento-c reveal d1">
         <div class="card-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -1276,10 +1279,9 @@ svg { display:block; }
         <div class="card-eyebrow">Document Analysis</div>
         <h3>Upload. Understand. Decide.</h3>
         <p>C of O, Deed of Assignment, Survey Plan, Excision documents — PropifyAI reads and explains them in plain language, flagging every inconsistency.</p>
-        <div class="green-tag" style="margin-top:20px;">Supports PDF & Images</div>
+        <div class="green-tag">Supports PDF & Images</div>
       </div>
 
-      <!-- D — Location Insights -->
       <div class="bento-card bento-d reveal d2">
         <div class="card-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -1289,10 +1291,9 @@ svg { display:block; }
         <div class="card-eyebrow">Location Intelligence</div>
         <h3>See what the agent won't tell you.</h3>
         <p>Flood risk, govt acquisition status, price/sqm benchmarks, 5-year appreciation, nearby infrastructure. Every neighbourhood, decoded.</p>
-        <div class="green-tag" style="margin-top:20px;">Lagos · Abuja · Rivers</div>
+        <div class="green-tag">Lagos · Abuja · Rivers</div>
       </div>
 
-      <!-- E — Market Comps -->
       <div class="bento-card bento-e reveal d3">
         <div class="card-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -1302,16 +1303,15 @@ svg { display:block; }
         <div class="card-eyebrow">Market Pricing</div>
         <h3>Know the real price before you haggle.</h3>
         <p>Comparable transactions, median price bands, and over/under-pricing signals — so your first offer is already your smartest one.</p>
-        <div class="green-tag" style="margin-top:20px;">Updated Monthly</div>
+        <div class="green-tag">Updated Monthly</div>
       </div>
-
-    </div><!-- /bento -->
+    </div>
   </div>
 </section>
 
-<!-- ═══════════════ HOW IT WORKS ═══════════════ -->
+<!-- HOW IT WORKS -->
 <section id="how">
-  <div class="section-inner" style="padding-top:120px; padding-bottom:120px;">
+  <div class="section-inner">
     <div class="how-header reveal">
       <div class="section-tag" style="justify-content:center; margin-bottom:16px;">How It Works</div>
       <h2>Simple by design.<br/>Powerful by necessity.</h2>
@@ -1344,7 +1344,7 @@ svg { display:block; }
   </div>
 </section>
 
-<!-- ═══════════════ SOCIAL PROOF ═══════════════ -->
+<!-- SOCIAL PROOF -->
 <section id="proof">
   <div class="section-inner">
     <div class="proof-header reveal">
@@ -1392,7 +1392,7 @@ svg { display:block; }
   </div>
 </section>
 
-<!-- ═══════════════ TRUST BADGES ═══════════════ -->
+<!-- TRUST BADGES -->
 <section id="trust">
   <div class="section-inner">
     <div class="trust-grid">
@@ -1416,7 +1416,7 @@ svg { display:block; }
   </div>
 </section>
 
-<!-- ═══════════════ CTA ═══════════════ -->
+<!-- CTA -->
 <section id="cta">
   <div class="section-inner">
     <div class="cta-inner">
@@ -1441,7 +1441,7 @@ svg { display:block; }
   </div>
 </section>
 
-<!-- ═══════════════ FOOTER ═══════════════ -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <a href="#" class="footer-logo">
@@ -1467,9 +1467,8 @@ svg { display:block; }
   </div>
 </footer>
 
-<!-- ═══════════════ JS ═══════════════ -->
 <script>
-/* ── Custom cursor ── */
+/* Custom cursor */
 const cur = document.getElementById('cursor');
 const ring = document.getElementById('cursor-ring');
 let mx=0,my=0,rx=0,ry=0;
@@ -1495,13 +1494,13 @@ document.querySelectorAll('a,button,.bento-card,.tcard,.trust-item,.pain-row').f
   });
 });
 
-/* ── Nav scroll ── */
+/* Nav scroll */
 const nav=document.getElementById('navbar');
 window.addEventListener('scroll',()=>{
   nav.classList.toggle('stuck',window.scrollY>40);
 });
 
-/* ── Hamburger / drawer ── */
+/* Hamburger */
 const ham=document.getElementById('hamburger');
 const drawer=document.getElementById('mob-drawer');
 ham.addEventListener('click',()=>{
@@ -1520,7 +1519,7 @@ drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
   ham.querySelectorAll('span').forEach(s=>{ s.style.transform=''; s.style.opacity=''; });
 }));
 
-/* ── Scroll reveal ── */
+/* Scroll reveal */
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){ e.target.classList.add('on'); obs.unobserve(e.target); }
@@ -1528,7 +1527,7 @@ const obs=new IntersectionObserver(entries=>{
 },{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-/* ── CTA form ── */
+/* CTA form */
 function handleCTA(e){
   e.preventDefault();
   const input=document.getElementById('cta-email');
@@ -1552,7 +1551,7 @@ document.getElementById('cta-email').addEventListener('keydown',e=>{
   if(e.key==='Enter') handleCTA({preventDefault:()=>{}});
 });
 
-/* ── Hero text animation keyframe injection ── */
+/* Keyframe injection */
 const s=document.createElement('style');
 s.textContent=`
 @keyframes fadeUp {
@@ -1561,7 +1560,7 @@ s.textContent=`
 }`;
 document.head.appendChild(s);
 
-/* ── Animated fraud ring ── */
+/* Animated fraud ring */
 setTimeout(()=>{
   const circle=document.querySelector('.fraud-ring circle:last-child');
   if(circle){
