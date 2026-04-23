@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>PropifyAI — Nigeria's Smartest Property Intelligence Platform</title>
+<title>MyPropifyNG — Discover Your Dream Property in Nigeria</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=League+Spartan:wght@400;500;600;700;800&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
 
@@ -20,18 +20,15 @@
   --white:    #f4f4f2;
   --muted:    #6b6f6e;
   --muted2:   #9a9e9d;
-  --red:      #FF4D4D;
+  --green:    #22c55e;
   --amber:    #F5A623;
-  --font-display: 'Poppins', 'League Spartan', sans-serif;
+  --font-display: 'Poppins', sans-serif;
   --font-body:    'Instrument Sans', sans-serif;
   --radius:   12px;
-  --radius-sm:8px;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; }
-
 body {
   background: var(--bg);
   color: var(--white);
@@ -43,582 +40,265 @@ body {
 
 /* Custom cursor */
 #cursor {
-  position: fixed;
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  background: var(--accent);
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%,-50%);
-  transition: width .2s, height .2s, background .2s;
-  mix-blend-mode: screen;
+  position:fixed; width:10px; height:10px; border-radius:50%;
+  background:var(--accent); pointer-events:none; z-index:9999;
+  transform:translate(-50%,-50%); transition:width .2s,height .2s; mix-blend-mode:screen;
 }
 #cursor-ring {
-  position: fixed;
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  border: 1px solid rgba(157,78,221,0.4);
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%,-50%);
-  transition: transform .08s ease, width .25s, height .25s, opacity .25s;
+  position:fixed; width:36px; height:36px; border-radius:50%;
+  border:1px solid rgba(157,78,221,0.4); pointer-events:none; z-index:9998;
+  transform:translate(-50%,-50%); transition:width .25s,height .25s,opacity .25s;
 }
-body:hover #cursor { opacity:1; }
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 2px; }
+::-webkit-scrollbar { width:3px; }
+::-webkit-scrollbar-track { background:var(--bg); }
+::-webkit-scrollbar-thumb { background:var(--accent-dim); border-radius:2px; }
 
-/* Noise grain */
 body::after {
-  content:'';
-  position:fixed; inset:0;
+  content:''; position:fixed; inset:0;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
   opacity:.45; pointer-events:none; z-index:1000;
 }
 
-/* Typography */
-.display { font-family: var(--font-display); }
-h1,h2,h3,h4 { font-family: var(--font-display); font-weight:800; line-height:1; }
+h1,h2,h3,h4 { font-family:var(--font-display); font-weight:800; line-height:1; }
 
-/* Utility */
-.green { color: var(--accent); }
-.muted { color: var(--muted); }
-.muted2 { color: var(--muted2); }
-.border-line { border: 1px solid var(--border); }
-.border-line2 { border: 1px solid var(--border2); }
-
-/* Reveal animations */
 .reveal { opacity:0; transform:translateY(24px); transition:opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
 .reveal.on { opacity:1; transform:none; }
-.d1 { transition-delay:.08s; }
-.d2 { transition-delay:.16s; }
-.d3 { transition-delay:.24s; }
-.d4 { transition-delay:.32s; }
-.d5 { transition-delay:.40s; }
+.d1{transition-delay:.08s;} .d2{transition-delay:.16s;} .d3{transition-delay:.24s;} .d4{transition-delay:.32s;} .d5{transition-delay:.40s;}
 
 /* NAV */
 nav {
   position:fixed; top:0; left:0; right:0; z-index:500;
-  padding:0 40px;
-  height:64px;
+  padding:0 40px; height:64px;
   display:flex; align-items:center; justify-content:space-between;
   border-bottom:1px solid transparent;
   transition:border-color .3s, background .3s, backdrop-filter .3s;
 }
-nav.stuck {
-  background:rgba(8,9,9,0.85);
-  backdrop-filter:blur(16px);
-  border-color:var(--border);
-}
+nav.stuck { background:rgba(8,9,9,0.88); backdrop-filter:blur(16px); border-color:var(--border); }
 
-.nav-logo {
-  display:flex; align-items:center; gap:10px;
-  text-decoration:none;
-}
+.nav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
 .nav-logo-icon {
-  width:30px; height:30px;
-  background:var(--accent);
-  border-radius:7px;
-  display:flex; align-items:center; justify-content:center;
-  flex-shrink:0;
+  width:30px; height:30px; background:var(--accent); border-radius:7px;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
 }
-.nav-logo-text {
-  font-family:var(--font-display);
-  font-weight:800;
-  font-size:1.05rem;
-  color:var(--white);
-  letter-spacing:-.02em;
-}
+.nav-logo-text { font-family:var(--font-display); font-weight:800; font-size:1.05rem; color:var(--white); letter-spacing:-.02em; }
 .nav-logo-text span { color:var(--accent); }
 
-.nav-links {
-  display:flex; gap:36px; list-style:none;
-}
-.nav-links a {
-  font-size:.82rem;
-  color:var(--muted);
-  text-decoration:none;
-  letter-spacing:.02em;
-  transition:color .2s;
-}
+.nav-links { display:flex; gap:36px; list-style:none; }
+.nav-links a { font-size:.82rem; color:var(--muted); text-decoration:none; letter-spacing:.02em; transition:color .2s; }
 .nav-links a:hover { color:var(--white); }
 
-.nav-cta {
-  display:flex; align-items:center; gap:12px;
-}
+.nav-cta { display:flex; align-items:center; gap:12px; }
 .btn-ghost {
-  font-family:var(--font-display);
-  font-size:.82rem;
-  font-weight:600;
-  color:var(--muted2);
-  background:none;
-  border:none;
-  cursor:none;
-  padding:8px 0;
-  text-decoration:none;
-  transition:color .2s;
+  font-family:var(--font-display); font-size:.82rem; font-weight:600;
+  color:var(--muted2); background:none; border:none; cursor:none;
+  padding:8px 0; text-decoration:none; transition:color .2s;
 }
 .btn-ghost:hover { color:var(--white); }
 
-.btn-green {
-  font-family:var(--font-display);
-  font-size:.82rem;
-  font-weight:700;
-  color:#000;
-  background:var(--accent);
-  border:none;
-  cursor:none;
-  padding:9px 20px;
-  border-radius:6px;
-  text-decoration:none;
-  letter-spacing:.01em;
+.btn-accent {
+  font-family:var(--font-display); font-size:.82rem; font-weight:700;
+  color:#fff; background:var(--accent); border:none; cursor:none;
+  padding:9px 20px; border-radius:6px; text-decoration:none;
   transition:background .2s, box-shadow .2s, transform .15s;
-  box-shadow:0 0 0 0 var(--accent-glow);
 }
-.btn-green:hover {
-  background:#b46ff0;
-  box-shadow:0 0 24px var(--accent-glow);
-  transform:translateY(-1px);
-}
+.btn-accent:hover { background:#b46ff0; box-shadow:0 0 24px var(--accent-glow); transform:translateY(-1px); }
 
-.hamburger {
-  display:none;
-  flex-direction:column;
-  gap:5px;
-  background:none;
-  border:none;
-  cursor:none;
-  padding:4px;
-}
-.hamburger span {
-  display:block;
-  width:22px; height:1.5px;
-  background:var(--white);
-  border-radius:2px;
-  transition:transform .3s, opacity .3s;
-}
+.hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:none; padding:4px; }
+.hamburger span { display:block; width:22px; height:1.5px; background:var(--white); border-radius:2px; transition:transform .3s,opacity .3s; }
 
 @media(max-width:768px){
   nav { padding:0 24px; }
-  .nav-links, .nav-cta .btn-ghost { display:none; }
+  .nav-links,.nav-cta .btn-ghost { display:none; }
   .hamburger { display:flex; }
   .nav-cta { gap:8px; }
 }
 
-/* Mobile drawer */
 #mob-drawer {
-  position:fixed;
-  top:64px; left:0; right:0; bottom:0;
-  background:rgba(8,9,9,0.98);
-  backdrop-filter:blur(20px);
-  z-index:499;
-  display:flex; flex-direction:column;
-  padding:40px 24px;
-  gap:32px;
-  transform:translateX(100%);
-  transition:transform .35s cubic-bezier(.16,1,.3,1);
+  position:fixed; top:64px; left:0; right:0; bottom:0;
+  background:rgba(8,9,9,0.98); backdrop-filter:blur(20px);
+  z-index:499; display:flex; flex-direction:column;
+  padding:40px 24px; gap:32px;
+  transform:translateX(100%); transition:transform .35s cubic-bezier(.16,1,.3,1);
 }
 #mob-drawer.open { transform:translateX(0); }
-#mob-drawer a {
-  font-family:var(--font-display);
-  font-size:2rem;
-  font-weight:700;
-  color:var(--white);
-  text-decoration:none;
-  opacity:.5;
-  transition:opacity .2s;
-}
+#mob-drawer a { font-family:var(--font-display); font-size:2rem; font-weight:700; color:var(--white); text-decoration:none; opacity:.5; transition:opacity .2s; }
 #mob-drawer a:hover { opacity:1; }
 
-/* HERO - COMPACT & PROPERLY SPACED */
+/* HERO */
 .hero {
-  position:relative;
-  min-height:100svh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding:80px 40px 120px;
-  overflow:hidden;
+  position:relative; min-height:100svh;
+  display:flex; flex-direction:column; justify-content:center;
+  padding:80px 40px 120px; overflow:hidden;
 }
-
-/* Grid background */
 .hero-grid {
   position:absolute; inset:0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
   background-size:60px 60px;
-  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 100%);
 }
-
-/* Deep purple radial glow */
 .hero-glow {
-  position:absolute;
-  top:-20%; left:50%;
-  transform:translateX(-50%);
+  position:absolute; top:-20%; left:50%; transform:translateX(-50%);
   width:800px; height:800px;
-  background:radial-gradient(circle, rgba(157,78,221,.12) 0%, transparent 65%);
+  background:radial-gradient(circle,rgba(157,78,221,.12) 0%,transparent 65%);
   pointer-events:none;
 }
-
-/* Floating badge - repositioned for better balance */
-.hero-badge {
-  position:absolute;
-  top:100px; right:40px;
-  background:var(--surface2);
-  border:1px solid var(--border2);
-  border-radius:100px;
-  padding:8px 16px 8px 10px;
-  display:flex; align-items:center; gap:8px;
-  font-size:.72rem;
-  color:var(--muted2);
-  letter-spacing:.04em;
-  animation:floatBadge 4s ease-in-out infinite;
-  z-index:2;
-}
-@keyframes floatBadge {
-  0%,100% { transform:translateY(0); }
-  50% { transform:translateY(-6px); }
-}
-.badge-dot {
-  width:7px; height:7px;
-  border-radius:50%;
-  background:var(--accent);
-  box-shadow:0 0 8px var(--accent);
-  animation:pulse 2s ease-in-out infinite;
-}
-@keyframes pulse {
-  0%,100% { opacity:1; }
-  50% { opacity:.4; }
-}
-
-/* Big number watermark - subtle */
 .hero-watermark {
-  position:absolute;
-  bottom:-40px; right:-20px;
-  font-family:var(--font-display);
-  font-size:clamp(160px, 22vw, 320px);
-  font-weight:800;
-  line-height:1;
-  color:rgba(255,255,255,.02);
-  pointer-events:none;
-  user-select:none;
-  letter-spacing:-.05em;
+  position:absolute; bottom:-40px; right:-20px;
+  font-family:var(--font-display); font-size:clamp(160px,22vw,320px);
+  font-weight:800; color:rgba(255,255,255,.02); pointer-events:none; user-select:none;
 }
+.hero-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--surface2); border:1px solid var(--border2);
+  border-radius:100px; padding:8px 16px 8px 10px;
+  font-size:.72rem; color:var(--muted2); letter-spacing:.04em;
+  animation:floatBadge 4s ease-in-out infinite; margin-bottom:28px;
+}
+@keyframes floatBadge { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+.badge-dot {
+  width:7px; height:7px; border-radius:50%; background:var(--accent);
+  box-shadow:0 0 8px var(--accent); animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
 
 .hero-eyebrow {
-  display:flex; align-items:center; gap:12px;
-  margin-bottom:20px;
-  font-size:.75rem;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:var(--accent);
-  font-weight:500;
+  display:flex; align-items:center; gap:12px; margin-bottom:20px;
+  font-size:.75rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); font-weight:500;
 }
-.hero-eyebrow::before {
-  content:'';
-  display:block;
-  width:32px; height:1px;
-  background:var(--accent);
-}
+.hero-eyebrow::before { content:''; display:block; width:32px; height:1px; background:var(--accent); }
 
-.hero h1 {
-  font-size:clamp(3rem, 6vw, 5.5rem);
-  letter-spacing:-.04em;
-  line-height:.96;
-  max-width:800px;
-  margin-bottom:24px;
-}
-.hero h1 em {
-  font-style:normal;
-  color:var(--accent);
-  position:relative;
-}
+.hero h1 { font-size:clamp(3rem,6vw,5.5rem); letter-spacing:-.04em; line-height:.96; max-width:800px; margin-bottom:24px; }
+.hero h1 em { font-style:normal; color:var(--accent); }
+.hero-sub { font-size:clamp(.95rem,1.2vw,1rem); color:var(--muted2); max-width:460px; line-height:1.6; margin-bottom:36px; }
 
-.hero-sub {
-  font-size:clamp(.95rem, 1.2vw, 1rem);
-  color:var(--muted2);
-  max-width:460px;
-  line-height:1.6;
-  margin-bottom:36px;
-  font-weight:300;
-}
-
-.hero-actions {
-  display:flex; align-items:center; gap:20px; flex-wrap:wrap;
-  margin-bottom:48px;
-}
-
+.hero-actions { display:flex; align-items:center; gap:20px; flex-wrap:wrap; margin-bottom:48px; }
 .btn-primary-lg {
-  font-family:var(--font-display);
-  font-size:.9rem;
-  font-weight:700;
-  color:#000;
-  background:var(--accent);
-  border:none; cursor:none;
-  padding:14px 28px;
-  border-radius:8px;
-  text-decoration:none;
-  letter-spacing:.01em;
+  font-family:var(--font-display); font-size:.9rem; font-weight:700;
+  color:#fff; background:var(--accent); border:none; cursor:none;
+  padding:14px 28px; border-radius:8px; text-decoration:none;
   display:flex; align-items:center; gap:10px;
-  transition:background .2s, box-shadow .2s, transform .15s;
-  box-shadow:0 0 0 0 var(--accent-glow);
+  transition:background .2s,box-shadow .2s,transform .15s;
 }
-.btn-primary-lg:hover {
-  background:#b46ff0;
-  box-shadow:0 8px 40px rgba(157,78,221,.35);
-  transform:translateY(-2px);
-}
+.btn-primary-lg:hover { background:#b46ff0; box-shadow:0 8px 40px rgba(157,78,221,.35); transform:translateY(-2px); }
 .btn-primary-lg svg { transition:transform .2s; }
 .btn-primary-lg:hover svg { transform:translateX(3px); }
 
 .btn-text-link {
-  font-family:var(--font-display);
-  font-size:.88rem;
-  font-weight:600;
-  color:var(--muted2);
-  text-decoration:none;
-  display:flex; align-items:center; gap:6px;
-  transition:color .2s;
+  font-family:var(--font-display); font-size:.88rem; font-weight:600;
+  color:var(--muted2); text-decoration:none; display:flex; align-items:center; gap:6px; transition:color .2s;
 }
 .btn-text-link:hover { color:var(--white); }
 
-/* Hero stats row - now integrated as part of hero content */
 .hero-stats-row {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:0;
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-  margin-top:20px;
-  position:relative;
-  z-index:2;
+  display:grid; grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--border); border-bottom:1px solid var(--border); margin-top:20px; position:relative; z-index:2;
 }
-.hero-stat {
-  padding:24px 0;
-  border-right:1px solid var(--border);
-}
-.hero-stat:first-child { padding-left:0; }
-.hero-stat:last-child { border-right:none; padding-right:0; }
-.hero-stat-num {
-  font-family:var(--font-display);
-  font-size:2.2rem;
-  font-weight:800;
-  color:var(--white);
-  letter-spacing:-.03em;
-  line-height:1;
-  margin-bottom:6px;
-}
+.hero-stat { padding:24px 0; border-right:1px solid var(--border); }
+.hero-stat:last-child { border-right:none; }
+.hero-stat-num { font-family:var(--font-display); font-size:2.2rem; font-weight:800; color:var(--white); letter-spacing:-.03em; line-height:1; margin-bottom:6px; }
 .hero-stat-num span { color:var(--accent); }
-.hero-stat-label { 
-  font-size:.75rem; 
-  color:var(--muted); 
-  letter-spacing:.02em;
-  max-width:200px;
-}
+.hero-stat-label { font-size:.75rem; color:var(--muted); letter-spacing:.02em; }
 
-/* Hero content wrapper */
-.hero-content {
-  position:relative;
-  z-index:3;
-  max-width:1140px;
-  margin:0 auto;
-  width:100%;
-}
+.hero-content { position:relative; z-index:3; max-width:1140px; margin:0 auto; width:100%; }
 
 @media(max-width:768px){
-  .hero { 
-    padding:100px 24px 80px; 
-    justify-content:flex-start;
-  }
-  .hero-badge { 
-    top:80px; 
-    right:24px; 
-    position:relative;
-    top:0;
-    right:0;
-    margin-bottom:24px;
-    align-self:flex-start;
-  }
-  .hero-content { padding-top:20px; }
+  .hero { padding:100px 24px 80px; }
   .hero h1 { font-size:2.8rem; }
-  .hero-actions { margin-bottom:40px; }
-  .hero-stats-row { 
-    grid-template-columns:1fr 1fr;
-    border-bottom:none;
-  }
-  .hero-stat { 
-    padding:20px 0;
-    border-bottom:1px solid var(--border);
-  }
+  .hero-stats-row { grid-template-columns:1fr 1fr; border-bottom:none; }
+  .hero-stat { padding:20px 0; border-bottom:1px solid var(--border); }
   .hero-stat:nth-child(2) { border-right:none; }
-  .hero-stat:nth-child(3) { 
-    grid-column:1/-1; 
-    border-right:none; 
-    border-bottom:none;
-  }
+  .hero-stat:nth-child(3) { grid-column:1/-1; border-right:none; border-bottom:none; }
 }
 
 /* SECTION SCAFFOLDING */
 section { position:relative; }
 .section-inner { max-width:1140px; margin:0 auto; padding:0 40px; }
 @media(max-width:768px){ .section-inner { padding:0 24px; } }
-
 .section-tag {
   display:inline-flex; align-items:center; gap:8px;
-  font-size:.7rem;
-  letter-spacing:.15em;
-  text-transform:uppercase;
-  color:var(--muted);
-  margin-bottom:20px;
+  font-size:.7rem; letter-spacing:.15em; text-transform:uppercase; color:var(--muted); margin-bottom:20px;
 }
-.section-tag::before {
-  content:'';
-  width:18px; height:1px;
-  background:var(--accent);
-}
+.section-tag::before { content:''; width:18px; height:1px; background:var(--accent); }
 
-/* PROBLEM */
-#problem {
+/* HOW IT WORKS */
+#how {
   padding:100px 0;
   border-top:1px solid var(--border);
-}
-
-.problem-layout {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:60px;
-  align-items:start;
-}
-
-.problem-left h2 {
-  font-size:clamp(2rem,3.5vw,3rem);
-  letter-spacing:-.04em;
-  line-height:1.05;
-  margin-bottom:24px;
-  color:var(--white);
-}
-
-.problem-left p {
-  font-size:1rem;
-  color:var(--muted2);
-  line-height:1.7;
-  margin-bottom:32px;
-}
-
-.stat-highlight {
-  display:inline-flex; align-items:baseline; gap:8px;
-  padding:12px 20px;
-  background:var(--surface2);
-  border:1px solid var(--border2);
-  border-radius:8px;
-  margin-bottom:12px;
-}
-.stat-highlight-num {
-  font-family:var(--font-display);
-  font-size:2rem;
-  font-weight:800;
-  color:var(--accent);
-  letter-spacing:-.04em;
-}
-.stat-highlight-label { font-size:.82rem; color:var(--muted2); }
-
-.problem-pains { display:flex; flex-direction:column; gap:1px; }
-
-.pain-row {
-  display:flex; align-items:flex-start; gap:16px;
-  padding:24px 0;
-  border-bottom:1px solid var(--border);
-  transition:background .2s;
-  cursor:default;
-}
-.pain-row:first-child { border-top:1px solid var(--border); }
-.pain-row:hover .pain-icon { background:var(--accent-glow); border-color:var(--accent-dim); }
-
-.pain-idx {
-  font-family:var(--font-display);
-  font-size:.7rem;
-  font-weight:700;
-  color:var(--muted);
-  min-width:28px;
-  padding-top:3px;
-  letter-spacing:.06em;
-}
-.pain-icon {
-  width:40px; height:40px; flex-shrink:0;
-  border:1px solid var(--border2);
-  border-radius:8px;
-  display:flex; align-items:center; justify-content:center;
-  transition:background .2s, border-color .2s;
-}
-.pain-content h4 {
-  font-family:var(--font-display);
-  font-size:.95rem;
-  font-weight:700;
-  color:var(--white);
-  margin-bottom:4px;
-}
-.pain-content p { font-size:.83rem; color:var(--muted); line-height:1.55; }
-
-@media(max-width:900px){
-  .problem-layout { grid-template-columns:1fr; gap:40px; }
-}
-
-/* FEATURES */
-#features {
-  padding:100px 0;
-  border-top:1px solid var(--border);
-}
-
-.features-header {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:60px;
-  align-items:end;
-  margin-bottom:60px;
-}
-.features-header h2 {
-  font-size:clamp(2rem,3.5vw,3rem);
-  letter-spacing:-.04em;
-  line-height:1.05;
-}
-.features-header p { font-size:1rem; color:var(--muted2); line-height:1.7; }
-
-@media(max-width:900px){
-  .features-header { grid-template-columns:1fr; gap:24px; margin-bottom:40px; }
-}
-
-/* Bento grid */
-.bento {
-  display:grid;
-  grid-template-columns:repeat(12, 1fr);
-  grid-template-rows:auto auto;
-  gap:12px;
-}
-
-.bento-card {
   background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:32px;
-  overflow:hidden;
-  position:relative;
-  transition:border-color .3s, box-shadow .3s;
 }
-.bento-card:hover {
-  border-color:var(--border2);
-  box-shadow:0 0 40px rgba(0,0,0,.4);
+.how-header { text-align:center; margin-bottom:60px; }
+.how-header h2 { font-size:clamp(2rem,4vw,3.2rem); letter-spacing:-.04em; margin-bottom:16px; }
+.how-header p { font-size:1rem; color:var(--muted2); max-width:480px; margin:0 auto; line-height:1.65; }
+
+.how-steps { display:grid; grid-template-columns:repeat(3,1fr); position:relative; gap:0; }
+.how-steps::before {
+  content:''; position:absolute; top:28px; left:calc(16.66% + 16px); right:calc(16.66% + 16px);
+  height:1px; background:linear-gradient(90deg,var(--accent-dim),rgba(157,78,221,.2));
 }
+.how-step { padding:0 40px 0 0; position:relative; }
+.how-step:last-child { padding-right:0; }
+.step-num-wrap { display:flex; align-items:center; gap:16px; margin-bottom:24px; }
+.step-num {
+  width:56px; height:56px; border-radius:50%;
+  border:1px solid var(--border2); background:var(--surface);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-display); font-size:1.1rem; font-weight:800; color:var(--accent);
+  flex-shrink:0; z-index:1; position:relative;
+}
+.how-step h4 { font-size:1.05rem; font-weight:700; letter-spacing:-.02em; line-height:1.2; }
+.how-step p { font-size:.84rem; color:var(--muted); line-height:1.65; padding-left:72px; }
+
+.step-chips { display:flex; flex-direction:column; gap:6px; padding-left:72px; margin-top:14px; }
+.step-chip {
+  display:inline-flex; align-items:center; gap:7px;
+  font-size:.75rem; color:var(--muted2); letter-spacing:.01em;
+}
+.step-chip::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--accent); flex-shrink:0; }
+
+/* Card in step 1 */
+.step-card {
+  margin-top:20px; margin-left:72px;
+  background:var(--surface2); border:1px solid var(--border2);
+  border-radius:10px; padding:14px 18px;
+  font-size:.76rem; color:var(--muted2);
+}
+.step-card-title { font-family:var(--font-display); font-size:.8rem; font-weight:700; color:var(--white); margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+.step-card-progress { display:flex; flex-direction:column; gap:7px; }
+.progress-row { display:flex; align-items:center; gap:8px; }
+.progress-label { font-size:.7rem; color:var(--muted); width:110px; }
+.progress-bar { flex:1; height:3px; background:var(--border); border-radius:2px; overflow:hidden; }
+.progress-fill { height:100%; border-radius:2px; background:var(--accent); }
+.progress-pct { font-size:.68rem; color:var(--accent); font-family:var(--font-display); font-weight:700; width:28px; text-align:right; }
+
+@media(max-width:768px){
+  .how-steps { grid-template-columns:1fr; gap:40px; }
+  .how-steps::before { display:none; }
+  .how-step { padding:0; }
+  .how-step p, .step-chips, .step-card { padding-left:0; margin-left:0; }
+}
+
+/* TRUST / FEATURES */
+#trust {
+  padding:100px 0;
+  border-top:1px solid var(--border);
+}
+.trust-header { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:end; margin-bottom:60px; }
+.trust-header h2 { font-size:clamp(2rem,3.5vw,3rem); letter-spacing:-.04em; line-height:1.05; }
+.trust-header p { font-size:1rem; color:var(--muted2); line-height:1.7; }
+@media(max-width:900px){ .trust-header { grid-template-columns:1fr; gap:24px; margin-bottom:40px; } }
+
+.bento { display:grid; grid-template-columns:repeat(12,1fr); gap:12px; }
+.bento-card {
+  background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+  padding:32px; overflow:hidden; position:relative;
+  transition:border-color .3s,box-shadow .3s;
+}
+.bento-card:hover { border-color:var(--border2); box-shadow:0 0 40px rgba(0,0,0,.4); }
 .bento-card::before {
-  content:'';
-  position:absolute;
-  top:0; left:0; right:0;
-  height:1px;
+  content:''; position:absolute; top:0; left:0; right:0; height:1px;
   background:linear-gradient(90deg,transparent,rgba(157,78,221,.3),transparent);
-  opacity:0;
-  transition:opacity .3s;
+  opacity:0; transition:opacity .3s;
 }
 .bento-card:hover::before { opacity:1; }
 
@@ -627,429 +307,309 @@ section { position:relative; }
 .bento-c { grid-column:span 4; }
 .bento-d { grid-column:span 4; }
 .bento-e { grid-column:span 4; }
+@media(max-width:900px){ .bento { grid-template-columns:1fr; } .bento-a,.bento-b,.bento-c,.bento-d,.bento-e { grid-column:span 1; } }
 
-@media(max-width:900px){
-  .bento { grid-template-columns:1fr; }
-  .bento-a,.bento-b,.bento-c,.bento-d,.bento-e { grid-column:span 1; }
-}
-
-.card-eyebrow {
-  font-size:.68rem;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:var(--accent);
-  font-weight:500;
-  margin-bottom:14px;
-  display:flex; align-items:center; gap:8px;
-}
+.card-eyebrow { font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); font-weight:500; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
 .card-eyebrow::before { content:''; width:14px; height:1px; background:var(--accent); }
-
-.bento-card h3 {
-  font-size:1.25rem;
-  font-weight:700;
-  color:var(--white);
-  letter-spacing:-.03em;
-  margin-bottom:12px;
-  line-height:1.2;
-}
+.bento-card h3 { font-size:1.25rem; font-weight:700; color:var(--white); letter-spacing:-.03em; margin-bottom:12px; line-height:1.2; }
 .bento-card p { font-size:.85rem; color:var(--muted); line-height:1.6; }
 
-/* Card A — AI Q&A */
-.card-a-visual {
-  margin-top:24px;
-  background:var(--surface2);
-  border:1px solid var(--border);
-  border-radius:8px;
-  overflow:hidden;
-}
-.card-a-bar {
-  display:flex; align-items:center; gap:6px;
-  padding:10px 14px;
-  border-bottom:1px solid var(--border);
-}
-.card-a-bar span { width:8px;height:8px;border-radius:50%; }
+/* Chat widget */
+.card-a-visual { margin-top:24px; background:var(--surface2); border:1px solid var(--border); border-radius:8px; overflow:hidden; }
+.card-a-bar { display:flex; align-items:center; gap:6px; padding:10px 14px; border-bottom:1px solid var(--border); }
+.card-a-bar span { width:8px; height:8px; border-radius:50%; }
 .card-a-messages { padding:16px; display:flex; flex-direction:column; gap:10px; }
-.msg {
-  padding:10px 14px;
-  border-radius:8px;
-  font-size:.78rem;
-  line-height:1.5;
-  max-width:85%;
-}
-.msg-user {
-  background:var(--surface);
-  border:1px solid var(--border);
-  color:var(--muted2);
-  align-self:flex-start;
-}
-.msg-ai {
-  background:rgba(157,78,221,.08);
-  border:1px solid rgba(157,78,221,.2);
-  color:var(--white);
-  align-self:flex-end;
-}
+.msg { padding:10px 14px; border-radius:8px; font-size:.78rem; line-height:1.5; max-width:85%; }
+.msg-user { background:var(--surface); border:1px solid var(--border); color:var(--muted2); align-self:flex-start; }
+.msg-ai { background:rgba(157,78,221,.08); border:1px solid rgba(157,78,221,.2); color:var(--white); align-self:flex-end; }
 .msg-ai strong { color:var(--accent); }
 
-/* Card B — Fraud */
-.fraud-score-wrap {
-  margin-top:24px;
-  display:flex; align-items:center; gap:20px;
-}
-.fraud-ring { position:relative; width:90px; height:90px; flex-shrink:0; }
-.fraud-ring svg { transform:rotate(-90deg); }
-.fraud-ring-label {
-  position:absolute; inset:0;
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-}
-.fraud-ring-num {
-  font-family:var(--font-display);
-  font-size:1.4rem;
-  font-weight:800;
-  color:var(--accent);
-  line-height:1;
-}
-.fraud-ring-sub { font-size:.6rem; color:var(--muted); letter-spacing:.05em; text-transform:uppercase; }
-.fraud-checks { flex:1; display:flex; flex-direction:column; gap:8px; }
-.fraud-check {
-  display:flex; align-items:center; gap:8px;
-  font-size:.75rem;
-  color:var(--muted2);
-}
-.fraud-check .dot {
-  width:6px; height:6px; border-radius:50%; flex-shrink:0;
-}
-.dot-green { background:var(--accent); box-shadow:0 0 6px var(--accent); }
-.dot-red { background:var(--red); box-shadow:0 0 6px var(--red); }
-.dot-amber { background:var(--amber); }
+/* Verification ring */
+.verify-ring-wrap { margin-top:24px; display:flex; align-items:center; gap:20px; }
+.verify-ring { position:relative; width:90px; height:90px; flex-shrink:0; }
+.verify-ring svg { transform:rotate(-90deg); }
+.verify-ring-label { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.verify-ring-num { font-family:var(--font-display); font-size:1.4rem; font-weight:800; color:var(--accent); line-height:1; }
+.verify-ring-sub { font-size:.6rem; color:var(--muted); letter-spacing:.05em; text-transform:uppercase; }
+.verify-checks { flex:1; display:flex; flex-direction:column; gap:8px; }
+.verify-check { display:flex; align-items:center; gap:8px; font-size:.75rem; color:var(--muted2); }
+.verify-check .dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
+.dot-g { background:var(--green); box-shadow:0 0 6px var(--green); }
+.dot-a { background:var(--amber); }
 
-/* Card icons */
 .card-icon {
-  width:44px; height:44px;
-  border:1px solid var(--border2);
-  border-radius:10px;
-  display:flex; align-items:center; justify-content:center;
-  margin-bottom:20px;
-  background:var(--surface2);
+  width:44px; height:44px; border:1px solid var(--border2); border-radius:10px;
+  display:flex; align-items:center; justify-content:center; margin-bottom:20px; background:var(--surface2);
+}
+.green-tag {
+  display:inline-flex; align-items:center; gap:6px;
+  background:rgba(157,78,221,.08); border:1px solid rgba(157,78,221,.2);
+  color:var(--accent); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase;
+  padding:4px 10px; border-radius:100px; font-weight:500; margin-top:16px;
 }
 
-/* HOW IT WORKS */
-#how {
+/* MILESTONES */
+#milestones {
   padding:100px 0;
   border-top:1px solid var(--border);
   background:var(--surface);
 }
+.milestones-header { text-align:center; margin-bottom:60px; }
+.milestones-header h2 { font-size:clamp(2rem,4vw,3rem); letter-spacing:-.04em; margin-bottom:16px; }
+.milestones-header p { font-size:1rem; color:var(--muted2); max-width:440px; margin:0 auto; line-height:1.65; }
 
-.how-header { text-align:center; margin-bottom:60px; }
-.how-header h2 {
-  font-size:clamp(2rem,4vw,3.2rem);
-  letter-spacing:-.04em;
-  margin-bottom:16px;
+.timeline { position:relative; max-width:740px; margin:0 auto; }
+.timeline::before {
+  content:''; position:absolute; left:50%; top:0; bottom:0;
+  width:1px; background:linear-gradient(to bottom,var(--accent-dim),rgba(157,78,221,.08));
+  transform:translateX(-50%);
 }
-.how-header p { font-size:1rem; color:var(--muted2); max-width:440px; margin:0 auto; line-height:1.65; }
-
-.how-steps {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  position:relative;
+.tl-item {
+  display:grid; grid-template-columns:1fr 56px 1fr; gap:24px; align-items:start; margin-bottom:48px;
 }
-.how-steps::before {
-  content:'';
-  position:absolute;
-  top:28px; left:calc(16.66% + 16px); right:calc(16.66% + 16px);
-  height:1px;
-  background:linear-gradient(90deg, var(--accent-dim), rgba(157,78,221,.2));
-}
-
-.how-step {
-  padding:0 40px 0 0;
-  position:relative;
-}
-.how-step:last-child { padding-right:0; }
-
-.step-num-wrap {
-  display:flex; align-items:center; gap:16px;
-  margin-bottom:24px;
-}
-.step-num {
-  width:56px; height:56px;
-  border-radius:50%;
-  border:1px solid var(--border2);
-  background:var(--surface);
+.tl-item:last-child { margin-bottom:0; }
+.tl-left { text-align:right; padding-top:4px; }
+.tl-right { padding-top:4px; }
+.tl-center { display:flex; align-items:flex-start; justify-content:center; padding-top:0; position:relative; z-index:1; }
+.tl-dot {
+  width:40px; height:40px; border-radius:50%;
+  background:var(--surface); border:2px solid var(--accent-dim);
   display:flex; align-items:center; justify-content:center;
-  font-family:var(--font-display);
-  font-size:1.1rem;
-  font-weight:800;
-  color:var(--accent);
+  font-family:var(--font-display); font-size:.6rem; font-weight:800; color:var(--accent);
+  letter-spacing:.05em;
+}
+.tl-dot.done { background:var(--accent); border-color:var(--accent); color:#000; }
+.tl-quarter { font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:6px; }
+.tl-title { font-family:var(--font-display); font-size:.95rem; font-weight:700; color:var(--white); margin-bottom:6px; }
+.tl-desc { font-size:.78rem; color:var(--muted); line-height:1.6; }
+.tl-left .tl-title, .tl-left .tl-desc, .tl-left .tl-quarter { text-align:right; }
+.tl-right .tl-title, .tl-right .tl-desc, .tl-right .tl-quarter { text-align:left; }
+
+@media(max-width:640px){
+  .timeline::before { left:20px; }
+  .tl-item { grid-template-columns:32px 1fr; gap:16px; }
+  .tl-left { display:none; }
+  .tl-center { grid-column:1; grid-row:1; }
+  .tl-right { grid-column:2; grid-row:1; }
+  .tl-dot { width:32px; height:32px; font-size:.55rem; }
+}
+
+/* TEAM */
+#team {
+  padding:100px 0;
+  border-top:1px solid var(--border);
+}
+.team-header { text-align:center; margin-bottom:60px; }
+.team-header h2 { font-size:clamp(2rem,4vw,3rem); letter-spacing:-.04em; margin-bottom:16px; }
+.team-header p { font-size:1rem; color:var(--muted2); max-width:440px; margin:0 auto; line-height:1.65; }
+
+.team-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; }
+@media(max-width:1000px){ .team-grid { grid-template-columns:repeat(3,1fr); } }
+@media(max-width:640px){ .team-grid { grid-template-columns:repeat(2,1fr); } }
+
+.team-card {
+  background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+  padding:28px 20px; text-align:center;
+  transition:border-color .3s,box-shadow .3s,transform .3s;
+}
+.team-card:hover { border-color:rgba(157,78,221,.3); box-shadow:0 0 30px rgba(157,78,221,.08); transform:translateY(-4px); }
+.team-avatar {
+  width:64px; height:64px; border-radius:50%; margin:0 auto 16px;
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-display); font-size:1.3rem; font-weight:800;
+  border:1px solid var(--border2);
+}
+.av-1 { background:rgba(157,78,221,.15); color:var(--accent); }
+.av-2 { background:rgba(245,166,35,.12); color:var(--amber); }
+.av-3 { background:rgba(34,197,94,.1); color:var(--green); }
+.av-4 { background:rgba(255,255,255,.06); color:var(--white); }
+.av-5 { background:rgba(157,78,221,.08); color:#c084fc; }
+
+.team-name { font-family:var(--font-display); font-size:.95rem; font-weight:700; color:var(--white); margin-bottom:4px; }
+.team-role { font-size:.72rem; color:var(--muted); letter-spacing:.02em; line-height:1.4; }
+
+/* FOUNDER QUOTE */
+#founder {
+  padding:80px 0;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  background:var(--surface2);
+}
+.founder-inner {
+  max-width:840px; margin:0 auto; padding:0 40px;
+  display:grid; grid-template-columns:auto 1fr; gap:48px; align-items:center;
+}
+@media(max-width:768px){ .founder-inner { grid-template-columns:1fr; gap:32px; padding:0 24px; } }
+.founder-avatar {
+  width:100px; height:100px; border-radius:50%;
+  background:rgba(157,78,221,.12); border:2px solid rgba(157,78,221,.3);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-display); font-size:2rem; font-weight:800; color:var(--accent);
   flex-shrink:0;
-  z-index:1;
-  position:relative;
 }
-.how-step h4 {
-  font-size:1.05rem;
-  font-weight:700;
-  letter-spacing:-.02em;
-  line-height:1.2;
+.founder-quote {
+  font-size:clamp(1rem,1.4vw,1.15rem); color:var(--muted2); line-height:1.75;
+  font-style:italic; margin-bottom:20px;
 }
-.how-step p {
-  font-size:.84rem;
-  color:var(--muted);
-  line-height:1.65;
-  padding-left:72px;
-}
+.founder-quote::before { content:'\201C'; font-size:3rem; color:var(--accent); font-style:normal; line-height:0; vertical-align:-.3em; margin-right:4px; }
+.founder-name { font-family:var(--font-display); font-size:.95rem; font-weight:700; color:var(--white); }
+.founder-title { font-size:.78rem; color:var(--muted); margin-top:4px; }
 
-@media(max-width:768px){
-  .how-steps { grid-template-columns:1fr; gap:40px; }
-  .how-steps::before { display:none; }
-  .how-step { padding:0; }
-  .how-step p { padding-left:0; margin-top:12px; }
+/* VALUES */
+#values {
+  padding:100px 0;
+  border-top:1px solid var(--border);
 }
+.values-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+@media(max-width:900px){ .values-grid { grid-template-columns:1fr; } }
 
-/* SOCIAL PROOF */
+.value-card {
+  background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+  padding:36px; transition:border-color .3s,box-shadow .3s;
+}
+.value-card:hover { border-color:var(--border2); }
+.value-card h3 { font-size:1.1rem; font-weight:700; margin-bottom:12px; letter-spacing:-.02em; }
+.value-card p { font-size:.84rem; color:var(--muted); line-height:1.65; margin-bottom:20px; }
+.value-chips { display:flex; flex-direction:column; gap:7px; }
+.value-chip { display:flex; align-items:center; gap:8px; font-size:.75rem; color:var(--muted2); }
+.value-chip::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--accent); flex-shrink:0; }
+
+/* TESTIMONIALS */
 #proof {
   padding:100px 0;
   border-top:1px solid var(--border);
+  background:var(--surface);
 }
-
 .proof-header { margin-bottom:48px; }
-.proof-header h2 {
-  font-size:clamp(1.8rem,3vw,2.6rem);
-  letter-spacing:-.04em;
-  max-width:500px;
-}
-
-.testimonials {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-}
+.proof-header h2 { font-size:clamp(1.8rem,3vw,2.6rem); letter-spacing:-.04em; max-width:500px; }
+.testimonials { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+@media(max-width:900px){ .testimonials { grid-template-columns:1fr; } }
 
 .tcard {
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:28px;
-  display:flex; flex-direction:column; gap:20px;
-  transition:border-color .3s;
+  background:var(--bg); border:1px solid var(--border); border-radius:var(--radius);
+  padding:28px; display:flex; flex-direction:column; gap:20px; transition:border-color .3s;
 }
 .tcard:hover { border-color:var(--border2); }
-
 .tcard-stars { color:var(--accent); font-size:.8rem; letter-spacing:2px; }
-
-.tcard-quote {
-  font-size:.88rem;
-  color:var(--muted2);
-  line-height:1.68;
-  flex:1;
-  font-style:italic;
-}
-
+.tcard-quote { font-size:.88rem; color:var(--muted2); line-height:1.68; flex:1; font-style:italic; }
 .tcard-author { display:flex; align-items:center; gap:12px; }
 .tcard-avatar {
-  width:38px; height:38px;
-  border-radius:50%;
+  width:38px; height:38px; border-radius:50%;
   display:flex; align-items:center; justify-content:center;
-  font-family:var(--font-display);
-  font-size:.85rem;
-  font-weight:800;
-  flex-shrink:0;
+  font-family:var(--font-display); font-size:.85rem; font-weight:800; flex-shrink:0;
 }
-.av-a { background:rgba(157,78,221,.15); color:var(--accent); }
-.av-b { background:rgba(245,166,35,.12); color:var(--amber); }
-.av-c { background:rgba(255,255,255,.07); color:var(--white); }
-
+.tav-a { background:rgba(157,78,221,.15); color:var(--accent); }
+.tav-b { background:rgba(245,166,35,.12); color:var(--amber); }
+.tav-c { background:rgba(34,197,94,.1); color:var(--green); }
 .tcard-name { font-family:var(--font-display); font-size:.85rem; font-weight:700; color:var(--white); }
 .tcard-role { font-size:.72rem; color:var(--muted); }
 
-@media(max-width:900px){
-  .testimonials { grid-template-columns:1fr; }
-}
-
-/* TRUST BADGES */
-#trust {
+/* STATS STRIP */
+#stats-strip {
   padding:60px 0;
+  border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+}
+.stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; }
+.stat-item { background:var(--surface); padding:28px 24px; transition:background .2s; }
+.stat-item:hover { background:var(--surface2); }
+.stat-num { font-family:var(--font-display); font-size:1.7rem; font-weight:800; color:var(--accent); letter-spacing:-.04em; line-height:1; margin-bottom:8px; }
+.stat-label { font-size:.78rem; color:var(--muted); line-height:1.4; }
+@media(max-width:900px){ .stats-grid { grid-template-columns:repeat(2,1fr); } }
+@media(max-width:500px){ .stats-grid { grid-template-columns:1fr; } }
+
+/* FAQ */
+#faq {
+  padding:100px 0;
   border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
 }
+.faq-layout { display:grid; grid-template-columns:1fr 1.8fr; gap:80px; align-items:start; }
+@media(max-width:900px){ .faq-layout { grid-template-columns:1fr; gap:40px; } }
+.faq-left h2 { font-size:clamp(1.8rem,3vw,2.6rem); letter-spacing:-.04em; margin-bottom:16px; }
+.faq-left p { font-size:.9rem; color:var(--muted2); line-height:1.65; margin-bottom:24px; }
 
-.trust-grid {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:1px;
-  background:var(--border);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  overflow:hidden;
-}
-.trust-item {
-  background:var(--surface);
-  padding:28px 24px;
-  display:flex; flex-direction:column; gap:10px;
-  transition:background .2s;
-}
-.trust-item:hover { background:var(--surface2); }
-.trust-num {
-  font-family:var(--font-display);
-  font-size:1.7rem;
-  font-weight:800;
-  color:var(--accent);
-  letter-spacing:-.04em;
-  line-height:1;
-}
-.trust-label { font-size:.78rem; color:var(--muted); line-height:1.4; }
-
-@media(max-width:900px){
-  .trust-grid { grid-template-columns:repeat(2,1fr); }
-}
-@media(max-width:500px){
-  .trust-grid { grid-template-columns:1fr; }
-}
-
-/* CTA */
-#cta {
-  padding:120px 0;
-}
-
-.cta-inner {
-  text-align:center;
-  max-width:640px;
-  margin:0 auto;
-}
-.cta-inner h2 {
-  font-size:clamp(2.4rem,5vw,4.5rem);
-  letter-spacing:-.05em;
-  line-height:.98;
-  margin-bottom:24px;
-}
-.cta-inner p {
-  font-size:1rem;
-  color:var(--muted2);
-  line-height:1.65;
-  margin-bottom:40px;
-  max-width:440px;
-  margin-left:auto;
-  margin-right:auto;
-}
-
-.cta-form {
-  display:flex;
-  gap:10px;
-  max-width:440px;
-  margin:0 auto 16px;
-}
-.cta-input {
-  flex:1;
-  background:var(--surface);
-  border:1px solid var(--border2);
-  border-radius:8px;
-  padding:14px 20px;
-  font-family:var(--font-body);
-  font-size:.88rem;
-  color:var(--white);
-  outline:none;
-  transition:border-color .2s, box-shadow .2s;
-}
-.cta-input::placeholder { color:var(--muted); }
-.cta-input:focus {
-  border-color:var(--accent-dim);
-  box-shadow:0 0 0 3px rgba(157,78,221,.1);
-}
-
-#cta-success {
-  display:none;
-  color:var(--accent);
-  font-size:.85rem;
-  margin-bottom:8px;
-  font-weight:500;
-}
-
-.cta-note { font-size:.72rem; color:var(--muted); letter-spacing:.02em; }
-
-#cta::before {
-  content:'';
-  position:absolute;
-  left:50%; top:50%;
-  transform:translate(-50%,-50%);
-  width:600px; height:600px;
-  background:radial-gradient(circle, rgba(157,78,221,.06) 0%, transparent 70%);
-  pointer-events:none;
-}
-
-/* FOOTER */
-footer {
-  border-top:1px solid var(--border);
-  padding:40px 40px;
-}
-.footer-inner {
-  max-width:1140px;
-  margin:0 auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  gap:24px;
-}
-.footer-logo {
-  display:flex; align-items:center; gap:10px;
-  text-decoration:none;
-}
-.footer-logo-icon {
-  width:26px; height:26px;
-  background:var(--accent);
-  border-radius:6px;
-  display:flex; align-items:center; justify-content:center;
-}
-.footer-logo-text {
-  font-family:var(--font-display);
-  font-weight:800;
-  font-size:.95rem;
-  color:var(--white);
-  letter-spacing:-.02em;
-}
-.footer-logo-text span { color:var(--accent); }
-
-.footer-links {
-  display:flex; gap:28px; list-style:none;
-}
-.footer-links a {
-  font-size:.78rem;
-  color:var(--muted);
-  text-decoration:none;
+.faq-list { display:flex; flex-direction:column; gap:0; }
+.faq-item { border-bottom:1px solid var(--border); }
+.faq-item:first-child { border-top:1px solid var(--border); }
+.faq-q {
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding:20px 0; cursor:none;
+  font-family:var(--font-display); font-size:.92rem; font-weight:700; color:var(--white);
   transition:color .2s;
 }
+.faq-q:hover { color:var(--accent); }
+.faq-icon {
+  width:24px; height:24px; border-radius:50%; border:1px solid var(--border2);
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  transition:background .2s, border-color .2s, transform .3s;
+}
+.faq-item.open .faq-icon { background:var(--accent); border-color:var(--accent); transform:rotate(45deg); }
+.faq-a {
+  font-size:.84rem; color:var(--muted2); line-height:1.7;
+  max-height:0; overflow:hidden; transition:max-height .4s cubic-bezier(.16,1,.3,1), padding .3s;
+  padding-bottom:0;
+}
+.faq-item.open .faq-a { max-height:300px; padding-bottom:20px; }
+
+/* CONTACT / CTA */
+#cta {
+  padding:100px 0;
+  border-top:1px solid var(--border);
+  background:var(--surface);
+}
+.cta-layout { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
+@media(max-width:900px){ .cta-layout { grid-template-columns:1fr; gap:48px; } }
+
+.cta-left h2 { font-size:clamp(2rem,4vw,3.2rem); letter-spacing:-.04em; line-height:1.05; margin-bottom:16px; }
+.cta-left p { font-size:1rem; color:var(--muted2); line-height:1.65; margin-bottom:32px; }
+.cta-contact-items { display:flex; flex-direction:column; gap:16px; }
+.cta-contact-item { display:flex; align-items:center; gap:14px; }
+.cta-contact-icon {
+  width:42px; height:42px; border-radius:10px;
+  border:1px solid var(--border2); background:var(--surface2);
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.cta-contact-label { font-size:.68rem; color:var(--muted); letter-spacing:.06em; text-transform:uppercase; margin-bottom:3px; }
+.cta-contact-value { font-size:.88rem; color:var(--white); font-weight:500; }
+
+.contact-form { display:flex; flex-direction:column; gap:14px; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.form-field {
+  background:var(--bg); border:1px solid var(--border2); border-radius:8px;
+  padding:14px 18px; font-family:var(--font-body); font-size:.88rem; color:var(--white);
+  outline:none; width:100%; transition:border-color .2s,box-shadow .2s;
+}
+.form-field::placeholder { color:var(--muted); }
+.form-field:focus { border-color:var(--accent-dim); box-shadow:0 0 0 3px rgba(157,78,221,.1); }
+textarea.form-field { min-height:120px; resize:vertical; }
+
+#form-success { display:none; color:var(--green); font-size:.85rem; font-weight:500; margin-top:4px; }
+
+/* FOOTER */
+footer { border-top:1px solid var(--border); padding:40px; }
+.footer-inner {
+  max-width:1140px; margin:0 auto;
+  display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px;
+}
+.footer-logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+.footer-logo-icon {
+  width:26px; height:26px; background:var(--accent); border-radius:6px;
+  display:flex; align-items:center; justify-content:center;
+}
+.footer-logo-text { font-family:var(--font-display); font-weight:800; font-size:.95rem; color:var(--white); letter-spacing:-.02em; }
+.footer-logo-text span { color:var(--accent); }
+.footer-links { display:flex; gap:28px; list-style:none; }
+.footer-links a { font-size:.78rem; color:var(--muted); text-decoration:none; transition:color .2s; }
 .footer-links a:hover { color:var(--white); }
-
 .footer-copy { font-size:.72rem; color:var(--muted); }
-
 @media(max-width:768px){
   footer { padding:32px 24px; }
   .footer-inner { flex-direction:column; align-items:flex-start; }
   .footer-links { flex-wrap:wrap; gap:16px; }
 }
 
-/* Animated underline */
-.ul-link {
-  position:relative; text-decoration:none; color:inherit;
-}
-.ul-link::after {
-  content:''; position:absolute; bottom:-1px; left:0;
-  width:0; height:1px; background:var(--accent);
-  transition:width .25s ease;
-}
+.ul-link { position:relative; text-decoration:none; color:inherit; }
+.ul-link::after { content:''; position:absolute; bottom:-1px; left:0; width:0; height:1px; background:var(--accent); transition:width .25s ease; }
 .ul-link:hover::after { width:100%; }
-
-.green-tag {
-  display:inline-flex; align-items:center; gap:6px;
-  background:rgba(157,78,221,.08);
-  border:1px solid rgba(157,78,221,.2);
-  color:var(--accent);
-  font-size:.68rem;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  padding:4px 10px;
-  border-radius:100px;
-  font-weight:500;
-  margin-top:16px;
-}
 
 svg { display:block; }
 </style>
@@ -1064,22 +624,24 @@ svg { display:block; }
   <a href="#" class="nav-logo">
     <div class="nav-logo-icon">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <polyline points="9 22 9 12 15 12 15 22" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
-    <span class="nav-logo-text">Propify<span>AI</span></span>
+    <span class="nav-logo-text">MyPropify<span>NG</span></span>
   </a>
 
   <ul class="nav-links">
-    <li><a href="#problem" class="ul-link">Problem</a></li>
-    <li><a href="#features" class="ul-link">Features</a></li>
-    <li><a href="#how" class="ul-link">How it works</a></li>
+    <li><a href="#how" class="ul-link">How It Works</a></li>
+    <li><a href="#values" class="ul-link">About</a></li>
+    <li><a href="#team" class="ul-link">Team</a></li>
     <li><a href="#proof" class="ul-link">Reviews</a></li>
+    <li><a href="#cta" class="ul-link">Contact</a></li>
   </ul>
 
   <div class="nav-cta">
-    <a href="#cta" class="btn-ghost ul-link">Sign in</a>
-    <a href="#cta" class="btn-green">Get Early Access</a>
+    <a href="#cta" class="btn-ghost ul-link">Sign In</a>
+    <a href="#cta" class="btn-accent">Register Free</a>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -1087,223 +649,60 @@ svg { display:block; }
 </nav>
 
 <div id="mob-drawer">
-  <a href="#problem">Problem</a>
-  <a href="#features">Features</a>
-  <a href="#how">How it works</a>
+  <a href="#how">How It Works</a>
+  <a href="#values">About</a>
+  <a href="#team">Team</a>
   <a href="#proof">Reviews</a>
-  <a href="#cta" style="color:var(--accent);opacity:1;">Get Early Access →</a>
+  <a href="#cta" style="color:var(--accent);opacity:1;">Contact Us →</a>
 </div>
 
-<!-- HERO - RESTRUCTURED FOR BETTER SPACING -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
   <div class="hero-watermark">NG</div>
 
-  <div class="hero-badge">
-    <div class="badge-dot"></div>
-    Now in Private Beta
-  </div>
-
   <div class="hero-content">
+    <div class="hero-badge">
+      <div class="badge-dot"></div>
+      Launching Q4 2025 · Private Beta Open
+    </div>
+
     <div class="hero-eyebrow" style="animation:fadeUp .6s .1s both;">
-      Nigeria's Property Intelligence Layer
+      Nigeria's Trusted Property Platform
     </div>
 
     <h1 style="animation:fadeUp .7s .2s both;">
-      Buy Property<br/>in Nigeria<br/>with <em>Zero Doubt</em>.
+      Discover Your<br/>Dream Property<br/>in <em>Nigeria</em>.
     </h1>
 
     <p class="hero-sub" style="animation:fadeUp .7s .32s both;">
-      PropifyAI scans listings, verifies documents, and detects fraud before you sign anything — so you never lose a kobo to a fake agent or forged title.
+      When you join MyPropifyNG, you choose a partner dedicated to your property success — working tirelessly to help you achieve your real estate goals through AI-powered matching and verified listings.
     </p>
 
     <div class="hero-actions" style="animation:fadeUp .7s .44s both;">
       <a href="#cta" class="btn-primary-lg">
-        Request Early Access
+        Get Started
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <a href="#features" class="btn-text-link">
-        Explore features
+      <a href="#how" class="btn-text-link">
+        Explore more
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
       </a>
     </div>
 
-    <!-- Stats row moved inside content wrapper for better integration -->
     <div class="hero-stats-row">
       <div class="hero-stat reveal d1">
-        <div class="hero-stat-num">₦1.7<span>T</span></div>
-        <div class="hero-stat-label">Lost annually to real estate fraud in Nigeria</div>
+        <div class="hero-stat-num">500<span>+</span></div>
+        <div class="hero-stat-label">Property buyers already on the platform</div>
       </div>
       <div class="hero-stat reveal d2">
-        <div class="hero-stat-num"><span>68</span>%</div>
-        <div class="hero-stat-label">Of buyers purchase without title verification</div>
+        <div class="hero-stat-num"><span>98</span>%</div>
+        <div class="hero-stat-label">AI match accuracy based on your preferences</div>
       </div>
       <div class="hero-stat reveal d3">
-        <div class="hero-stat-num"><span>&lt;</span>30<span>s</span></div>
-        <div class="hero-stat-label">Time to get a PropifyAI fraud verdict</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROBLEM -->
-<section id="problem">
-  <div class="section-inner">
-    <div class="problem-layout">
-      <div class="problem-left reveal">
-        <div class="section-tag">The Problem</div>
-        <h2>Nigerian Real Estate Is Deliberately Opaque.</h2>
-        <p>Whether you're buying in Lekki, Gwarinpa, or GRA Port Harcourt — the information asymmetry between agents and buyers is engineered to exploit you.</p>
-        <div>
-          <div class="stat-highlight" style="display:flex; margin-bottom:10px;">
-            <span class="stat-highlight-num">3 in 5</span>
-            <span class="stat-highlight-label">first-time buyers report being deceived by their agent</span>
-          </div>
-          <div class="stat-highlight" style="display:flex; margin-bottom:10px;">
-            <span class="stat-highlight-num">40%</span>
-            <span class="stat-highlight-label">average price premium paid due to missing market data</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="problem-pains reveal d2">
-        <div class="pain-row">
-          <span class="pain-idx">01</span>
-          <div class="pain-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-          </div>
-          <div class="pain-content">
-            <h4>Ghost Agents & Omo-Onile Schemes</h4>
-            <p>Agents who collect deposits then vanish. Land sold to multiple buyers simultaneously. Properties encumbered with unresolved family disputes.</p>
-          </div>
-        </div>
-        <div class="pain-row">
-          <span class="pain-idx">02</span>
-          <div class="pain-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          </div>
-          <div class="pain-content">
-            <h4>Forged Certificates of Occupancy</h4>
-            <p>Sophisticated C of O forgeries that pass casual inspection. Plot numbers that don't exist in LASLAND or AGIS registries. Backdated Governor's Consent.</p>
-          </div>
-        </div>
-        <div class="pain-row">
-          <span class="pain-idx">03</span>
-          <div class="pain-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-          </div>
-          <div class="pain-content">
-            <h4>No Reliable Price Benchmarks</h4>
-            <p>Market data is fragmented, guarded, and often manipulated. Without comps, buyers routinely overpay by 20–40% and have no recourse.</p>
-          </div>
-        </div>
-        <div class="pain-row">
-          <span class="pain-idx">04</span>
-          <div class="pain-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20"/></svg>
-          </div>
-          <div class="pain-content">
-            <h4>Zero Infrastructure Visibility</h4>
-            <p>Flood risk, government acquisition status, pending road expansion — critical location data is scattered across agencies with no unified access point.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FEATURES -->
-<section id="features">
-  <div class="section-inner">
-    <div class="features-header">
-      <div class="reveal">
-        <div class="section-tag">What PropifyAI Does</div>
-        <h2>Four Capabilities. One Decisive Edge.</h2>
-      </div>
-      <p class="reveal d2">PropifyAI is not a listing aggregator. It is an intelligence layer — purpose-built for Nigerian property buyers who refuse to operate blind.</p>
-    </div>
-
-    <div class="bento">
-      <div class="bento-card bento-a reveal d1">
-        <div class="card-eyebrow">AI Q&A Assistant</div>
-        <h3>Ask anything.<br/>Get a straight answer.</h3>
-        <p>Plain English questions about Nigerian property law, processes, agent red flags — answered instantly. No jargon, no billable hours.</p>
-        <div class="card-a-visual">
-          <div class="card-a-bar">
-            <span style="background:#ff5f57;"></span>
-            <span style="background:#febc2e;"></span>
-            <span style="background:#28c840;"></span>
-            <span style="flex:1; height:1px; background:var(--border); margin-left:8px;"></span>
-            <span style="font-size:.65rem; color:var(--muted); font-family:monospace;">propifyai.ng — chat</span>
-          </div>
-          <div class="card-a-messages">
-            <div class="msg msg-user">Does a Deed of Assignment give me full ownership in Lagos?</div>
-            <div class="msg msg-ai">Not automatically. A DoA transfers the <strong>seller's interest</strong> to you, but you still need to obtain <strong>Governor's Consent</strong> from the Lagos State government within 6 months to perfect the title. Without it, the transaction is not fully enforceable. Consent fees are typically 3–5% of the property value.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="bento-card bento-b reveal d2">
-        <div class="card-eyebrow">Fraud Detection</div>
-        <h3>Know your risk score before you negotiate.</h3>
-        <p>Cross-referenced against agent complaint databases, registry records, and known fraud patterns across Nigeria.</p>
-        <div class="fraud-score-wrap">
-          <div class="fraud-ring">
-            <svg width="90" height="90" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="8"/>
-              <circle cx="50" cy="50" r="42" fill="none" stroke="var(--accent)" stroke-width="8"
-                stroke-dasharray="264" stroke-dashoffset="66" stroke-linecap="round"
-                style="filter:drop-shadow(0 0 6px var(--accent));"/>
-            </svg>
-            <div class="fraud-ring-label">
-              <span class="fraud-ring-num">75</span>
-              <span class="fraud-ring-sub">Safe Score</span>
-            </div>
-          </div>
-          <div class="fraud-checks">
-            <div class="fraud-check"><div class="dot dot-green"></div>Agent profile verified</div>
-            <div class="fraud-check"><div class="dot dot-green"></div>No duplicate sales detected</div>
-            <div class="fraud-check"><div class="dot dot-amber"></div>Price 18% above area comps</div>
-            <div class="fraud-check"><div class="dot dot-red"></div>C of O survey # unmatched</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="bento-card bento-c reveal d1">
-        <div class="card-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
-          </svg>
-        </div>
-        <div class="card-eyebrow">Document Analysis</div>
-        <h3>Upload. Understand. Decide.</h3>
-        <p>C of O, Deed of Assignment, Survey Plan, Excision documents — PropifyAI reads and explains them in plain language, flagging every inconsistency.</p>
-        <div class="green-tag">Supports PDF & Images</div>
-      </div>
-
-      <div class="bento-card bento-d reveal d2">
-        <div class="card-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
-          </svg>
-        </div>
-        <div class="card-eyebrow">Location Intelligence</div>
-        <h3>See what the agent won't tell you.</h3>
-        <p>Flood risk, govt acquisition status, price/sqm benchmarks, 5-year appreciation, nearby infrastructure. Every neighbourhood, decoded.</p>
-        <div class="green-tag">Lagos · Abuja · Rivers</div>
-      </div>
-
-      <div class="bento-card bento-e reveal d3">
-        <div class="card-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-          </svg>
-        </div>
-        <div class="card-eyebrow">Market Pricing</div>
-        <h3>Know the real price before you haggle.</h3>
-        <p>Comparable transactions, median price bands, and over/under-pricing signals — so your first offer is already your smartest one.</p>
-        <div class="green-tag">Updated Monthly</div>
+        <div class="hero-stat-num">₦<span>0</span></div>
+        <div class="hero-stat-label">Zero fees for property seekers</div>
       </div>
     </div>
   </div>
@@ -1313,78 +712,388 @@ svg { display:block; }
 <section id="how">
   <div class="section-inner">
     <div class="how-header reveal">
-      <div class="section-tag" style="justify-content:center; margin-bottom:16px;">How It Works</div>
-      <h2>Simple by design.<br/>Powerful by necessity.</h2>
-      <p style="margin-top:16px;">Three steps from uncertainty to a decision you can actually stand behind.</p>
+      <div class="section-tag" style="justify-content:center; margin-bottom:16px;">Simple Process</div>
+      <h2>How MyPropifyNG Works</h2>
+      <p style="margin-top:16px;">Transforming property transactions in Nigeria with a seamless, tech-driven approach.</p>
     </div>
 
     <div class="how-steps">
       <div class="how-step reveal d1">
         <div class="step-num-wrap">
           <div class="step-num">01</div>
-          <h4>Share the property</h4>
+          <h4>Create Your Profile</h4>
         </div>
-        <p>Paste a listing URL, upload a document, or describe the deal in plain text. PropifyAI accepts any format — no templates required.</p>
+        <p>Sign up in 30 seconds and tell us what you're looking for. Whether you're buying, selling, or renting, we'll personalise your experience.</p>
+        <div class="step-chips">
+          <span class="step-chip">Quick registration</span>
+          <span class="step-chip">Personalised preferences</span>
+          <span class="step-chip">Secure verification</span>
+        </div>
+        <div class="step-card">
+          <div class="step-card-title">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Profile Setup · 2 min
+          </div>
+          <div class="step-card-progress">
+            <div class="progress-row">
+              <span class="progress-label">Basic Information</span>
+              <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
+              <span class="progress-pct">100%</span>
+            </div>
+            <div class="progress-row">
+              <span class="progress-label">Preferences Set</span>
+              <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
+              <span class="progress-pct">100%</span>
+            </div>
+            <div class="progress-row">
+              <span class="progress-label">Verification</span>
+              <div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div>
+              <span class="progress-pct">60%</span>
+            </div>
+          </div>
+        </div>
       </div>
+
       <div class="how-step reveal d2">
         <div class="step-num-wrap">
           <div class="step-num">02</div>
-          <h4>AI runs the checks</h4>
+          <h4>Discover Perfect Matches</h4>
         </div>
-        <p>PropifyAI cross-references registry data, fraud databases, agent records, and location intelligence simultaneously — in seconds.</p>
+        <p>Our AI algorithm analyses thousands of properties to find perfect matches based on your preferences, budget, and location.</p>
+        <div class="step-chips">
+          <span class="step-chip">AI-powered recommendations</span>
+          <span class="step-chip">Verified property listings</span>
+          <span class="step-chip">Real-time notifications</span>
+        </div>
+        <div class="step-card" style="margin-top:20px;">
+          <div class="step-card-title">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            Smart Matching · AI-powered
+          </div>
+          <div style="display:flex;gap:24px;margin-top:4px;">
+            <div><div style="font-family:var(--font-display);font-size:1.4rem;font-weight:800;color:var(--accent)">98%</div><div style="font-size:.65rem;color:var(--muted)">Match Accuracy</div></div>
+            <div><div style="font-family:var(--font-display);font-size:1.4rem;font-weight:800;color:var(--white)">24h</div><div style="font-size:.65rem;color:var(--muted)">Quick Results</div></div>
+          </div>
+        </div>
       </div>
+
       <div class="how-step reveal d3">
         <div class="step-num-wrap">
           <div class="step-num">03</div>
-          <h4>Get your verdict</h4>
+          <h4>Connect &amp; Transact Safely</h4>
         </div>
-        <p>A clear risk score, plain-language findings, negotiation guidance, and recommended next steps — before your next agent call.</p>
+        <p>Connect directly with verified property owners or agents. Our secure platform ensures transparent communication and safe transactions.</p>
+        <div class="step-chips">
+          <span class="step-chip">Secure messaging platform</span>
+          <span class="step-chip">Document verification</span>
+          <span class="step-chip">Escrow payment protection</span>
+        </div>
+        <div class="step-card" style="margin-top:20px;">
+          <div class="step-card-title">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Secure Transaction
+          </div>
+          <div style="display:flex;gap:24px;margin-top:4px;">
+            <div><div style="font-family:var(--font-display);font-size:1.4rem;font-weight:800;color:var(--accent)">100%</div><div style="font-size:.65rem;color:var(--muted)">Verified</div></div>
+            <div><div style="font-family:var(--font-display);font-size:1.4rem;font-weight:800;color:var(--white)">24/7</div><div style="font-size:.65rem;color:var(--muted)">Support</div></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SOCIAL PROOF -->
+<!-- FEATURES / TRUST -->
+<section id="trust">
+  <div class="section-inner">
+    <div class="trust-header">
+      <div class="reveal">
+        <div class="section-tag">What We Offer</div>
+        <h2>Affordable &amp; Scalable Plans for Every Stage.</h2>
+      </div>
+      <p class="reveal d2">MyPropifyNG offers transparent plans that fit every stage of your property journey — built to scale with your needs and backed by brands that believe in innovation.</p>
+    </div>
+
+    <div class="bento">
+      <div class="bento-card bento-a reveal d1">
+        <div class="card-eyebrow">AI Matching Engine</div>
+        <h3>Smart matching that<br/>understands your needs.</h3>
+        <p>Our AI algorithm cross-references thousands of verified listings against your preferences, budget, and location to surface the properties most likely to become your home.</p>
+        <div class="card-a-visual">
+          <div class="card-a-bar">
+            <span style="background:#ff5f57;"></span>
+            <span style="background:#febc2e;"></span>
+            <span style="background:#28c840;"></span>
+            <span style="flex:1;height:1px;background:var(--border);margin-left:8px;"></span>
+            <span style="font-size:.65rem;color:var(--muted);font-family:monospace;">mypropify.ng — search</span>
+          </div>
+          <div class="card-a-messages">
+            <div class="msg msg-user">I'm looking for a 3-bedroom flat in Lekki under ₦3.5M/yr</div>
+            <div class="msg msg-ai">Found <strong>14 verified listings</strong> matching your criteria in Lekki Phase 1, Chevron, and Ikate. Top match: a serviced 3-bed at Admiralty Way — <strong>₦3.2M/yr</strong>, verified C of O, available immediately. Shall I schedule a viewing?</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card bento-b reveal d2">
+        <div class="card-eyebrow">Verification Engine</div>
+        <h3>Every listing verified before you see it.</h3>
+        <p>3-step verification covering document authentication, physical inspection, and partner validation — so you only deal with real properties.</p>
+        <div class="verify-ring-wrap">
+          <div class="verify-ring">
+            <svg width="90" height="90" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="8"/>
+              <circle cx="50" cy="50" r="42" fill="none" stroke="var(--accent)" stroke-width="8"
+                stroke-dasharray="264" stroke-dashoffset="26" stroke-linecap="round"
+                style="filter:drop-shadow(0 0 6px var(--accent));"/>
+            </svg>
+            <div class="verify-ring-label">
+              <span class="verify-ring-num">90%</span>
+              <span class="verify-ring-sub">Verified</span>
+            </div>
+          </div>
+          <div class="verify-checks">
+            <div class="verify-check"><div class="dot dot-g"></div>Document authenticated</div>
+            <div class="verify-check"><div class="dot dot-g"></div>Physical inspection done</div>
+            <div class="verify-check"><div class="dot dot-g"></div>Partner validation passed</div>
+            <div class="verify-check"><div class="dot dot-a"></div>Price benchmark review</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card bento-c reveal d1">
+        <div class="card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <div class="card-eyebrow">Nationwide Coverage</div>
+        <h3>Lagos · Abuja · Port Harcourt &amp; beyond.</h3>
+        <p>MyPropifyNG covers Nigeria's major property markets with plans to expand to 5 major cities by 2026.</p>
+        <div class="green-tag">Expanding Nationwide</div>
+      </div>
+
+      <div class="bento-card bento-d reveal d2">
+        <div class="card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/>
+          </svg>
+        </div>
+        <div class="card-eyebrow">Secure Transactions</div>
+        <h3>Escrow protection on every deal.</h3>
+        <p>Our secure platform ensures transparent communication and escrow payment protection — so your money is safe until the keys are in your hand.</p>
+        <div class="green-tag">₦0 Fees for Seekers</div>
+      </div>
+
+      <div class="bento-card bento-e reveal d3">
+        <div class="card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
+          </svg>
+        </div>
+        <div class="card-eyebrow">Partner Network</div>
+        <h3>Backed by brands that believe in innovation.</h3>
+        <p>A growing network of verified estate agents, developers, and financial partners co-operating to deliver seamless transactions.</p>
+        <div class="green-tag">Be a Partner →</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER QUOTE -->
+<section id="founder">
+  <div class="founder-inner reveal">
+    <div class="founder-avatar">AE</div>
+    <div>
+      <p class="founder-quote">
+        When I started MyPropifyNG, I envisioned a platform that would simplify property transactions for Nigerians. Having experienced the challenges of property search and management firsthand, I knew there had to be a better way. Our mission is to create a seamless, transparent, and efficient real estate ecosystem that empowers both property seekers and owners.
+      </p>
+      <div class="founder-name">Adewunmi E. Adeniji</div>
+      <div class="founder-title">Founder &amp; CEO, MyPropifyNG</div>
+    </div>
+  </div>
+</section>
+
+<!-- CORE VALUES / ABOUT -->
+<section id="values">
+  <div class="section-inner">
+    <div style="text-align:center;margin-bottom:60px;" class="reveal">
+      <div class="section-tag" style="justify-content:center;">Our Core Values</div>
+      <h2 style="font-size:clamp(2rem,4vw,3rem);letter-spacing:-.04em;margin-top:12px;">Driving Real Estate<br/>Transformation.</h2>
+    </div>
+
+    <div class="values-grid">
+      <div class="value-card reveal d1">
+        <div class="card-eyebrow">Our Mission</div>
+        <h3>Transparent, Accessible &amp; Efficient.</h3>
+        <p>To revolutionise Nigeria's real estate industry by creating a platform that connects property seekers with verified listings and trusted partners.</p>
+        <div class="value-chips">
+          <span class="value-chip">Simplify property discovery</span>
+          <span class="value-chip">Ensure transaction transparency</span>
+          <span class="value-chip">Empower both seekers and owners</span>
+        </div>
+      </div>
+
+      <div class="value-card reveal d2">
+        <div class="card-eyebrow">Our Vision</div>
+        <h3>Nigeria's Most Trusted Property Platform.</h3>
+        <p>To become the first choice for Nigerians seeking their dream properties — setting new standards for property transactions across the country.</p>
+        <div class="value-chips">
+          <span class="value-chip">Lead industry innovation</span>
+          <span class="value-chip">Expand nationwide coverage</span>
+          <span class="value-chip">Build lasting trust relationships</span>
+        </div>
+      </div>
+
+      <div class="value-card reveal d3">
+        <div class="card-eyebrow">Key Objectives</div>
+        <h3>Measurable Outcomes. Real Impact.</h3>
+        <p>We are committed to achieving outcomes that drive value for our users and transform the real estate experience across Nigeria.</p>
+        <div class="value-chips">
+          <span class="value-chip">10,000+ verified listings by 2026</span>
+          <span class="value-chip">Reduce property search time by 70%</span>
+          <span class="value-chip">95% user satisfaction rate</span>
+          <span class="value-chip">Expand to 5 major Nigerian cities</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MILESTONES -->
+<section id="milestones">
+  <div class="section-inner">
+    <div class="milestones-header reveal">
+      <div class="section-tag" style="justify-content:center;">Our Journey</div>
+      <h2 style="margin-top:12px;">Milestones in Our Growth</h2>
+      <p style="margin-top:16px;">From concept to reality — our journey transforming real estate in Nigeria.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item reveal d1">
+        <div class="tl-left">
+          <div class="tl-quarter">Q2 2025</div>
+          <div class="tl-title">Concept Born</div>
+          <div class="tl-desc">The idea for MyPropifyNG was conceived to address the challenges of property discovery in Nigeria's real estate market.</div>
+        </div>
+        <div class="tl-center"><div class="tl-dot done">✓</div></div>
+        <div class="tl-right"></div>
+      </div>
+
+      <div class="tl-item reveal d2">
+        <div class="tl-left"></div>
+        <div class="tl-center"><div class="tl-dot done">✓</div></div>
+        <div class="tl-right">
+          <div class="tl-quarter">Q3 2025</div>
+          <div class="tl-title">Development Begins</div>
+          <div class="tl-desc">Our team started building the platform with a focus on user experience and rigorous verification processes.</div>
+        </div>
+      </div>
+
+      <div class="tl-item reveal d3">
+        <div class="tl-left">
+          <div class="tl-quarter">Q3 2025</div>
+          <div class="tl-title">First Partners</div>
+          <div class="tl-desc">We onboarded our first verified real estate partners, establishing trust and credibility in our platform from day one.</div>
+        </div>
+        <div class="tl-center"><div class="tl-dot done">✓</div></div>
+        <div class="tl-right"></div>
+      </div>
+
+      <div class="tl-item reveal d4">
+        <div class="tl-left"></div>
+        <div class="tl-center"><div class="tl-dot">Q4</div></div>
+        <div class="tl-right">
+          <div class="tl-quarter">Q4 2025</div>
+          <div class="tl-title">Platform Launch</div>
+          <div class="tl-desc">We will be launching MyPropifyNG officially, connecting Nigerians with verified properties and trusted partners nationwide.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="section-inner">
+    <div class="team-header reveal">
+      <div class="section-tag" style="justify-content:center;">Meet Our Team</div>
+      <h2 style="margin-top:12px;">The Minds Behind Our Success</h2>
+      <p style="margin-top:16px;">A dedicated team working tirelessly to transform property transactions in Nigeria.</p>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-card reveal d1">
+        <div class="team-avatar av-1">AA</div>
+        <div class="team-name">Adewunmi Adeniji</div>
+        <div class="team-role">Founder &amp; CEO</div>
+      </div>
+      <div class="team-card reveal d2">
+        <div class="team-avatar av-2">ON</div>
+        <div class="team-name">Oluwabusola Noah</div>
+        <div class="team-role">Product Manager</div>
+      </div>
+      <div class="team-card reveal d3">
+        <div class="team-avatar av-3">AA</div>
+        <div class="team-name">Austin Aiyedatiwa</div>
+        <div class="team-role">Lead Consultant</div>
+      </div>
+      <div class="team-card reveal d4">
+        <div class="team-avatar av-4">AT</div>
+        <div class="team-name">Adeagbo Titilayo</div>
+        <div class="team-role">Client Relationship Manager</div>
+      </div>
+      <div class="team-card reveal d5">
+        <div class="team-avatar av-5">MO</div>
+        <div class="team-name">Moses</div>
+        <div class="team-role">Digital Marketer</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
 <section id="proof">
   <div class="section-inner">
     <div class="proof-header reveal">
-      <div class="section-tag">Early Feedback</div>
-      <h2>What Beta Users Are Saying</h2>
+      <div class="section-tag">Client Love</div>
+      <h2 style="margin-top:12px;">What Our Clients Say</h2>
+      <p style="font-size:.9rem;color:var(--muted2);margin-top:12px;line-height:1.65;">Trusted by property seekers and real estate professionals across Nigeria.</p>
     </div>
 
     <div class="testimonials">
       <div class="tcard reveal d1">
         <div class="tcard-stars">★★★★★</div>
-        <p class="tcard-quote">"PropifyAI flagged that the C of O my seller presented had a survey number that didn't exist in LASLAND records. I was three days from paying ₦14M. This tool literally saved my family."</p>
+        <p class="tcard-quote">"MyPropifyNG helped me find my dream home in Lekki within 2 weeks. The verification process gave me complete confidence in the transaction. I never felt alone in the process."</p>
         <div class="tcard-author">
-          <div class="tcard-avatar av-a">AO</div>
+          <div class="tcard-avatar tav-a">CE</div>
           <div>
-            <div class="tcard-name">Adaeze O.</div>
-            <div class="tcard-role">First-time buyer · Lagos Island</div>
+            <div class="tcard-name">Chukwuma Eze</div>
+            <div class="tcard-role">Property Investor · Lagos</div>
           </div>
         </div>
       </div>
 
       <div class="tcard reveal d2">
         <div class="tcard-stars">★★★★★</div>
-        <p class="tcard-quote">"I manage property investments from London. PropifyAI's location insights and document analysis mean I can due-diligence deals remotely without flying back every time. Game-changing for diaspora investors."</p>
+        <p class="tcard-quote">"Listing my properties on MyPropifyNG has increased my sales by 40%. The platform connects me directly with serious buyers — no time-wasters, no middlemen eating my margins."</p>
         <div class="tcard-author">
-          <div class="tcard-avatar av-b">TB</div>
+          <div class="tcard-avatar tav-b">FI</div>
           <div>
-            <div class="tcard-name">Temi B.</div>
-            <div class="tcard-role">Property investor · UK / Abuja</div>
+            <div class="tcard-name">Fatima Ibrahim</div>
+            <div class="tcard-role">Property Developer · Port Harcourt</div>
           </div>
         </div>
       </div>
 
       <div class="tcard reveal d3">
         <div class="tcard-stars">★★★★★</div>
-        <p class="tcard-quote">"As a registered estate agent, I use PropifyAI to pre-verify every listing I take on. It protects my reputation and builds trust with buyers. I've already referred five colleagues."</p>
+        <p class="tcard-quote">"As a student on a budget, MyPropifyNG helped me find affordable, verified accommodation near campus. The platform is incredibly easy to use — I found a place in three days."</p>
         <div class="tcard-author">
-          <div class="tcard-avatar av-c">KA</div>
+          <div class="tcard-avatar tav-c">NO</div>
           <div>
-            <div class="tcard-name">Kunle A.</div>
-            <div class="tcard-role">Registered estate agent · Port Harcourt</div>
+            <div class="tcard-name">Nneka Okoro</div>
+            <div class="tcard-role">Student · University of Lagos</div>
           </div>
         </div>
       </div>
@@ -1392,50 +1101,147 @@ svg { display:block; }
   </div>
 </section>
 
-<!-- TRUST BADGES -->
-<section id="trust">
+<!-- STATS STRIP -->
+<section id="stats-strip">
   <div class="section-inner">
-    <div class="trust-grid">
-      <div class="trust-item reveal d1">
-        <div class="trust-num">50K+</div>
-        <div class="trust-label">Nigerian property transactions in our training dataset</div>
+    <div class="stats-grid">
+      <div class="stat-item reveal d1">
+        <div class="stat-num">22.5k</div>
+        <div class="stat-label">Higher conversion rates for partnered developers</div>
       </div>
-      <div class="trust-item reveal d2">
-        <div class="trust-num">Land Use Act</div>
-        <div class="trust-label">Full coverage of Nigeria's property legal framework</div>
+      <div class="stat-item reveal d2">
+        <div class="stat-num">&gt;99.2%</div>
+        <div class="stat-label">Trust rate among verified users on the platform</div>
       </div>
-      <div class="trust-item reveal d3">
-        <div class="trust-num">Weekly</div>
-        <div class="trust-label">Fraud pattern database update frequency</div>
+      <div class="stat-item reveal d3">
+        <div class="stat-num">10K+</div>
+        <div class="stat-label">Verified property listings targeted by 2026</div>
       </div>
-      <div class="trust-item reveal d4">
-        <div class="trust-num">256-bit</div>
-        <div class="trust-label">AES encryption on all uploaded documents</div>
+      <div class="stat-item reveal d4">
+        <div class="stat-num">95%</div>
+        <div class="stat-label">Target user satisfaction rate we're building toward</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="faq-layout">
+      <div class="reveal">
+        <div class="section-tag">FAQs</div>
+        <h2 style="margin-top:12px;">Property Questions Answered.</h2>
+        <p style="margin-top:16px;">Get answers to common questions about property search, verification, and transactions on our platform.</p>
+        <a href="#cta" class="btn-primary-lg" style="display:inline-flex;margin-top:24px;font-size:.82rem;padding:11px 20px;">
+          Contact Support
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="faq-list reveal d2">
+        <div class="faq-item open">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            How does MyPropifyNG verify property listings?
+            <div class="faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg></div>
+          </div>
+          <div class="faq-a">We employ a rigorous 3-step verification process that includes document authentication, physical inspection where possible, and partner validation. Our team ensures every listing meets our quality standards before going live on the platform.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            What are the costs for using MyPropifyNG services?
+            <div class="faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg></div>
+          </div>
+          <div class="faq-a">Property seekers pay zero fees to search, browse, and connect with verified listings on our platform. We offer affordable and scalable plans for property owners and agents looking to list and market their properties.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            How long does it take to find a property through your platform?
+            <div class="faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg></div>
+          </div>
+          <div class="faq-a">Our AI matching engine delivers your first property recommendations within 24 hours of completing your profile. Most users find shortlisted properties within 2–7 days depending on their requirements and city.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            What support do you provide during property transactions?
+            <div class="faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg></div>
+          </div>
+          <div class="faq-a">We offer 24/7 support throughout your transaction journey — from initial search to key collection. This includes secure messaging, document verification assistance, and escrow payment protection to keep your funds safe.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Which Nigerian cities does MyPropifyNG currently cover?
+            <div class="faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg></div>
+          </div>
+          <div class="faq-a">We currently serve Lagos, Abuja, and Port Harcourt with verified listings. We're expanding to 5 major Nigerian cities by 2026 — including Ibadan, Kano, and Enugu — as our verified partner network grows.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / CTA -->
 <section id="cta">
   <div class="section-inner">
-    <div class="cta-inner">
+    <div class="cta-layout">
       <div class="reveal">
-        <div class="section-tag" style="justify-content:center; margin-bottom:20px;">Join the Waitlist</div>
-        <h2>Never Buy Blind<br/>in Nigeria Again.</h2>
-        <p>PropifyAI is opening to early users in Q3 2025. Free during beta. No credit card needed.</p>
+        <div class="section-tag">Get In Touch</div>
+        <h2 style="margin-top:12px;">Let's Help You Find Your Dream Property.</h2>
+        <p style="margin-top:16px;">Use the form to get in touch, or reach us directly. We'll get back to you as soon as possible.</p>
+
+        <div class="cta-contact-items">
+          <div class="cta-contact-item">
+            <div class="cta-contact-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="cta-contact-label">Call Us</div>
+              <div class="cta-contact-value">+234 815 665 5091</div>
+            </div>
+          </div>
+          <div class="cta-contact-item">
+            <div class="cta-contact-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="cta-contact-label">Chat With Us</div>
+              <div class="cta-contact-value">hello@mypropify.ng</div>
+            </div>
+          </div>
+          <div class="cta-contact-item">
+            <div class="cta-contact-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div class="cta-contact-label">Support Hours</div>
+              <div class="cta-contact-value">24/7 · Always Available</div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="reveal d2">
-        <div class="cta-form">
-          <input class="cta-input" type="email" id="cta-email" placeholder="your@email.com"/>
-          <a href="#" class="btn-primary-lg" onclick="handleCTA(event)" style="white-space:nowrap; text-decoration:none;">
-            Get Access
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
+        <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:36px;">
+          <div style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:24px;">Send Us a Message</div>
+          <div class="contact-form">
+            <div class="form-row">
+              <input class="form-field" type="text" placeholder="First name"/>
+              <input class="form-field" type="text" placeholder="Last name"/>
+            </div>
+            <input class="form-field" type="email" id="contact-email" placeholder="Enter email address"/>
+            <input class="form-field" type="tel" placeholder="Phone number"/>
+            <textarea class="form-field" placeholder="Put the message here…"></textarea>
+            <div id="form-success">✓ Message sent! We'll get back to you soon.</div>
+            <button class="btn-primary-lg" onclick="handleContact(event)" style="justify-content:center;cursor:none;">
+              Send Message
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
         </div>
-        <div id="cta-success">✓ You're on the list. We'll be in touch soon.</div>
-        <p class="cta-note">No spam · No commitment · Unsubscribe anytime</p>
       </div>
     </div>
   </div>
@@ -1447,131 +1253,78 @@ svg { display:block; }
     <a href="#" class="footer-logo">
       <div class="footer-logo-icon">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <polyline points="9 22 9 12 15 12 15 22" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
-      <span class="footer-logo-text">Propify<span>AI</span></span>
+      <span class="footer-logo-text">MyPropify<span>NG</span></span>
     </a>
 
     <ul class="footer-links">
-      <li><a href="#" class="ul-link">Privacy</a></li>
-      <li><a href="#" class="ul-link">Terms</a></li>
-      <li><a href="#" class="ul-link">Blog</a></li>
-      <li><a href="mailto:hello@propifyai.ng" class="ul-link">Contact</a></li>
+      <li><a href="#values" class="ul-link">Who We Are</a></li>
+      <li><a href="#" class="ul-link">Be a Partner</a></li>
+      <li><a href="#" class="ul-link">Our Members</a></li>
+      <li><a href="#" class="ul-link">Explore Career</a></li>
+      <li><a href="#" class="ul-link">Terms of Use</a></li>
+      <li><a href="#cta" class="ul-link">Contact Us</a></li>
     </ul>
 
     <div class="footer-copy">
-      © 2025 PropifyAI Technologies Ltd. Lagos, Nigeria.<br/>
-      <span style="opacity:.5;">Information only — not legal advice. Always consult a licensed professional.</span>
+      MyPropifyNG © 2025 — All Rights Reserved.<br/>
+      <span style="opacity:.5;">hello@mypropify.ng · +234 815 665 5091</span>
     </div>
   </div>
 </footer>
 
 <script>
 /* Custom cursor */
-const cur = document.getElementById('cursor');
-const ring = document.getElementById('cursor-ring');
+const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
 let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{
-  mx=e.clientX; my=e.clientY;
-  cur.style.left=mx+'px'; cur.style.top=my+'px';
-});
-(function animRing(){
-  rx+=(mx-rx)*.12; ry+=(my-ry)*.12;
-  ring.style.left=rx+'px'; ring.style.top=ry+'px';
-  requestAnimationFrame(animRing);
-})();
-document.querySelectorAll('a,button,.bento-card,.tcard,.trust-item,.pain-row').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{
-    cur.style.width='18px'; cur.style.height='18px';
-    ring.style.width='54px'; ring.style.height='54px';
-    ring.style.opacity='.5';
-  });
-  el.addEventListener('mouseleave',()=>{
-    cur.style.width='10px'; cur.style.height='10px';
-    ring.style.width='36px'; ring.style.height='36px';
-    ring.style.opacity='1';
-  });
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
+document.querySelectorAll('a,button,.bento-card,.tcard,.team-card,.value-card,.faq-q,.stat-item').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='18px';cur.style.height='18px';ring.style.width='54px';ring.style.height='54px';ring.style.opacity='.5';});
+  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';ring.style.width='36px';ring.style.height='36px';ring.style.opacity='1';});
 });
 
 /* Nav scroll */
 const nav=document.getElementById('navbar');
-window.addEventListener('scroll',()=>{
-  nav.classList.toggle('stuck',window.scrollY>40);
-});
+window.addEventListener('scroll',()=>nav.classList.toggle('stuck',window.scrollY>40));
 
 /* Hamburger */
-const ham=document.getElementById('hamburger');
-const drawer=document.getElementById('mob-drawer');
+const ham=document.getElementById('hamburger'),drawer=document.getElementById('mob-drawer');
 ham.addEventListener('click',()=>{
   drawer.classList.toggle('open');
-  const spans=ham.querySelectorAll('span');
-  if(drawer.classList.contains('open')){
-    spans[0].style.transform='translateY(6.5px) rotate(45deg)';
-    spans[1].style.opacity='0';
-    spans[2].style.transform='translateY(-6.5px) rotate(-45deg)';
-  } else {
-    spans.forEach(s=>{ s.style.transform=''; s.style.opacity=''; });
-  }
+  const sp=ham.querySelectorAll('span');
+  if(drawer.classList.contains('open')){sp[0].style.transform='translateY(6.5px) rotate(45deg)';sp[1].style.opacity='0';sp[2].style.transform='translateY(-6.5px) rotate(-45deg)';}
+  else sp.forEach(s=>{s.style.transform='';s.style.opacity='';});
 });
-drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
-  drawer.classList.remove('open');
-  ham.querySelectorAll('span').forEach(s=>{ s.style.transform=''; s.style.opacity=''; });
-}));
+drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{drawer.classList.remove('open');ham.querySelectorAll('span').forEach(s=>{s.style.transform='';s.style.opacity='';});}));
 
 /* Scroll reveal */
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){ e.target.classList.add('on'); obs.unobserve(e.target); }
-  });
-},{threshold:.1});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});},{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-/* CTA form */
-function handleCTA(e){
+/* FAQ toggle */
+function toggleFaq(el){
+  const item=el.closest('.faq-item');
+  const wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
+}
+
+/* Contact form */
+function handleContact(e){
   e.preventDefault();
-  const input=document.getElementById('cta-email');
-  const msg=document.getElementById('cta-success');
-  const valid=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
-  if(!valid){
-    input.style.borderColor='var(--red)';
-    input.style.boxShadow='0 0 0 3px rgba(255,77,77,.1)';
-    input.placeholder='Enter a valid email first';
-    setTimeout(()=>{
-      input.style.borderColor=''; input.style.boxShadow='';
-      input.placeholder='your@email.com';
-    },2500);
-    return;
-  }
-  input.value='';
+  const msg=document.getElementById('form-success');
   msg.style.display='block';
   setTimeout(()=>msg.style.display='none',6000);
 }
-document.getElementById('cta-email').addEventListener('keydown',e=>{
-  if(e.key==='Enter') handleCTA({preventDefault:()=>{}});
-});
 
 /* Keyframe injection */
 const s=document.createElement('style');
-s.textContent=`
-@keyframes fadeUp {
-  from { opacity:0; transform:translateY(24px); }
-  to   { opacity:1; transform:translateY(0); }
-}`;
+s.textContent='@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}';
 document.head.appendChild(s);
-
-/* Animated fraud ring */
-setTimeout(()=>{
-  const circle=document.querySelector('.fraud-ring circle:last-child');
-  if(circle){
-    circle.style.transition='stroke-dashoffset 1.4s cubic-bezier(.16,1,.3,1)';
-    const io=new IntersectionObserver(([e])=>{
-      if(e.isIntersecting){ circle.style.strokeDashoffset='66'; io.disconnect(); }
-    },{threshold:.3});
-    circle.style.strokeDashoffset='264';
-    io.observe(circle);
-  }
-},200);
 </script>
 </body>
 </html>
