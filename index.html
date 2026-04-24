@@ -18,6 +18,7 @@
   --accent-soft:  rgba(34,3,168,0.06);
   --green:        #16a34a;
   --amber:        #d97706;
+  --teal:         #0d9488;
   --radius:       14px;
   --font-display: 'Poppins', sans-serif;
   --font-body:    'Instrument Sans', sans-serif;
@@ -190,10 +191,10 @@ section{position:relative;}
 svg{display:block;}
 
 /* ═══════════════════════════════════════════════════════════
-   FEATURES PANEL — Property Requests & ProPifyAI
+   FEATURES PANEL — 3 columns
 ═══════════════════════════════════════════════════════════ */
 #features-panel {
-  padding: 80px 0;
+  padding: 60px 0;
   border-top: 1px solid var(--border);
   background: var(--surface);
   position: relative;
@@ -222,30 +223,33 @@ svg{display:block;}
 
 .fp-header {
   text-align: center;
-  margin-bottom: 52px;
+  margin-bottom: 36px;
 }
 .fp-header h2 {
-  font-size: clamp(1.9rem, 3.4vw, 2.9rem);
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
   letter-spacing: -.04em;
   color: var(--txt);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 .fp-header p {
-  font-size: .95rem;
+  font-size: .88rem;
   color: var(--muted2);
-  max-width: 480px;
+  max-width: 520px;
   margin: 0 auto;
-  line-height: 1.65;
+  line-height: 1.6;
 }
 
 .fp-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
   position: relative;
   z-index: 1;
 }
-@media(max-width: 860px) {
+@media(max-width: 1000px) {
+  .fp-grid { grid-template-columns: 1fr 1fr; }
+}
+@media(max-width: 660px) {
   .fp-grid { grid-template-columns: 1fr; }
 }
 
@@ -253,7 +257,7 @@ svg{display:block;}
 .fp-col {
   background: var(--bg);
   border: 1.5px solid var(--border);
-  border-radius: 20px;
+  border-radius: 18px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -266,16 +270,16 @@ svg{display:block;}
   box-shadow: 0 16px 52px rgba(34,3,168,.12);
 }
 
-/* Featured image area */
+/* Featured image area — compact */
 .fp-image {
   position: relative;
   width: 100%;
-  height: 260px;
+  height: 192px;
   overflow: hidden;
   flex-shrink: 0;
 }
 
-/* Property Request featured image — illustrated UI mockup */
+/* Property Request featured image */
 .fp-img-request {
   background: linear-gradient(135deg, #2203a8 0%, #4422cc 60%, #6644ee 100%);
   display: flex;
@@ -289,75 +293,75 @@ svg{display:block;}
   inset: 0;
   background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
                     linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-  background-size: 32px 32px;
+  background-size: 28px 28px;
 }
 
-/* The illustrated UI mockup inside the image area */
 .req-mockup {
   position: relative;
   z-index: 2;
-  width: 320px;
+  width: 240px;
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 14px;
-  padding: 18px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  border-radius: 12px;
+  padding: 13px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.3);
 }
 .req-mockup-title {
   font-family: var(--font-display);
-  font-size: .8rem;
+  font-size: .72rem;
   font-weight: 700;
   color: #fff;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
 }
 .req-mockup-title::before {
   content: '';
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: #22c55e;
-  box-shadow: 0 0 6px #22c55e;
+  box-shadow: 0 0 5px #22c55e;
   display: block;
+  flex-shrink: 0;
 }
 .req-field {
   background: rgba(255,255,255,0.12);
   border: 1px solid rgba(255,255,255,0.18);
-  border-radius: 7px;
-  padding: 8px 12px;
-  margin-bottom: 8px;
-  font-size: .68rem;
+  border-radius: 6px;
+  padding: 6px 10px;
+  margin-bottom: 6px;
+  font-size: .62rem;
   color: rgba(255,255,255,.6);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 .req-field span { color: #fff; font-weight: 500; }
-.req-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+.req-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 6px; }
 .req-field-sm {
   background: rgba(255,255,255,0.12);
   border: 1px solid rgba(255,255,255,0.18);
-  border-radius: 7px;
-  padding: 8px 10px;
-  font-size: .65rem;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: .58rem;
   color: rgba(255,255,255,.55);
 }
-.req-field-sm span { display: block; color: #fff; font-weight: 600; font-size: .72rem; }
+.req-field-sm span { display: block; color: #fff; font-weight: 600; font-size: .65rem; }
 .req-submit-mini {
   width: 100%;
   background: rgba(255,255,255,0.22);
   border: 1px solid rgba(255,255,255,0.35);
-  border-radius: 7px;
-  padding: 9px;
+  border-radius: 6px;
+  padding: 7px;
   font-family: var(--font-display);
-  font-size: .7rem;
+  font-size: .64rem;
   font-weight: 700;
   color: #fff;
   text-align: center;
-  margin-top: 4px;
+  margin-top: 3px;
   letter-spacing: .04em;
 }
 
@@ -379,48 +383,47 @@ svg{display:block;}
 .ai-mockup {
   position: relative;
   z-index: 2;
-  width: 300px;
+  width: 230px;
   background: rgba(14,12,26,0.85);
   backdrop-filter: blur(16px);
   border: 1px solid rgba(100,60,255,0.25);
-  border-radius: 14px;
-  padding: 16px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(100,60,255,0.1);
+  border-radius: 12px;
+  padding: 13px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(100,60,255,0.1);
 }
 .ai-top-bar {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 14px;
-  padding-bottom: 12px;
+  gap: 7px;
+  margin-bottom: 11px;
+  padding-bottom: 10px;
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 .ai-avatar {
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background: linear-gradient(135deg, #4422cc, #2203a8);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 0 10px rgba(68,34,204,0.5);
+  box-shadow: 0 0 8px rgba(68,34,204,0.5);
 }
-.ai-name { font-family: var(--font-display); font-size: .72rem; font-weight: 700; color: #eeedf8; }
-.ai-status { font-size: .58rem; color: rgba(255,255,255,.35); }
+.ai-name { font-family: var(--font-display); font-size: .66rem; font-weight: 700; color: #eeedf8; }
+.ai-status { font-size: .54rem; color: rgba(255,255,255,.35); }
 .ai-bubble {
-  border-radius: 10px;
-  padding: 9px 12px;
-  font-size: .68rem;
+  border-radius: 8px;
+  padding: 7px 10px;
+  font-size: .62rem;
   line-height: 1.5;
-  margin-bottom: 7px;
+  margin-bottom: 6px;
   max-width: 90%;
 }
 .ai-bubble-ai {
   background: rgba(68,34,204,0.25);
   border: 1px solid rgba(100,60,255,0.2);
   color: #c4c0f0;
-  align-self: flex-start;
 }
 .ai-bubble-user {
   background: rgba(255,255,255,0.06);
@@ -431,17 +434,16 @@ svg{display:block;}
 .ai-typing {
   display: flex;
   align-items: center;
-  gap: 4px;
-  padding: 9px 12px;
+  gap: 3px;
+  padding: 7px 10px;
   background: rgba(68,34,204,0.15);
   border: 1px solid rgba(100,60,255,0.15);
-  border-radius: 10px;
+  border-radius: 8px;
   width: fit-content;
-  margin-top: 4px;
 }
 .ai-typing-dot {
-  width: 5px;
-  height: 5px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
   background: rgba(100,60,255,0.7);
   animation: aiTyping 1.4s ease-in-out infinite;
@@ -450,24 +452,24 @@ svg{display:block;}
 .ai-typing-dot:nth-child(3) { animation-delay: .4s; }
 @keyframes aiTyping {
   0%,60%,100% { transform: translateY(0); opacity: .5; }
-  30% { transform: translateY(-4px); opacity: 1; }
+  30% { transform: translateY(-3px); opacity: 1; }
 }
 .ai-input-bar {
-  margin-top: 12px;
+  margin-top: 10px;
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 8px;
-  padding: 8px 10px;
-  font-size: .62rem;
+  border-radius: 7px;
+  padding: 6px 8px;
+  font-size: .57rem;
   color: rgba(255,255,255,.25);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 .ai-send-btn {
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
   background: rgba(68,34,204,0.5);
   display: flex;
   align-items: center;
@@ -475,9 +477,198 @@ svg{display:block;}
   flex-shrink: 0;
 }
 
+/* ── Neighbourhood Insights featured image ── */
+.fp-img-neighbourhood {
+  background: linear-gradient(135deg, #0f4c35 0%, #0d9488 50%, #14b8a6 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.fp-img-neighbourhood::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Map mockup UI */
+.nbr-mockup {
+  position: relative;
+  z-index: 2;
+  width: 246px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+}
+.nbr-map-area {
+  height: 96px;
+  background: rgba(13,148,136,0.4);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+/* Simulated map roads */
+.map-road-h {
+  position: absolute;
+  height: 3px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 2px;
+}
+.map-road-v {
+  position: absolute;
+  width: 3px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 2px;
+}
+.map-pin {
+  width: 28px;
+  height: 28px;
+  background: rgba(255,255,255,0.22);
+  border: 2px solid rgba(255,255,255,0.55);
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 2;
+}
+.map-pin::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  display: block;
+  transform: rotate(45deg);
+}
+.map-pin-glow {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+  animation: pinPulse 2.2s ease-in-out infinite;
+  z-index: 1;
+}
+@keyframes pinPulse {
+  0%,100%{transform:scale(1);opacity:.6}
+  50%{transform:scale(1.35);opacity:.2}
+}
+
+/* Neighbourhood insight cards below map */
+.nbr-info-area {
+  padding: 10px 11px 11px;
+}
+.nbr-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.nbr-area-name {
+  font-family: var(--font-display);
+  font-size: .7rem;
+  font-weight: 800;
+  color: #fff;
+}
+.nbr-verified-badge {
+  background: rgba(34,197,94,0.2);
+  border: 1px solid rgba(34,197,94,0.4);
+  border-radius: 100px;
+  padding: 2px 8px;
+  font-size: .54rem;
+  font-weight: 700;
+  color: #4ade80;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  letter-spacing: .04em;
+}
+.nbr-verified-badge::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #4ade80;
+}
+.nbr-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  margin-bottom: 8px;
+}
+.nbr-metric {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 6px;
+  padding: 5px 6px;
+  text-align: center;
+}
+.nbr-metric-val {
+  font-family: var(--font-display);
+  font-size: .7rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+}
+.nbr-metric-label {
+  font-size: .5rem;
+  color: rgba(255,255,255,.5);
+  margin-top: 2px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+/* Review row */
+.nbr-review-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 7px;
+  padding: 6px 8px;
+}
+.nbr-reviewer-av {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: .5rem;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+}
+.nbr-review-text {
+  font-size: .57rem;
+  color: rgba(255,255,255,.7);
+  line-height: 1.4;
+  flex: 1;
+}
+.nbr-review-stars {
+  font-size: .54rem;
+  color: #fbbf24;
+  flex-shrink: 0;
+}
+
 /* Column content body */
 .fp-body {
-  padding: 28px;
+  padding: 22px;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -486,41 +677,43 @@ svg{display:block;}
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: .62rem;
+  font-size: .6rem;
   letter-spacing: .13em;
   text-transform: uppercase;
   color: var(--accent);
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 .fp-tag::before {
   content: '';
-  width: 12px;
+  width: 10px;
   height: 1.5px;
   background: var(--accent);
 }
+.fp-tag.teal { color: var(--teal); }
+.fp-tag.teal::before { background: var(--teal); }
 .fp-body h3 {
-  font-size: 1.15rem;
+  font-size: 1rem;
   font-weight: 800;
   color: var(--txt);
   letter-spacing: -.03em;
   line-height: 1.2;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 .fp-body p {
-  font-size: .84rem;
+  font-size: .8rem;
   color: var(--muted2);
-  line-height: 1.68;
+  line-height: 1.65;
   flex: 1;
-  margin-bottom: 22px;
+  margin-bottom: 18px;
 }
 
-/* Chips row */
+/* Chips */
 .fp-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
-  margin-bottom: 22px;
+  gap: 6px;
+  margin-bottom: 18px;
 }
 .fp-chip {
   display: inline-flex;
@@ -529,36 +722,37 @@ svg{display:block;}
   background: var(--surface2);
   border: 1.5px solid var(--border2);
   border-radius: 100px;
-  padding: 4px 12px;
-  font-size: .68rem;
+  padding: 3px 10px;
+  font-size: .64rem;
   font-weight: 600;
   color: var(--muted2);
 }
 .fp-chip::before {
   content: '';
-  width: 5px;
-  height: 5px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
   background: var(--accent);
   flex-shrink: 0;
 }
 .fp-chip.amber::before { background: var(--amber); }
+.fp-chip.teal::before { background: var(--teal); }
 
-/* CTA buttons inside columns */
+/* CTA buttons */
 .fp-btn-primary {
   font-family: var(--font-display);
-  font-size: .84rem;
+  font-size: .8rem;
   font-weight: 700;
   color: #fff;
   background: var(--accent);
   border: none;
   cursor: none;
-  padding: 13px 24px;
+  padding: 11px 20px;
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 9px;
+  gap: 8px;
   transition: background .2s, box-shadow .2s, transform .15s;
   width: 100%;
   text-decoration: none;
@@ -571,20 +765,46 @@ svg{display:block;}
 .fp-btn-primary svg { transition: transform .2s; }
 .fp-btn-primary:hover svg { transform: translateX(3px); }
 
+.fp-btn-teal {
+  font-family: var(--font-display);
+  font-size: .8rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--teal);
+  border: none;
+  cursor: none;
+  padding: 11px 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background .2s, box-shadow .2s, transform .15s;
+  width: 100%;
+  text-decoration: none;
+}
+.fp-btn-teal:hover {
+  background: #0f766e;
+  box-shadow: 0 8px 28px rgba(13,148,136,0.3);
+  transform: translateY(-2px);
+}
+.fp-btn-teal svg { transition: transform .2s; }
+.fp-btn-teal:hover svg { transform: translateX(3px); }
+
 .fp-btn-coming {
   font-family: var(--font-display);
-  font-size: .84rem;
+  font-size: .8rem;
   font-weight: 700;
   color: var(--muted);
   background: var(--surface2);
   border: 1.5px solid var(--border2);
   cursor: not-allowed;
-  padding: 13px 24px;
+  padding: 11px 20px;
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 9px;
+  gap: 8px;
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -605,29 +825,39 @@ svg{display:block;}
   background: rgba(217,119,6,0.12);
   border: 1px solid rgba(217,119,6,0.3);
   color: var(--amber);
-  font-size: .6rem;
+  font-size: .58rem;
   font-weight: 700;
-  padding: 2px 8px;
+  padding: 2px 7px;
   border-radius: 100px;
   letter-spacing: .06em;
   text-transform: uppercase;
 }
 
-/* AI col overlay glow */
+/* Teal col accent */
+.fp-col-teal {
+  border-color: rgba(13,148,136,0.2);
+}
+.fp-col-teal:hover {
+  border-color: rgba(13,148,136,0.4);
+  box-shadow: 0 16px 52px rgba(13,148,136,0.1);
+}
+
+/* AI col */
 .fp-col-ai .fp-image { position: relative; }
 .fp-col-ai::after {
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: 20px;
+  border-radius: 18px;
   pointer-events: none;
-  box-shadow: inset 0 0 0 1.5px rgba(100,60,255,0.15);
+  box-shadow: inset 0 0 0 1.5px rgba(100,60,255,0.12);
 }
 
 /* ═══════════════════════════════════════════════════════════
    PROPERTY REQUEST MODAL
 ═══════════════════════════════════════════════════════════ */
-#req-modal-overlay {
+#req-modal-overlay,
+#nbr-modal-overlay {
   position: fixed;
   inset: 0;
   z-index: 1100;
@@ -641,11 +871,13 @@ svg{display:block;}
   pointer-events: none;
   transition: opacity .3s cubic-bezier(.16,1,.3,1);
 }
-#req-modal-overlay.open {
+#req-modal-overlay.open,
+#nbr-modal-overlay.open {
   opacity: 1;
   pointer-events: all;
 }
-#req-modal {
+#req-modal,
+#nbr-modal {
   background: var(--surface);
   border: 1.5px solid var(--border2);
   border-radius: 22px;
@@ -655,42 +887,48 @@ svg{display:block;}
   overflow: hidden;
   transform: translateY(24px) scale(.97);
   transition: transform .35s cubic-bezier(.16,1,.3,1);
+  max-height: 90vh;
+  overflow-y: auto;
 }
-#req-modal-overlay.open #req-modal {
+#req-modal-overlay.open #req-modal,
+#nbr-modal-overlay.open #nbr-modal {
   transform: translateY(0) scale(1);
 }
 .modal-header {
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-  padding: 28px 30px 24px;
+  padding: 24px 28px 20px;
   position: relative;
 }
+.modal-header.teal-header {
+  background: linear-gradient(135deg, #0f4c35 0%, #0d9488 100%);
+}
 .modal-header-tag {
-  font-size: .62rem;
+  font-size: .6rem;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: rgba(255,255,255,.6);
   font-weight: 600;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 .modal-header h3 {
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 800;
   color: #fff;
   letter-spacing: -.03em;
 }
 .modal-header p {
-  font-size: .8rem;
+  font-size: .78rem;
   color: rgba(255,255,255,.65);
-  margin-top: 6px;
+  margin-top: 5px;
   line-height: 1.5;
 }
 .modal-close {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 34px;
-  height: 34px;
+  top: 18px;
+  right: 18px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background: rgba(255,255,255,0.15);
   border: 1px solid rgba(255,255,255,0.25);
@@ -705,12 +943,12 @@ svg{display:block;}
   transform: rotate(90deg);
 }
 .modal-body {
-  padding: 28px 30px 30px;
+  padding: 24px 28px 28px;
 }
 .modal-form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 11px;
 }
 .modal-row {
   display: grid;
@@ -721,21 +959,21 @@ svg{display:block;}
 
 .modal-label {
   font-family: var(--font-display);
-  font-size: .68rem;
+  font-size: .65rem;
   font-weight: 600;
   color: var(--muted2);
   letter-spacing: .04em;
   text-transform: uppercase;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
   display: block;
 }
 .modal-field {
   background: var(--bg);
   border: 1.5px solid var(--border);
   border-radius: 8px;
-  padding: 11px 14px;
+  padding: 10px 13px;
   font-family: var(--font-body);
-  font-size: .86rem;
+  font-size: .84rem;
   color: var(--txt);
   outline: none;
   width: 100%;
@@ -747,6 +985,10 @@ svg{display:block;}
   border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(34,3,168,.1);
 }
+.modal-field.teal-focus:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(13,148,136,.1);
+}
 .modal-select {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
@@ -756,13 +998,13 @@ svg{display:block;}
 .modal-field-group { display: flex; flex-direction: column; }
 .modal-submit {
   font-family: var(--font-display);
-  font-size: .9rem;
+  font-size: .88rem;
   font-weight: 700;
   color: #fff;
   background: var(--accent);
   border: none;
   cursor: none;
-  padding: 14px 28px;
+  padding: 13px 24px;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -777,14 +1019,20 @@ svg{display:block;}
   box-shadow: 0 8px 28px var(--accent-glow);
   transform: translateY(-1px);
 }
-#modal-success {
-  display: none;
+.modal-submit.teal-submit {
+  background: var(--teal);
+}
+.modal-submit.teal-submit:hover {
+  background: #0f766e;
+  box-shadow: 0 8px 28px rgba(13,148,136,.25);
+}
+.modal-success-msg {
   background: rgba(22,163,74,0.08);
   border: 1.5px solid rgba(22,163,74,0.25);
   border-radius: 10px;
-  padding: 14px 18px;
+  padding: 13px 16px;
   color: var(--green);
-  font-size: .83rem;
+  font-size: .81rem;
   font-weight: 600;
   display: none;
   align-items: center;
@@ -794,7 +1042,7 @@ svg{display:block;}
   display: flex;
   align-items: center;
   gap: 6px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 .mp-step {
   flex: 1;
@@ -804,12 +1052,61 @@ svg{display:block;}
   overflow: hidden;
 }
 .mp-step.active { background: var(--accent); }
+.mp-step.active-teal { background: var(--teal); }
 .mp-step-label {
-  font-size: .62rem;
+  font-size: .6rem;
   color: var(--muted);
   letter-spacing: .06em;
   text-transform: uppercase;
   white-space: nowrap;
+}
+
+/* Rating stars in nbr modal */
+.star-rating {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+.star-btn {
+  background: none;
+  border: none;
+  cursor: none;
+  font-size: 1.4rem;
+  color: var(--border2);
+  transition: color .15s, transform .15s;
+  padding: 0;
+  line-height: 1;
+}
+.star-btn:hover,
+.star-btn.selected {
+  color: #f59e0b;
+  transform: scale(1.15);
+}
+
+/* Category pills in nbr modal */
+.category-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 4px;
+}
+.cat-pill {
+  font-family: var(--font-display);
+  font-size: .67rem;
+  font-weight: 600;
+  padding: 6px 13px;
+  border-radius: 100px;
+  border: 1.5px solid var(--border2);
+  background: var(--bg);
+  color: var(--muted2);
+  cursor: none;
+  transition: background .2s, border-color .2s, color .2s;
+}
+.cat-pill.selected,
+.cat-pill:hover {
+  background: rgba(13,148,136,0.1);
+  border-color: var(--teal);
+  color: var(--teal);
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -981,41 +1278,6 @@ svg{display:block;}
 .stat-label{font-size:.76rem;color:var(--muted);line-height:1.4;}
 @media(max-width:900px){.stats-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:500px){.stats-grid{grid-template-columns:1fr;}}
-
-/* APP COMING SOON */
-#app{padding:100px 0;border-top:1px solid var(--border);}
-.app-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-@media(max-width:900px){.app-inner{grid-template-columns:1fr;gap:48px;}}
-.app-left .section-tag{margin-bottom:16px;}
-.app-left h2{font-size:clamp(2rem,3.8vw,3.2rem);letter-spacing:-.04em;line-height:1.04;margin-bottom:16px;color:var(--txt);}
-.app-left p{font-size:.95rem;color:var(--muted2);line-height:1.68;margin-bottom:32px;max-width:440px;}
-.app-stores{display:flex;gap:14px;flex-wrap:wrap;}
-.store-btn{display:flex;align-items:center;gap:12px;background:var(--txt);color:var(--bg);border:none;cursor:none;padding:14px 22px;border-radius:12px;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:var(--shadow);}
-[data-theme="dark"] .store-btn{background:var(--surface2);color:var(--txt);border:1.5px solid var(--border2);}
-.store-btn:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(34,3,168,.18);}
-.store-btn-text{text-align:left;}
-.store-btn-label{font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;opacity:.65;line-height:1;}
-.store-btn-name{font-family:var(--font-display);font-size:.95rem;font-weight:700;line-height:1.2;}
-.app-badges{display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap;}
-.app-badge{display:inline-flex;align-items:center;gap:6px;background:var(--surface2);border:1.5px solid var(--border2);border-radius:100px;padding:5px 12px;font-size:.68rem;font-weight:600;color:var(--muted2);letter-spacing:.04em;}
-.app-badge .b-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);}
-.app-right{display:flex;justify-content:center;align-items:center;}
-.phone-mockup{position:relative;width:240px;}
-.phone-shell{width:240px;height:480px;background:var(--txt);border-radius:36px;padding:12px;box-shadow:0 32px 80px rgba(34,3,168,.2),0 0 0 1px var(--border2);}
-[data-theme="dark"] .phone-shell{background:var(--surface2);}
-.phone-screen{width:100%;height:100%;background:var(--accent);border-radius:26px;overflow:hidden;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;}
-.phone-screen-inner{padding:24px;text-align:center;}
-.phone-logo{width:60px;height:60px;background:rgba(255,255,255,.2);border-radius:16px;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px);}
-.phone-title{font-family:var(--font-display);font-size:1.05rem;font-weight:800;color:#fff;margin-bottom:8px;}
-.phone-sub{font-size:.75rem;color:rgba(255,255,255,.7);line-height:1.5;}
-.phone-soon{background:rgba(255,255,255,.18);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.3);color:#fff;font-family:var(--font-display);font-size:.68rem;font-weight:700;padding:6px 16px;border-radius:100px;letter-spacing:.08em;text-transform:uppercase;margin-top:14px;display:inline-block;}
-.phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:80px;height:24px;background:var(--txt);border-radius:0 0 16px 16px;}
-[data-theme="dark"] .phone-notch{background:var(--surface2);}
-.phone-ring{position:absolute;border-radius:50%;border:1px solid rgba(34,3,168,.18);pointer-events:none;animation:ringPulse 3s ease-in-out infinite;}
-.phone-ring:nth-child(1){inset:-30px;animation-delay:0s;}
-.phone-ring:nth-child(2){inset:-60px;animation-delay:1s;opacity:.6;}
-.phone-ring:nth-child(3){inset:-90px;animation-delay:2s;opacity:.3;}
-@keyframes ringPulse{0%,100%{transform:scale(1);opacity:.3}50%{transform:scale(1.03);opacity:.15}}
 
 /* FAQ */
 #faq{padding:100px 0;border-top:1px solid var(--border);background:var(--surface);}
@@ -1199,7 +1461,7 @@ footer{border-top:1px solid var(--border);padding:40px;background:var(--surface)
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
-     FEATURES PANEL — Property Requests & ProPifyAI
+     FEATURES PANEL — 3 columns
 ═══════════════════════════════════════════════════════════ -->
 <section id="features-panel">
   <div class="section-inner">
@@ -1207,15 +1469,13 @@ footer{border-top:1px solid var(--border);padding:40px;background:var(--surface)
     <div class="fp-header reveal">
       <div class="section-tag" style="justify-content:center;">Platform Features</div>
       <h2>Everything You Need,<br/>Right Here.</h2>
-      <p>Submit a property request or chat with our AI assistant — two powerful ways to find your next home faster.</p>
+      <p>Submit a property request, chat with our AI, or explore what others say about a neighbourhood — three powerful ways to find your next home faster.</p>
     </div>
 
     <div class="fp-grid">
 
       <!-- ── Column 1: Property Requests ── -->
       <div class="fp-col reveal d1">
-
-        <!-- Featured image: illustrated UI mockup -->
         <div class="fp-image fp-img-request">
           <div class="req-mockup">
             <div class="req-mockup-title">New Property Request</div>
@@ -1224,53 +1484,28 @@ footer{border-top:1px solid var(--border);padding:40px;background:var(--surface)
               <span>3-Bed Apartment</span>
             </div>
             <div class="req-field-row">
-              <div class="req-field-sm">
-                Location
-                <span>Lekki, Lagos</span>
-              </div>
-              <div class="req-field-sm">
-                Budget
-                <span>₦3.5M/yr</span>
-              </div>
+              <div class="req-field-sm">Location<span>Lekki, Lagos</span></div>
+              <div class="req-field-sm">Budget<span>₦3.5M/yr</span></div>
             </div>
-            <div class="req-field">
-              Move-in date
-              <span>ASAP</span>
-            </div>
-            <div class="req-field" style="margin-bottom:12px;">
-              Amenities needed
-              <span>Secure + Serviced</span>
-            </div>
+            <div class="req-field">Move-in date<span>ASAP</span></div>
             <div class="req-submit-mini">Submit Request →</div>
           </div>
-          <!-- Floating verified badge -->
-          <div style="position:absolute;top:18px;right:18px;background:rgba(22,163,74,0.18);border:1px solid rgba(22,163,74,0.35);border-radius:100px;padding:5px 12px;display:flex;align-items:center;gap:6px;backdrop-filter:blur(8px);">
-            <div style="width:6px;height:6px;border-radius:50%;background:#22c55e;box-shadow:0 0 6px #22c55e;flex-shrink:0;"></div>
-            <span style="font-family:var(--font-display);font-size:.6rem;font-weight:700;color:#22c55e;letter-spacing:.06em;text-transform:uppercase;">Matched</span>
+          <!-- Stats strip -->
+          <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(34,3,168,0.55);backdrop-filter:blur(10px);border-top:1px solid rgba(255,255,255,0.12);padding:8px 16px;display:flex;gap:20px;">
+            <div style="text-align:center;"><div style="font-family:var(--font-display);font-size:.8rem;font-weight:800;color:#fff;">14</div><div style="font-size:.54rem;color:rgba(255,255,255,.55);letter-spacing:.06em;text-transform:uppercase;">Matches</div></div>
+            <div style="text-align:center;"><div style="font-family:var(--font-display);font-size:.8rem;font-weight:800;color:#fff;">24h</div><div style="font-size:.54rem;color:rgba(255,255,255,.55);letter-spacing:.06em;text-transform:uppercase;">Response</div></div>
+            <div style="text-align:center;"><div style="font-family:var(--font-display);font-size:.8rem;font-weight:800;color:#fff;">100%</div><div style="font-size:.54rem;color:rgba(255,255,255,.55);letter-spacing:.06em;text-transform:uppercase;">Verified</div></div>
           </div>
-          <!-- Stats strip at bottom of image -->
-          <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(34,3,168,0.55);backdrop-filter:blur(10px);border-top:1px solid rgba(255,255,255,0.12);padding:10px 20px;display:flex;gap:24px;">
-            <div style="text-align:center;">
-              <div style="font-family:var(--font-display);font-size:.85rem;font-weight:800;color:#fff;">14</div>
-              <div style="font-size:.58rem;color:rgba(255,255,255,.55);letter-spacing:.06em;text-transform:uppercase;">Matches</div>
-            </div>
-            <div style="text-align:center;">
-              <div style="font-family:var(--font-display);font-size:.85rem;font-weight:800;color:#fff;">24h</div>
-              <div style="font-size:.58rem;color:rgba(255,255,255,.55);letter-spacing:.06em;text-transform:uppercase;">Response</div>
-            </div>
-            <div style="text-align:center;">
-              <div style="font-family:var(--font-display);font-size:.85rem;font-weight:800;color:#fff;">100%</div>
-              <div style="font-size:.58rem;color:rgba(255,255,255,.55);letter-spacing:.06em;text-transform:uppercase;">Verified</div>
-            </div>
+          <!-- Verified badge -->
+          <div style="position:absolute;top:12px;right:12px;background:rgba(22,163,74,0.2);border:1px solid rgba(22,163,74,0.4);border-radius:100px;padding:4px 10px;display:flex;align-items:center;gap:5px;backdrop-filter:blur(8px);">
+            <div style="width:5px;height:5px;border-radius:50%;background:#22c55e;box-shadow:0 0 5px #22c55e;flex-shrink:0;"></div>
+            <span style="font-family:var(--font-display);font-size:.57rem;font-weight:700;color:#22c55e;letter-spacing:.06em;text-transform:uppercase;">Matched</span>
           </div>
         </div>
-
-        <!-- Body -->
         <div class="fp-body">
           <div class="fp-tag">Property Requests</div>
           <h3>Tell us what you want.<br/>We'll find it for you.</h3>
           <p>Submit a detailed property request and our team — backed by AI matching — will surface the most relevant verified listings within 24 hours. No endless scrolling, no agent stress.</p>
-
           <div class="fp-chips">
             <span class="fp-chip">Rent</span>
             <span class="fp-chip">Sale</span>
@@ -1278,74 +1513,129 @@ footer{border-top:1px solid var(--border);padding:40px;background:var(--surface)
             <span class="fp-chip">Shortlet</span>
             <span class="fp-chip">Commercial</span>
           </div>
-
           <button class="fp-btn-primary" onclick="openReqModal()">
             Submit a Property Request
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
         </div>
       </div>
 
       <!-- ── Column 2: ProPifyAI ── -->
-      <div class="fp-col fp-col-ai reveal d2" style="border-color: rgba(100,60,255,0.18);">
-
-        <!-- Featured image: AI chat mockup -->
+      <div class="fp-col fp-col-ai reveal d2" style="border-color:rgba(100,60,255,0.18);">
         <div class="fp-image fp-img-ai">
           <div class="ai-mockup">
             <div class="ai-top-bar">
               <div class="ai-avatar">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round">
                   <path d="M12 2a4 4 0 014 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0 014-4zm0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4z"/>
                 </svg>
               </div>
               <div>
                 <div class="ai-name">ProPifyAI</div>
-                <div class="ai-status">Your smart property assistant</div>
+                <div class="ai-status">Smart property assistant</div>
               </div>
-              <div style="margin-left:auto;background:rgba(100,60,255,0.2);border:1px solid rgba(100,60,255,0.3);border-radius:100px;padding:3px 10px;font-size:.55rem;font-weight:700;color:#9d88ff;letter-spacing:.08em;text-transform:uppercase;">Beta</div>
+              <div style="margin-left:auto;background:rgba(100,60,255,0.2);border:1px solid rgba(100,60,255,0.3);border-radius:100px;padding:2px 8px;font-size:.5rem;font-weight:700;color:#9d88ff;letter-spacing:.08em;text-transform:uppercase;">Beta</div>
             </div>
-
-            <div class="ai-bubble ai-bubble-ai">Hi! I'm ProPifyAI. I can help you find the perfect property, compare listings, and answer any real estate questions. What are you looking for?</div>
-            <div class="ai-bubble ai-bubble-user" style="margin-left:auto;">I need a 2-bed in Ikoyi, under ₦5M</div>
+            <div class="ai-bubble ai-bubble-ai">Hi! I'm ProPifyAI. What property are you looking for?</div>
+            <div class="ai-bubble ai-bubble-user">2-bed in Ikoyi, under ₦5M</div>
             <div class="ai-typing">
-              <div class="ai-typing-dot"></div>
-              <div class="ai-typing-dot"></div>
-              <div class="ai-typing-dot"></div>
+              <div class="ai-typing-dot"></div><div class="ai-typing-dot"></div><div class="ai-typing-dot"></div>
             </div>
-
             <div class="ai-input-bar">
-              <span>Ask me anything about properties…</span>
+              <span>Ask me anything…</span>
               <div class="ai-send-btn">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#9d88ff" stroke-width="2.5" stroke-linecap="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#9d88ff" stroke-width="2.5" stroke-linecap="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
               </div>
             </div>
           </div>
-
-          <!-- Floating suggestion chips -->
-          <div style="position:absolute;top:14px;left:14px;display:flex;flex-direction:column;gap:6px;">
-            <div style="background:rgba(100,60,255,0.22);border:1px solid rgba(100,60,255,0.3);backdrop-filter:blur(8px);border-radius:8px;padding:5px 10px;font-size:.58rem;font-weight:600;color:#c4b5ff;white-space:nowrap;">💡 "Best areas for families in Lagos?"</div>
-            <div style="background:rgba(100,60,255,0.15);border:1px solid rgba(100,60,255,0.2);backdrop-filter:blur(8px);border-radius:8px;padding:5px 10px;font-size:.58rem;font-weight:600;color:#c4b5ff;white-space:nowrap;">💡 "Compare Lekki vs Victoria Island"</div>
+          <!-- Suggestion chips -->
+          <div style="position:absolute;top:10px;left:10px;display:flex;flex-direction:column;gap:5px;">
+            <div style="background:rgba(100,60,255,0.22);border:1px solid rgba(100,60,255,0.3);backdrop-filter:blur(8px);border-radius:7px;padding:4px 8px;font-size:.54rem;font-weight:600;color:#c4b5ff;white-space:nowrap;">💡 "Best family areas in Lagos?"</div>
+            <div style="background:rgba(100,60,255,0.15);border:1px solid rgba(100,60,255,0.2);backdrop-filter:blur(8px);border-radius:7px;padding:4px 8px;font-size:.54rem;font-weight:600;color:#c4b5ff;white-space:nowrap;">💡 "Compare Lekki vs VI"</div>
           </div>
         </div>
-
-        <!-- Body -->
         <div class="fp-body">
           <div class="fp-tag" style="color:rgba(100,60,255,0.8);">ProPifyAI</div>
           <h3>Your AI property<br/>advisor — coming soon.</h3>
-          <p>ProPifyAI will answer your real estate questions, help you compare neighbourhoods, estimate fair prices, and guide you through the entire property journey — available 24/7, completely free.</p>
-
+          <p>ProPifyAI will answer real estate questions, compare neighbourhoods, estimate fair prices, and guide you through the property journey — 24/7, completely free.</p>
           <div class="fp-chips">
             <span class="fp-chip amber">Price estimates</span>
             <span class="fp-chip amber">Neighbourhood guide</span>
             <span class="fp-chip amber">Market insights</span>
           </div>
-
           <button class="fp-btn-coming" disabled>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;">
               <path d="M12 2a4 4 0 014 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0 014-4zm0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4z"/>
             </svg>
             Chat with ProPifyAI
             <span class="coming-badge">Coming Soon</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ── Column 3: Neighbourhood Insights ── -->
+      <div class="fp-col fp-col-teal reveal d3">
+        <div class="fp-image fp-img-neighbourhood">
+          <!-- Map roads simulation -->
+          <div class="map-road-h" style="top:32%;left:0;right:0;"></div>
+          <div class="map-road-h" style="top:62%;left:0;right:0;"></div>
+          <div class="map-road-v" style="left:28%;top:0;bottom:0;"></div>
+          <div class="map-road-v" style="left:62%;top:0;bottom:0;"></div>
+
+          <div class="nbr-mockup">
+            <!-- Map area -->
+            <div class="nbr-map-area">
+              <div class="map-pin-glow"></div>
+              <div class="map-pin"></div>
+            </div>
+            <!-- Info area -->
+            <div class="nbr-info-area">
+              <div class="nbr-top-row">
+                <div class="nbr-area-name">Lekki Phase 1</div>
+                <div class="nbr-verified-badge">Verified</div>
+              </div>
+              <div class="nbr-metrics">
+                <div class="nbr-metric">
+                  <div class="nbr-metric-val">4.8</div>
+                  <div class="nbr-metric-label">Safety</div>
+                </div>
+                <div class="nbr-metric">
+                  <div class="nbr-metric-val">4.6</div>
+                  <div class="nbr-metric-label">Roads</div>
+                </div>
+                <div class="nbr-metric">
+                  <div class="nbr-metric-val">4.5</div>
+                  <div class="nbr-metric-label">Amenities</div>
+                </div>
+              </div>
+              <div class="nbr-review-row">
+                <div class="nbr-reviewer-av">AK</div>
+                <div class="nbr-review-text">"Great access, safe streets &amp; 24/7 power in most streets."</div>
+                <div class="nbr-review-stars">★★★★★</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Community badge -->
+          <div style="position:absolute;top:10px;right:10px;background:rgba(20,184,166,0.25);border:1px solid rgba(20,184,166,0.45);border-radius:100px;padding:4px 10px;display:flex;align-items:center;gap:5px;backdrop-filter:blur(8px);">
+            <div style="width:5px;height:5px;border-radius:50%;background:#2dd4bf;box-shadow:0 0 5px #2dd4bf;flex-shrink:0;"></div>
+            <span style="font-family:var(--font-display);font-size:.57rem;font-weight:700;color:#2dd4bf;letter-spacing:.06em;text-transform:uppercase;">Community</span>
+          </div>
+        </div>
+
+        <div class="fp-body">
+          <div class="fp-tag teal">Neighbourhood Insights</div>
+          <h3>Know your area before<br/>you move in.</h3>
+          <p>Community members share honest, first-hand insights about safety, infrastructure, amenities, and lifestyle in any neighbourhood — helping you make a truly informed decision before renting, buying, or leasing.</p>
+          <div class="fp-chips">
+            <span class="fp-chip teal">Safety ratings</span>
+            <span class="fp-chip teal">Road conditions</span>
+            <span class="fp-chip teal">Power supply</span>
+            <span class="fp-chip teal">Local amenities</span>
+          </div>
+          <button class="fp-btn-teal" onclick="openNbrModal()">
+            Share Neighbourhood Info
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
         </div>
       </div>
@@ -1357,125 +1647,169 @@ footer{border-top:1px solid var(--border);padding:40px;background:var(--surface)
 <!-- ═══════════════════════════════════════════════════════════
      PROPERTY REQUEST MODAL
 ═══════════════════════════════════════════════════════════ -->
-<div id="req-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title" onclick="handleOverlayClick(event)">
+<div id="req-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="req-modal-title" onclick="handleOverlayClick(event,'req-modal-overlay')">
   <div id="req-modal">
     <div class="modal-header">
       <div class="modal-header-tag">Property Request</div>
-      <h3 id="modal-title">What are you looking for?</h3>
+      <h3 id="req-modal-title">What are you looking for?</h3>
       <p>Fill in your requirements and our team will match you with the best verified listings within 24 hours.</p>
-      <button class="modal-close" onclick="closeReqModal()" aria-label="Close">
+      <button class="modal-close" onclick="closeModal('req-modal-overlay')" aria-label="Close">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
       </button>
     </div>
-
     <div class="modal-body">
-      <!-- Progress indicator -->
       <div class="modal-progress">
         <div class="mp-step active"></div>
         <div class="mp-step active"></div>
         <div class="mp-step"></div>
         <span class="mp-step-label">Step 2 of 3 — Property Details</span>
       </div>
-
       <div class="modal-form" id="req-form">
-
         <div class="modal-row">
-          <div class="modal-field-group">
-            <label class="modal-label">First Name</label>
-            <input class="modal-field" type="text" placeholder="e.g. Chukwuma"/>
-          </div>
-          <div class="modal-field-group">
-            <label class="modal-label">Last Name</label>
-            <input class="modal-field" type="text" placeholder="e.g. Eze"/>
-          </div>
+          <div class="modal-field-group"><label class="modal-label">First Name</label><input class="modal-field" type="text" placeholder="e.g. Chukwuma"/></div>
+          <div class="modal-field-group"><label class="modal-label">Last Name</label><input class="modal-field" type="text" placeholder="e.g. Eze"/></div>
         </div>
-
         <div class="modal-row">
-          <div class="modal-field-group">
-            <label class="modal-label">Email Address</label>
-            <input class="modal-field" type="email" placeholder="you@example.com"/>
-          </div>
-          <div class="modal-field-group">
-            <label class="modal-label">Phone Number</label>
-            <input class="modal-field" type="tel" placeholder="+234 800 000 0000"/>
-          </div>
+          <div class="modal-field-group"><label class="modal-label">Email Address</label><input class="modal-field" type="email" placeholder="you@example.com"/></div>
+          <div class="modal-field-group"><label class="modal-label">Phone Number</label><input class="modal-field" type="tel" placeholder="+234 800 000 0000"/></div>
         </div>
-
         <div class="modal-row">
-          <div class="modal-field-group">
-            <label class="modal-label">Property Type</label>
+          <div class="modal-field-group"><label class="modal-label">Property Type</label>
             <select class="modal-field modal-select">
               <option value="">Select type</option>
-              <option>Apartment / Flat</option>
-              <option>Detached House</option>
-              <option>Semi-Detached</option>
-              <option>Duplex / Terrace</option>
-              <option>Shortlet</option>
-              <option>Commercial Space</option>
-              <option>Land</option>
+              <option>Apartment / Flat</option><option>Detached House</option><option>Semi-Detached</option>
+              <option>Duplex / Terrace</option><option>Shortlet</option><option>Commercial Space</option><option>Land</option>
             </select>
           </div>
-          <div class="modal-field-group">
-            <label class="modal-label">Listing Purpose</label>
+          <div class="modal-field-group"><label class="modal-label">Listing Purpose</label>
             <select class="modal-field modal-select">
               <option value="">Select purpose</option>
-              <option>For Rent</option>
-              <option>For Sale</option>
-              <option>For Lease</option>
-              <option>Shortlet</option>
+              <option>For Rent</option><option>For Sale</option><option>For Lease</option><option>Shortlet</option>
             </select>
           </div>
         </div>
-
         <div class="modal-row">
-          <div class="modal-field-group">
-            <label class="modal-label">No. of Bedrooms</label>
+          <div class="modal-field-group"><label class="modal-label">No. of Bedrooms</label>
             <select class="modal-field modal-select">
               <option value="">Select</option>
-              <option>Self-contain</option>
-              <option>1 Bedroom</option>
-              <option>2 Bedrooms</option>
-              <option>3 Bedrooms</option>
-              <option>4 Bedrooms</option>
-              <option>5+ Bedrooms</option>
+              <option>Self-contain</option><option>1 Bedroom</option><option>2 Bedrooms</option>
+              <option>3 Bedrooms</option><option>4 Bedrooms</option><option>5+ Bedrooms</option>
             </select>
           </div>
-          <div class="modal-field-group">
-            <label class="modal-label">Preferred Location</label>
-            <input class="modal-field" type="text" placeholder="e.g. Lekki Phase 1, Lagos"/>
-          </div>
+          <div class="modal-field-group"><label class="modal-label">Preferred Location</label><input class="modal-field" type="text" placeholder="e.g. Lekki Phase 1, Lagos"/></div>
         </div>
-
-        <div class="modal-field-group">
-          <label class="modal-label">Budget Range</label>
+        <div class="modal-field-group"><label class="modal-label">Budget Range</label>
           <select class="modal-field modal-select">
             <option value="">Select budget</option>
-            <option>Under ₦500k/yr</option>
-            <option>₦500k – ₦1M/yr</option>
-            <option>₦1M – ₦2M/yr</option>
-            <option>₦2M – ₦3.5M/yr</option>
-            <option>₦3.5M – ₦5M/yr</option>
-            <option>₦5M – ₦10M/yr</option>
-            <option>Above ₦10M/yr</option>
+            <option>Under ₦500k/yr</option><option>₦500k – ₦1M/yr</option><option>₦1M – ₦2M/yr</option>
+            <option>₦2M – ₦3.5M/yr</option><option>₦3.5M – ₦5M/yr</option><option>₦5M – ₦10M/yr</option><option>Above ₦10M/yr</option>
           </select>
         </div>
-
         <div class="modal-field-group">
           <label class="modal-label">Additional Requirements (optional)</label>
-          <textarea class="modal-field" rows="3" placeholder="e.g. Must have 24/7 security, generator, parking space, close to a school…" style="min-height:80px;resize:none;"></textarea>
+          <textarea class="modal-field" rows="3" placeholder="e.g. Must have 24/7 security, generator, parking space…" style="min-height:72px;resize:none;"></textarea>
         </div>
-
-        <div id="modal-success" style="display:none;background:rgba(22,163,74,0.08);border:1.5px solid rgba(22,163,74,0.25);border-radius:10px;padding:14px 18px;color:var(--green);font-size:.83rem;font-weight:600;align-items:center;gap:10px;">
+        <div id="req-success" class="modal-success-msg">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>
           Request submitted! Our team will match you with verified listings within 24 hours.
         </div>
-
-        <button class="modal-submit" onclick="submitRequest(event)">
+        <button class="modal-submit" id="req-submit-btn" onclick="submitForm(event,'req-success','req-submit-btn','req-modal-overlay')">
           Submit My Property Request
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
+        <p style="font-size:.68rem;color:var(--muted);text-align:center;line-height:1.5;margin-top:2px;">By submitting, you agree to our Terms of Service. We'll never share your details without consent.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
-        <p style="font-size:.7rem;color:var(--muted);text-align:center;line-height:1.5;">By submitting, you agree to our Terms of Service. We'll never share your details without consent.</p>
+<!-- ═══════════════════════════════════════════════════════════
+     NEIGHBOURHOOD INSIGHTS MODAL
+═══════════════════════════════════════════════════════════ -->
+<div id="nbr-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="nbr-modal-title" onclick="handleOverlayClick(event,'nbr-modal-overlay')">
+  <div id="nbr-modal">
+    <div class="modal-header teal-header">
+      <div class="modal-header-tag">Neighbourhood Insights</div>
+      <h3 id="nbr-modal-title">Share What You Know</h3>
+      <p>Help fellow Nigerians make better property decisions by sharing honest insights about your area.</p>
+      <button class="modal-close" onclick="closeModal('nbr-modal-overlay')" aria-label="Close">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-progress">
+        <div class="mp-step active-teal"></div>
+        <div class="mp-step active-teal"></div>
+        <div class="mp-step"></div>
+        <span class="mp-step-label">Step 2 of 3 — Area Details</span>
+      </div>
+      <div class="modal-form">
+        <div class="modal-row">
+          <div class="modal-field-group"><label class="modal-label">Your Name</label><input class="modal-field teal-focus" type="text" placeholder="e.g. Amaka Obi"/></div>
+          <div class="modal-field-group"><label class="modal-label">Phone / Email</label><input class="modal-field teal-focus" type="text" placeholder="For verification"/></div>
+        </div>
+
+        <div class="modal-row">
+          <div class="modal-field-group"><label class="modal-label">Area / Neighbourhood</label><input class="modal-field teal-focus" type="text" placeholder="e.g. Lekki Phase 1"/></div>
+          <div class="modal-field-group"><label class="modal-label">City / State</label>
+            <select class="modal-field modal-select teal-focus">
+              <option value="">Select city</option>
+              <option>Lagos</option><option>Abuja</option><option>Port Harcourt</option>
+              <option>Ibadan</option><option>Kano</option><option>Enugu</option><option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal-field-group">
+          <label class="modal-label">What are you sharing insights about?</label>
+          <div class="category-pills" id="category-pills">
+            <button type="button" class="cat-pill" onclick="togglePill(this)">Safety &amp; Security</button>
+            <button type="button" class="cat-pill" onclick="togglePill(this)">Road Conditions</button>
+            <button type="button" class="cat-pill" onclick="togglePill(this)">Power Supply</button>
+            <button type="button" class="cat-pill" onclick="togglePill(this)">Water Access</button>
+            <button type="button" class="cat-pill" onclick="togglePill(this)">Schools &amp; Hospitals</button>
+            <button type="button" class="cat-pill" onclick="togglePill(this)">Traffic &amp; Commute</button>
+            <button type="button" class="cat-pill" onclick="togglePill(this)">Community Feel</button>
+            <button type="button" class="cat-pill" onclick="togglePill(this)">Flooding</button>
+            <button type="button" class="cat-pill" onclick="togglePill(this)">Internet &amp; Connectivity</button>
+          </div>
+        </div>
+
+        <div class="modal-field-group">
+          <label class="modal-label">Your Overall Rating for This Area</label>
+          <div class="star-rating" id="star-rating">
+            <button type="button" class="star-btn" data-star="1" onclick="setStars(1)">★</button>
+            <button type="button" class="star-btn" data-star="2" onclick="setStars(2)">★</button>
+            <button type="button" class="star-btn" data-star="3" onclick="setStars(3)">★</button>
+            <button type="button" class="star-btn" data-star="4" onclick="setStars(4)">★</button>
+            <button type="button" class="star-btn" data-star="5" onclick="setStars(5)">★</button>
+          </div>
+        </div>
+
+        <div class="modal-field-group">
+          <label class="modal-label">Share Your Experience (be as detailed as you like)</label>
+          <textarea class="modal-field teal-focus" rows="4" placeholder="e.g. Lekki Phase 1 has excellent roads and 24/7 power on most streets. Security is tight with multiple checkpoints. The main challenge is traffic on the Lekki-Epe Expressway during peak hours…" style="min-height:90px;resize:none;"></textarea>
+        </div>
+
+        <div class="modal-field-group">
+          <label class="modal-label">How long have you lived / worked in this area?</label>
+          <select class="modal-field modal-select teal-focus">
+            <option value="">Select duration</option>
+            <option>Less than 6 months</option><option>6–12 months</option>
+            <option>1–3 years</option><option>3–5 years</option><option>5+ years</option>
+          </select>
+        </div>
+
+        <div id="nbr-success" class="modal-success-msg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>
+          Thank you! Your insights will help thousands of Nigerians make better property decisions.
+        </div>
+
+        <button class="modal-submit teal-submit" id="nbr-submit-btn" onclick="submitForm(event,'nbr-success','nbr-submit-btn','nbr-modal-overlay')">
+          Submit Neighbourhood Insights
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <p style="font-size:.68rem;color:var(--muted);text-align:center;line-height:1.5;margin-top:2px;">Your submission will be reviewed before publishing. Verified contributors earn a community badge.</p>
       </div>
     </div>
   </div>
@@ -1676,58 +2010,6 @@ footer{border-top:1px solid var(--border);padding:40px;background:var(--surface)
   </div>
 </section>
 
-<!-- APP COMING SOON -->
-<section id="app">
-  <div class="section-inner">
-    <div class="app-inner">
-      <div class="app-left reveal">
-        <div class="section-tag">Coming Soon</div>
-        <h2 style="margin-top:12px;">MyPropifyNG<br/>In Your Pocket.</h2>
-        <p style="margin-top:14px;">The MyPropifyNG mobile app is on its way — bringing verified listings, instant inspection booking, and secure payments right to your fingertips. Be the first to know when we launch.</p>
-        <div class="app-badges">
-          <div class="app-badge"><div class="b-dot"></div>Android App</div>
-          <div class="app-badge"><div class="b-dot"></div>iOS App</div>
-          <div class="app-badge"><div class="b-dot" style="background:var(--amber);"></div>Coming Q1 2026</div>
-        </div>
-        <div class="app-stores">
-          <a href="#" class="store-btn" style="pointer-events:none;opacity:.7;" title="Coming soon to Google Play">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" opacity=".85"><path d="M3.18 23.4c.28.16.6.2.92.12l11.2-6.48-2.78-2.78-9.34 9.14zm-1.1-19.8C1.72 3.9 1.5 4.3 1.5 4.8v14.4c0 .5.22.9.58 1.2l.08.06 8.07-8.07v-.18L2.08 3.6zm14.58 9.44-2.68-2.68-1.72 1.72 2.68 2.68 3.02-1.74c-.32-.2-.9-.52-1.3-.74zM4.1.6C3.78.52 3.46.56 3.18.72L12.5 10.04l-2.78 2.78L3.18.72z"/></svg>
-            <div class="store-btn-text"><div class="store-btn-label">Get it on</div><div class="store-btn-name">Google Play</div></div>
-          </a>
-          <a href="#" class="store-btn" style="pointer-events:none;opacity:.7;" title="Coming soon to App Store">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" opacity=".85"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-            <div class="store-btn-text"><div class="store-btn-label">Download on the</div><div class="store-btn-name">App Store</div></div>
-          </a>
-        </div>
-        <p style="font-size:.72rem;color:var(--muted);margin-top:14px;">Notify me when it launches → <a href="#cta" style="color:var(--accent);font-weight:600;text-decoration:none;">Get Early Access</a></p>
-      </div>
-      <div class="app-right reveal d2">
-        <div class="phone-mockup">
-          <div class="phone-ring"></div><div class="phone-ring"></div><div class="phone-ring"></div>
-          <div class="phone-shell">
-            <div class="phone-screen">
-              <div class="phone-notch"></div>
-              <div class="phone-screen-inner">
-                <div class="phone-logo"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="9 22 9 12 15 12 15 22" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                <div class="phone-title">MyPropifyNG</div>
-                <div class="phone-sub">Find, verify &amp; secure<br/>your dream property</div>
-                <div class="phone-soon">Coming Soon</div>
-                <div style="margin-top:18px;background:rgba(255,255,255,.1);border-radius:10px;padding:10px;text-align:left;">
-                  <div style="font-size:.6rem;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">Top Match</div>
-                  <div style="font-size:.78rem;font-weight:700;color:#fff;margin-bottom:3px;">3-Bed · Lekki Phase 1</div>
-                  <div style="font-size:.65rem;color:rgba(255,255,255,.65);">₦3.2M/yr · Verified ✓</div>
-                  <div style="height:3px;background:rgba(255,255,255,.15);border-radius:2px;margin-top:8px;overflow:hidden;"><div style="width:98%;height:100%;background:#fff;border-radius:2px;"></div></div>
-                  <div style="font-size:.58rem;color:rgba(255,255,255,.5);margin-top:3px;">98% match</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- FAQ -->
 <section id="faq">
   <div class="section-inner">
@@ -1870,52 +2152,61 @@ function handleContact(e){
 }
 
 /* ═══════════════════════════════════════════════
-   PROPERTY REQUEST MODAL
+   MODAL SYSTEM
 ═══════════════════════════════════════════════ */
-function openReqModal(){
-  const overlay=document.getElementById('req-modal-overlay');
+function openModal(id){
+  const overlay=document.getElementById(id);
   overlay.classList.add('open');
   document.body.style.overflow='hidden';
-  // Re-focus to first input for a11y
-  setTimeout(()=>{
-    const first=overlay.querySelector('input,select,textarea');
-    if(first) first.focus();
-  },350);
+  setTimeout(()=>{const first=overlay.querySelector('input,select,textarea');if(first)first.focus();},350);
 }
-
-function closeReqModal(){
-  document.getElementById('req-modal-overlay').classList.remove('open');
+function closeModal(id){
+  document.getElementById(id).classList.remove('open');
   document.body.style.overflow='';
 }
-
-function handleOverlayClick(e){
-  if(e.target===document.getElementById('req-modal-overlay')) closeReqModal();
+function handleOverlayClick(e,id){
+  if(e.target===document.getElementById(id)) closeModal(id);
 }
+function openReqModal(){ openModal('req-modal-overlay'); }
+function openNbrModal(){ openModal('nbr-modal-overlay'); }
 
-// Close on Escape
 document.addEventListener('keydown',e=>{
-  if(e.key==='Escape') closeReqModal();
+  if(e.key==='Escape'){
+    closeModal('req-modal-overlay');
+    closeModal('nbr-modal-overlay');
+  }
 });
 
-function submitRequest(e){
+function submitForm(e,successId,btnId,overlayId){
   e.preventDefault();
-  const success=document.getElementById('modal-success');
-  const submitBtn=e.currentTarget;
-  submitBtn.textContent='Submitting…';
-  submitBtn.disabled=true;
+  const btn=document.getElementById(btnId);
+  const success=document.getElementById(successId);
+  const origHTML=btn.innerHTML;
+  btn.textContent='Submitting…';
+  btn.disabled=true;
   setTimeout(()=>{
     success.style.display='flex';
-    submitBtn.style.display='none';
-    // Auto-close after 3s
+    btn.style.display='none';
     setTimeout(()=>{
-      closeReqModal();
-      // Reset
-      submitBtn.style.display='flex';
-      submitBtn.disabled=false;
-      submitBtn.innerHTML='Submit My Property Request <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+      closeModal(overlayId);
+      btn.style.display='flex';
+      btn.disabled=false;
+      btn.innerHTML=origHTML;
       success.style.display='none';
     },2800);
   },1200);
+}
+
+/* ── Neighbourhood star rating ── */
+function setStars(n){
+  document.querySelectorAll('#star-rating .star-btn').forEach((btn,i)=>{
+    btn.classList.toggle('selected',i<n);
+  });
+}
+
+/* ── Category pill toggle ── */
+function togglePill(el){
+  el.classList.toggle('selected');
 }
 
 const s=document.createElement('style');
