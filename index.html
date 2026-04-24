@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
@@ -60,9 +59,6 @@
   --noise:       0.4;
 }
 
-/* ═══════════════════════════════════════════════════════════
-   RESET & BASE
-═══════════════════════════════════════════════════════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{
@@ -91,18 +87,12 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:800;line-height:1;}
 .reveal.on{opacity:1;transform:none;}
 .d1{transition-delay:.08s;}.d2{transition-delay:.16s;}.d3{transition-delay:.24s;}.d4{transition-delay:.32s;}.d5{transition-delay:.40s;}
 
-/* ═══════════════════════════════════════════════════════════
-   SCROLL PROGRESS + BACK TO TOP
-═══════════════════════════════════════════════════════════ */
 #scroll-bar{position:fixed;right:0;top:0;bottom:0;width:3px;z-index:600;background:var(--border);}
 #scroll-fill{width:100%;height:0%;background:linear-gradient(to bottom,var(--accent),var(--accent-light));border-radius:0 0 2px 2px;transition:height .1s linear;box-shadow:0 0 8px var(--accent-glow);}
 #top-btn{position:fixed;bottom:92px;right:22px;z-index:600;width:44px;height:44px;border-radius:50%;background:var(--accent);border:none;cursor:none;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px var(--accent-glow);opacity:0;transform:translateY(12px);transition:opacity .3s,transform .3s;pointer-events:none;}
 #top-btn.vis{opacity:1;transform:translateY(0);pointer-events:auto;}
 #top-btn:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(34,3,168,.4);}
 
-/* ═══════════════════════════════════════════════════════════
-   THEME TOGGLE (fixed bottom-right)
-═══════════════════════════════════════════════════════════ */
 #theme-btn{position:fixed;bottom:28px;right:28px;z-index:600;width:52px;height:52px;border-radius:50%;border:1.5px solid var(--border2);background:var(--surface);box-shadow:var(--shadow);cursor:none;display:flex;align-items:center;justify-content:center;transition:background .3s,border-color .3s,transform .2s,box-shadow .2s;}
 #theme-btn:hover{transform:scale(1.1);box-shadow:0 4px 24px var(--accent-glow);border-color:var(--accent);}
 .t-sun,.t-moon{position:absolute;transition:opacity .3s,transform .3s;}
@@ -111,9 +101,6 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:800;line-height:1;}
 [data-theme="dark"] .t-sun{opacity:0;transform:rotate(-90deg);}
 [data-theme="dark"] .t-moon{opacity:1;transform:rotate(0);}
 
-/* ═══════════════════════════════════════════════════════════
-   NAV
-═══════════════════════════════════════════════════════════ */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 40px;height:66px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid transparent;transition:border-color .3s,background .3s,backdrop-filter .3s;}
 nav.stuck{background:var(--nav-bg);backdrop-filter:blur(18px);border-color:var(--border);box-shadow:var(--shadow);}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
@@ -136,9 +123,6 @@ nav.stuck{background:var(--nav-bg);backdrop-filter:blur(18px);border-color:var(-
 #mob-drawer a{font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--txt);text-decoration:none;opacity:.4;transition:opacity .2s;}
 #mob-drawer a:hover{opacity:1;}
 
-/* ═══════════════════════════════════════════════════════════
-   HERO (two-column)
-═══════════════════════════════════════════════════════════ */
 .hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:80px 40px 80px;overflow:hidden;}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 100%);}
 .hero-glow{position:absolute;top:-10%;left:30%;transform:translateX(-50%);width:700px;height:700px;background:radial-gradient(circle,var(--accent-glow) 0%,transparent 65%);pointer-events:none;}
@@ -168,7 +152,6 @@ nav.stuck{background:var(--nav-bg);backdrop-filter:blur(18px);border-color:var(-
 .hero-stat-num span{color:var(--accent);}
 .hero-stat-label{font-size:.72rem;color:var(--muted);letter-spacing:.01em;line-height:1.4;}
 
-/* Hero visual */
 .hero-visual{position:relative;height:560px;display:flex;align-items:center;justify-content:center;}
 .hero-photo-wrap{position:relative;width:100%;max-width:460px;border-radius:24px;overflow:hidden;box-shadow:0 32px 80px rgba(34,3,168,0.18);z-index:2;}
 .hero-photo-wrap img{width:100%;height:420px;object-fit:cover;object-position:center top;display:block;}
@@ -196,9 +179,6 @@ nav.stuck{background:var(--nav-bg);backdrop-filter:blur(18px);border-color:var(-
 @keyframes scrollB{0%,100%{transform:translateY(0);opacity:1}80%{transform:translateY(18px);opacity:0}}
 @media(max-width:768px){.hero-visual{display:none;}}
 
-/* ═══════════════════════════════════════════════════════════
-   SECTION BASE
-═══════════════════════════════════════════════════════════ */
 section{position:relative;}
 .section-inner{max-width:1160px;margin:0 auto;padding:0 40px;}
 @media(max-width:768px){.section-inner{padding:0 20px;}}
@@ -210,23 +190,641 @@ section{position:relative;}
 svg{display:block;}
 
 /* ═══════════════════════════════════════════════════════════
-   HOW IT WORKS — UPDATED
+   FEATURES PANEL — Property Requests & ProPifyAI
+═══════════════════════════════════════════════════════════ */
+#features-panel {
+  padding: 80px 0;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  position: relative;
+  overflow: hidden;
+}
+#features-panel::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  left: -120px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 68%);
+  pointer-events: none;
+}
+#features-panel::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  right: -80px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(68,34,204,0.09) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.fp-header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+.fp-header h2 {
+  font-size: clamp(1.9rem, 3.4vw, 2.9rem);
+  letter-spacing: -.04em;
+  color: var(--txt);
+  margin-bottom: 12px;
+}
+.fp-header p {
+  font-size: .95rem;
+  color: var(--muted2);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+.fp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+}
+@media(max-width: 860px) {
+  .fp-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Column Card ── */
+.fp-col {
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color .3s, box-shadow .3s, transform .3s;
+  box-shadow: var(--shadow);
+}
+.fp-col:hover {
+  border-color: var(--border2);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 52px rgba(34,3,168,.12);
+}
+
+/* Featured image area */
+.fp-image {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* Property Request featured image — illustrated UI mockup */
+.fp-img-request {
+  background: linear-gradient(135deg, #2203a8 0%, #4422cc 60%, #6644ee 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.fp-img-request::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* The illustrated UI mockup inside the image area */
+.req-mockup {
+  position: relative;
+  z-index: 2;
+  width: 320px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.req-mockup-title {
+  font-family: var(--font-display);
+  font-size: .8rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.req-mockup-title::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 6px #22c55e;
+  display: block;
+}
+.req-field {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 7px;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  font-size: .68rem;
+  color: rgba(255,255,255,.6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.req-field span { color: #fff; font-weight: 500; }
+.req-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+.req-field-sm {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 7px;
+  padding: 8px 10px;
+  font-size: .65rem;
+  color: rgba(255,255,255,.55);
+}
+.req-field-sm span { display: block; color: #fff; font-weight: 600; font-size: .72rem; }
+.req-submit-mini {
+  width: 100%;
+  background: rgba(255,255,255,0.22);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 7px;
+  padding: 9px;
+  font-family: var(--font-display);
+  font-size: .7rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  margin-top: 4px;
+  letter-spacing: .04em;
+}
+
+/* ProPifyAI featured image */
+.fp-img-ai {
+  background: linear-gradient(135deg, #07060f 0%, #0e0c1a 50%, #141228 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.fp-img-ai::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(68,34,204,0.35) 0%, transparent 70%);
+}
+
+.ai-mockup {
+  position: relative;
+  z-index: 2;
+  width: 300px;
+  background: rgba(14,12,26,0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(100,60,255,0.25);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(100,60,255,0.1);
+}
+.ai-top-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.ai-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4422cc, #2203a8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(68,34,204,0.5);
+}
+.ai-name { font-family: var(--font-display); font-size: .72rem; font-weight: 700; color: #eeedf8; }
+.ai-status { font-size: .58rem; color: rgba(255,255,255,.35); }
+.ai-bubble {
+  border-radius: 10px;
+  padding: 9px 12px;
+  font-size: .68rem;
+  line-height: 1.5;
+  margin-bottom: 7px;
+  max-width: 90%;
+}
+.ai-bubble-ai {
+  background: rgba(68,34,204,0.25);
+  border: 1px solid rgba(100,60,255,0.2);
+  color: #c4c0f0;
+  align-self: flex-start;
+}
+.ai-bubble-user {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: rgba(255,255,255,.55);
+  margin-left: auto;
+}
+.ai-typing {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 9px 12px;
+  background: rgba(68,34,204,0.15);
+  border: 1px solid rgba(100,60,255,0.15);
+  border-radius: 10px;
+  width: fit-content;
+  margin-top: 4px;
+}
+.ai-typing-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(100,60,255,0.7);
+  animation: aiTyping 1.4s ease-in-out infinite;
+}
+.ai-typing-dot:nth-child(2) { animation-delay: .2s; }
+.ai-typing-dot:nth-child(3) { animation-delay: .4s; }
+@keyframes aiTyping {
+  0%,60%,100% { transform: translateY(0); opacity: .5; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
+.ai-input-bar {
+  margin-top: 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: .62rem;
+  color: rgba(255,255,255,.25);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ai-send-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: rgba(68,34,204,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Column content body */
+.fp-body {
+  padding: 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.fp-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .62rem;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.fp-tag::before {
+  content: '';
+  width: 12px;
+  height: 1.5px;
+  background: var(--accent);
+}
+.fp-body h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--txt);
+  letter-spacing: -.03em;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.fp-body p {
+  font-size: .84rem;
+  color: var(--muted2);
+  line-height: 1.68;
+  flex: 1;
+  margin-bottom: 22px;
+}
+
+/* Chips row */
+.fp-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 22px;
+}
+.fp-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--surface2);
+  border: 1.5px solid var(--border2);
+  border-radius: 100px;
+  padding: 4px 12px;
+  font-size: .68rem;
+  font-weight: 600;
+  color: var(--muted2);
+}
+.fp-chip::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+.fp-chip.amber::before { background: var(--amber); }
+
+/* CTA buttons inside columns */
+.fp-btn-primary {
+  font-family: var(--font-display);
+  font-size: .84rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  cursor: none;
+  padding: 13px 24px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  transition: background .2s, box-shadow .2s, transform .15s;
+  width: 100%;
+  text-decoration: none;
+}
+.fp-btn-primary:hover {
+  background: var(--accent-dim);
+  box-shadow: 0 8px 28px var(--accent-glow);
+  transform: translateY(-2px);
+}
+.fp-btn-primary svg { transition: transform .2s; }
+.fp-btn-primary:hover svg { transform: translateX(3px); }
+
+.fp-btn-coming {
+  font-family: var(--font-display);
+  font-size: .84rem;
+  font-weight: 700;
+  color: var(--muted);
+  background: var(--surface2);
+  border: 1.5px solid var(--border2);
+  cursor: not-allowed;
+  padding: 13px 24px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.fp-btn-coming::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(34,3,168,0.04) 50%, transparent 100%);
+  animation: shimmer 2.4s ease-in-out infinite;
+  background-size: 200% 100%;
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.coming-badge {
+  background: rgba(217,119,6,0.12);
+  border: 1px solid rgba(217,119,6,0.3);
+  color: var(--amber);
+  font-size: .6rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 100px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+/* AI col overlay glow */
+.fp-col-ai .fp-image { position: relative; }
+.fp-col-ai::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1.5px rgba(100,60,255,0.15);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PROPERTY REQUEST MODAL
+═══════════════════════════════════════════════════════════ */
+#req-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  background: rgba(7,6,15,0.72);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s cubic-bezier(.16,1,.3,1);
+}
+#req-modal-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+#req-modal {
+  background: var(--surface);
+  border: 1.5px solid var(--border2);
+  border-radius: 22px;
+  width: 100%;
+  max-width: 560px;
+  box-shadow: 0 32px 100px rgba(0,0,0,0.35), 0 0 0 1px var(--border);
+  overflow: hidden;
+  transform: translateY(24px) scale(.97);
+  transition: transform .35s cubic-bezier(.16,1,.3,1);
+}
+#req-modal-overlay.open #req-modal {
+  transform: translateY(0) scale(1);
+}
+.modal-header {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+  padding: 28px 30px 24px;
+  position: relative;
+}
+.modal-header-tag {
+  font-size: .62rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.6);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.modal-header h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -.03em;
+}
+.modal-header p {
+  font-size: .8rem;
+  color: rgba(255,255,255,.65);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  cursor: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s, transform .2s;
+}
+.modal-close:hover {
+  background: rgba(255,255,255,0.25);
+  transform: rotate(90deg);
+}
+.modal-body {
+  padding: 28px 30px 30px;
+}
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.modal-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+@media(max-width:480px) { .modal-row { grid-template-columns: 1fr; } }
+
+.modal-label {
+  font-family: var(--font-display);
+  font-size: .68rem;
+  font-weight: 600;
+  color: var(--muted2);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  display: block;
+}
+.modal-field {
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 11px 14px;
+  font-family: var(--font-body);
+  font-size: .86rem;
+  color: var(--txt);
+  outline: none;
+  width: 100%;
+  transition: border-color .2s, box-shadow .2s;
+  appearance: none;
+}
+.modal-field::placeholder { color: var(--muted); }
+.modal-field:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(34,3,168,.1);
+}
+.modal-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+.modal-field-group { display: flex; flex-direction: column; }
+.modal-submit {
+  font-family: var(--font-display);
+  font-size: .9rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  cursor: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  transition: background .2s, box-shadow .2s, transform .15s;
+  width: 100%;
+  margin-top: 4px;
+}
+.modal-submit:hover {
+  background: var(--accent-dim);
+  box-shadow: 0 8px 28px var(--accent-glow);
+  transform: translateY(-1px);
+}
+#modal-success {
+  display: none;
+  background: rgba(22,163,74,0.08);
+  border: 1.5px solid rgba(22,163,74,0.25);
+  border-radius: 10px;
+  padding: 14px 18px;
+  color: var(--green);
+  font-size: .83rem;
+  font-weight: 600;
+  display: none;
+  align-items: center;
+  gap: 10px;
+}
+.modal-progress {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+.mp-step {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--border);
+  overflow: hidden;
+}
+.mp-step.active { background: var(--accent); }
+.mp-step-label {
+  font-size: .62rem;
+  color: var(--muted);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HOW IT WORKS
 ═══════════════════════════════════════════════════════════ */
 #how{padding:100px 0;border-top:1px solid var(--border);background:var(--surface);}
 .how-header{text-align:center;margin-bottom:64px;}
 .how-header h2{font-size:clamp(2rem,4vw,3rem);letter-spacing:-.04em;margin-bottom:14px;color:var(--txt);}
 .how-header p{font-size:.97rem;color:var(--muted2);max-width:500px;margin:0 auto;line-height:1.65;}
-
-/* Two audience tabs */
 .how-tabs{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:48px;}
 .how-tab{font-family:var(--font-display);font-size:.82rem;font-weight:700;padding:10px 22px;border-radius:100px;border:1.5px solid var(--border2);background:transparent;color:var(--muted2);cursor:none;transition:all .25s;letter-spacing:.02em;}
 .how-tab.active{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 4px 18px var(--accent-glow);}
 .how-tab:hover:not(.active){border-color:var(--accent);color:var(--accent);}
-
 .how-panel{display:none;}
 .how-panel.active{display:block;}
-
-/* Steps grid */
 .how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:40px;}
 .how-step{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius);padding:28px;transition:border-color .3s,box-shadow .3s,transform .3s;box-shadow:var(--shadow);}
 .how-step:hover{border-color:var(--border2);transform:translateY(-4px);box-shadow:0 12px 40px rgba(34,3,168,0.1);}
@@ -235,12 +833,8 @@ svg{display:block;}
 .how-step p{font-size:.82rem;color:var(--muted);line-height:1.65;}
 @media(max-width:900px){.how-steps{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:580px){.how-steps{grid-template-columns:1fr;}}
-
-/* Owner steps = 3 wide */
 .how-steps.three{grid-template-columns:repeat(3,1fr);}
 @media(max-width:768px){.how-steps.three{grid-template-columns:1fr;}}
-
-/* Why it works strip */
 .why-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;background:var(--surface2);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-top:8px;}
 .why-item{padding:20px;display:flex;align-items:center;gap:10px;font-size:.82rem;color:var(--muted2);font-weight:500;}
 .why-check{width:24px;height:24px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
@@ -255,7 +849,6 @@ svg{display:block;}
 .trust-header h2{font-size:clamp(1.9rem,3.2vw,2.8rem);letter-spacing:-.04em;color:var(--txt);}
 .trust-header p{font-size:.95rem;color:var(--muted2);line-height:1.7;}
 @media(max-width:900px){.trust-header{grid-template-columns:1fr;gap:20px;margin-bottom:36px;}}
-
 .bento{display:grid;grid-template-columns:repeat(12,1fr);gap:12px;}
 .bento-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:30px;overflow:hidden;position:relative;transition:border-color .3s,box-shadow .3s,transform .3s;box-shadow:var(--shadow);}
 .bento-card:hover{border-color:var(--border2);transform:translateY(-3px);box-shadow:0 8px 40px rgba(34,3,168,.1);}
@@ -305,9 +898,7 @@ svg{display:block;}
 .founder-name{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--txt);}
 .founder-title{font-size:.78rem;color:var(--muted);margin-top:4px;}
 
-/* ═══════════════════════════════════════════════════════════
-   VALUES
-═══════════════════════════════════════════════════════════ */
+/* VALUES */
 #values{padding:100px 0;border-top:1px solid var(--border);background:var(--surface2);}
 [data-theme="dark"] #values{background:var(--surface);}
 .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
@@ -320,9 +911,7 @@ svg{display:block;}
 .vchip{display:flex;align-items:center;gap:7px;font-size:.74rem;color:var(--muted2);}
 .vchip::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;}
 
-/* ═══════════════════════════════════════════════════════════
-   MILESTONES
-═══════════════════════════════════════════════════════════ */
+/* MILESTONES */
 #milestones{padding:100px 0;border-top:1px solid var(--border);}
 .milestones-header{text-align:center;margin-bottom:60px;}
 .milestones-header h2{font-size:clamp(2rem,4vw,3rem);letter-spacing:-.04em;margin-bottom:14px;color:var(--txt);}
@@ -338,14 +927,9 @@ svg{display:block;}
 .tl-quarter{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:4px;}
 .tl-title{font-family:var(--font-display);font-size:.92rem;font-weight:700;color:var(--txt);margin-bottom:4px;}
 .tl-desc{font-size:.76rem;color:var(--muted);line-height:1.6;}
-@media(max-width:620px){
-  .timeline::before{left:18px;}.tl-item{grid-template-columns:30px 1fr;gap:14px;}.tl-left{display:none;}
-  .tl-center{grid-column:1;grid-row:1;}.tl-right{grid-column:2;grid-row:1;}.tl-dot{width:30px;height:30px;font-size:.52rem;}
-}
+@media(max-width:620px){.timeline::before{left:18px;}.tl-item{grid-template-columns:30px 1fr;gap:14px;}.tl-left{display:none;}.tl-center{grid-column:1;grid-row:1;}.tl-right{grid-column:2;grid-row:1;}.tl-dot{width:30px;height:30px;font-size:.52rem;}}
 
-/* ═══════════════════════════════════════════════════════════
-   TEAM
-═══════════════════════════════════════════════════════════ */
+/* TEAM */
 #team{padding:100px 0;border-top:1px solid var(--border);background:var(--surface);}
 .team-header{text-align:center;margin-bottom:60px;}
 .team-header h2{font-size:clamp(2rem,4vw,3rem);letter-spacing:-.04em;margin-bottom:14px;color:var(--txt);}
@@ -370,9 +954,7 @@ svg{display:block;}
 .team-name{font-family:var(--font-display);font-size:.9rem;font-weight:700;color:var(--txt);margin-bottom:4px;}
 .team-role{font-size:.7rem;color:var(--muted);letter-spacing:.02em;line-height:1.4;}
 
-/* ═══════════════════════════════════════════════════════════
-   TESTIMONIALS
-═══════════════════════════════════════════════════════════ */
+/* TESTIMONIALS */
 #proof{padding:100px 0;border-top:1px solid var(--border);}
 .proof-header{margin-bottom:44px;}
 .proof-header h2{font-size:clamp(1.8rem,3vw,2.5rem);letter-spacing:-.04em;color:var(--txt);max-width:480px;}
@@ -390,9 +972,7 @@ svg{display:block;}
 .tcard-name{font-family:var(--font-display);font-size:.83rem;font-weight:700;color:var(--txt);}
 .tcard-role{font-size:.7rem;color:var(--muted);}
 
-/* ═══════════════════════════════════════════════════════════
-   STATS
-═══════════════════════════════════════════════════════════ */
+/* STATS */
 #stats-strip{padding:60px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--surface);}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;}
 .stat-item{background:var(--surface);padding:26px 22px;transition:background .2s;}
@@ -402,9 +982,7 @@ svg{display:block;}
 @media(max-width:900px){.stats-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:500px){.stats-grid{grid-template-columns:1fr;}}
 
-/* ═══════════════════════════════════════════════════════════
-   APP COMING SOON
-═══════════════════════════════════════════════════════════ */
+/* APP COMING SOON */
 #app{padding:100px 0;border-top:1px solid var(--border);}
 .app-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
 @media(max-width:900px){.app-inner{grid-template-columns:1fr;gap:48px;}}
@@ -421,8 +999,6 @@ svg{display:block;}
 .app-badges{display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap;}
 .app-badge{display:inline-flex;align-items:center;gap:6px;background:var(--surface2);border:1.5px solid var(--border2);border-radius:100px;padding:5px 12px;font-size:.68rem;font-weight:600;color:var(--muted2);letter-spacing:.04em;}
 .app-badge .b-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);}
-
-/* Phone mockup */
 .app-right{display:flex;justify-content:center;align-items:center;}
 .phone-mockup{position:relative;width:240px;}
 .phone-shell{width:240px;height:480px;background:var(--txt);border-radius:36px;padding:12px;box-shadow:0 32px 80px rgba(34,3,168,.2),0 0 0 1px var(--border2);}
@@ -435,16 +1011,13 @@ svg{display:block;}
 .phone-soon{background:rgba(255,255,255,.18);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.3);color:#fff;font-family:var(--font-display);font-size:.68rem;font-weight:700;padding:6px 16px;border-radius:100px;letter-spacing:.08em;text-transform:uppercase;margin-top:14px;display:inline-block;}
 .phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:80px;height:24px;background:var(--txt);border-radius:0 0 16px 16px;}
 [data-theme="dark"] .phone-notch{background:var(--surface2);}
-/* Floating glow rings around phone */
 .phone-ring{position:absolute;border-radius:50%;border:1px solid rgba(34,3,168,.18);pointer-events:none;animation:ringPulse 3s ease-in-out infinite;}
 .phone-ring:nth-child(1){inset:-30px;animation-delay:0s;}
 .phone-ring:nth-child(2){inset:-60px;animation-delay:1s;opacity:.6;}
 .phone-ring:nth-child(3){inset:-90px;animation-delay:2s;opacity:.3;}
 @keyframes ringPulse{0%,100%{transform:scale(1);opacity:.3}50%{transform:scale(1.03);opacity:.15}}
 
-/* ═══════════════════════════════════════════════════════════
-   FAQ
-═══════════════════════════════════════════════════════════ */
+/* FAQ */
 #faq{padding:100px 0;border-top:1px solid var(--border);background:var(--surface);}
 .faq-layout{display:grid;grid-template-columns:1fr 1.8fr;gap:80px;align-items:start;}
 @media(max-width:900px){.faq-layout{grid-template-columns:1fr;gap:40px;}}
@@ -460,9 +1033,7 @@ svg{display:block;}
 .faq-a{font-size:.83rem;color:var(--muted2);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.16,1,.3,1),padding .3s;}
 .faq-item.open .faq-a{max-height:280px;padding-bottom:18px;}
 
-/* ═══════════════════════════════════════════════════════════
-   CONTACT
-═══════════════════════════════════════════════════════════ */
+/* CONTACT */
 #cta{padding:100px 0;border-top:1px solid var(--border);}
 .cta-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
 @media(max-width:900px){.cta-layout{grid-template-columns:1fr;gap:48px;}}
@@ -484,9 +1055,7 @@ textarea.form-field{min-height:116px;resize:vertical;}
 .form-box{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:34px;box-shadow:var(--shadow);}
 .form-box-title{font-family:var(--font-display);font-size:.95rem;font-weight:700;color:var(--txt);margin-bottom:22px;}
 
-/* ═══════════════════════════════════════════════════════════
-   FOOTER
-═══════════════════════════════════════════════════════════ */
+/* FOOTER */
 footer{border-top:1px solid var(--border);padding:40px;background:var(--surface);}
 .footer-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:22px;}
 .footer-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
@@ -504,16 +1073,12 @@ footer{border-top:1px solid var(--border);padding:40px;background:var(--surface)
 
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
-
-<!-- Scroll progress bar -->
 <div id="scroll-bar"><div id="scroll-fill"></div></div>
 
-<!-- Back to top -->
 <button id="top-btn" aria-label="Back to top">
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M18 15l-6-6-6 6"/></svg>
 </button>
 
-<!-- Theme toggle -->
 <button id="theme-btn" aria-label="Toggle theme">
   <svg class="t-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round">
     <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
@@ -526,7 +1091,6 @@ footer{border-top:1px solid var(--border);padding:40px;background:var(--surface)
   </svg>
 </button>
 
-<!-- NAV -->
 <nav id="navbar">
   <a href="#" class="nav-logo">
     <div class="nav-logo-icon">
@@ -559,15 +1123,11 @@ footer{border-top:1px solid var(--border);padding:40px;background:var(--surface)
   <a href="#cta" style="color:var(--accent);opacity:1;">Contact Us →</a>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     HERO
-═══════════════════════════════════════════════════════════ -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
-
   <div class="hero-inner">
-    <!-- Left: Text -->
     <div class="hero-left">
       <div class="hero-badge">
         <div class="badge-dot"></div>
@@ -601,8 +1161,6 @@ footer{border-top:1px solid var(--border);padding:40px;background:var(--surface)
         </div>
       </div>
     </div>
-
-    <!-- Right: Photo -->
     <div class="hero-visual reveal d2">
       <div class="hero-dots">
         <span></span><span></span><span></span><span></span><span></span><span></span>
@@ -634,107 +1192,336 @@ footer{border-top:1px solid var(--border);padding:40px;background:var(--surface)
       </div>
     </div>
   </div>
-
-  <a href="#how" class="scroll-hint">
+  <a href="#features-panel" class="scroll-hint">
     <span>Scroll</span>
     <div class="scroll-pill"><div class="scroll-dot"></div></div>
   </a>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
-     HOW IT WORKS — UPDATED
+     FEATURES PANEL — Property Requests & ProPifyAI
 ═══════════════════════════════════════════════════════════ -->
+<section id="features-panel">
+  <div class="section-inner">
+
+    <div class="fp-header reveal">
+      <div class="section-tag" style="justify-content:center;">Platform Features</div>
+      <h2>Everything You Need,<br/>Right Here.</h2>
+      <p>Submit a property request or chat with our AI assistant — two powerful ways to find your next home faster.</p>
+    </div>
+
+    <div class="fp-grid">
+
+      <!-- ── Column 1: Property Requests ── -->
+      <div class="fp-col reveal d1">
+
+        <!-- Featured image: illustrated UI mockup -->
+        <div class="fp-image fp-img-request">
+          <div class="req-mockup">
+            <div class="req-mockup-title">New Property Request</div>
+            <div class="req-field">
+              Property type
+              <span>3-Bed Apartment</span>
+            </div>
+            <div class="req-field-row">
+              <div class="req-field-sm">
+                Location
+                <span>Lekki, Lagos</span>
+              </div>
+              <div class="req-field-sm">
+                Budget
+                <span>₦3.5M/yr</span>
+              </div>
+            </div>
+            <div class="req-field">
+              Move-in date
+              <span>ASAP</span>
+            </div>
+            <div class="req-field" style="margin-bottom:12px;">
+              Amenities needed
+              <span>Secure + Serviced</span>
+            </div>
+            <div class="req-submit-mini">Submit Request →</div>
+          </div>
+          <!-- Floating verified badge -->
+          <div style="position:absolute;top:18px;right:18px;background:rgba(22,163,74,0.18);border:1px solid rgba(22,163,74,0.35);border-radius:100px;padding:5px 12px;display:flex;align-items:center;gap:6px;backdrop-filter:blur(8px);">
+            <div style="width:6px;height:6px;border-radius:50%;background:#22c55e;box-shadow:0 0 6px #22c55e;flex-shrink:0;"></div>
+            <span style="font-family:var(--font-display);font-size:.6rem;font-weight:700;color:#22c55e;letter-spacing:.06em;text-transform:uppercase;">Matched</span>
+          </div>
+          <!-- Stats strip at bottom of image -->
+          <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(34,3,168,0.55);backdrop-filter:blur(10px);border-top:1px solid rgba(255,255,255,0.12);padding:10px 20px;display:flex;gap:24px;">
+            <div style="text-align:center;">
+              <div style="font-family:var(--font-display);font-size:.85rem;font-weight:800;color:#fff;">14</div>
+              <div style="font-size:.58rem;color:rgba(255,255,255,.55);letter-spacing:.06em;text-transform:uppercase;">Matches</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-family:var(--font-display);font-size:.85rem;font-weight:800;color:#fff;">24h</div>
+              <div style="font-size:.58rem;color:rgba(255,255,255,.55);letter-spacing:.06em;text-transform:uppercase;">Response</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-family:var(--font-display);font-size:.85rem;font-weight:800;color:#fff;">100%</div>
+              <div style="font-size:.58rem;color:rgba(255,255,255,.55);letter-spacing:.06em;text-transform:uppercase;">Verified</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Body -->
+        <div class="fp-body">
+          <div class="fp-tag">Property Requests</div>
+          <h3>Tell us what you want.<br/>We'll find it for you.</h3>
+          <p>Submit a detailed property request and our team — backed by AI matching — will surface the most relevant verified listings within 24 hours. No endless scrolling, no agent stress.</p>
+
+          <div class="fp-chips">
+            <span class="fp-chip">Rent</span>
+            <span class="fp-chip">Sale</span>
+            <span class="fp-chip">Lease</span>
+            <span class="fp-chip">Shortlet</span>
+            <span class="fp-chip">Commercial</span>
+          </div>
+
+          <button class="fp-btn-primary" onclick="openReqModal()">
+            Submit a Property Request
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ── Column 2: ProPifyAI ── -->
+      <div class="fp-col fp-col-ai reveal d2" style="border-color: rgba(100,60,255,0.18);">
+
+        <!-- Featured image: AI chat mockup -->
+        <div class="fp-image fp-img-ai">
+          <div class="ai-mockup">
+            <div class="ai-top-bar">
+              <div class="ai-avatar">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round">
+                  <path d="M12 2a4 4 0 014 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0 014-4zm0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="ai-name">ProPifyAI</div>
+                <div class="ai-status">Your smart property assistant</div>
+              </div>
+              <div style="margin-left:auto;background:rgba(100,60,255,0.2);border:1px solid rgba(100,60,255,0.3);border-radius:100px;padding:3px 10px;font-size:.55rem;font-weight:700;color:#9d88ff;letter-spacing:.08em;text-transform:uppercase;">Beta</div>
+            </div>
+
+            <div class="ai-bubble ai-bubble-ai">Hi! I'm ProPifyAI. I can help you find the perfect property, compare listings, and answer any real estate questions. What are you looking for?</div>
+            <div class="ai-bubble ai-bubble-user" style="margin-left:auto;">I need a 2-bed in Ikoyi, under ₦5M</div>
+            <div class="ai-typing">
+              <div class="ai-typing-dot"></div>
+              <div class="ai-typing-dot"></div>
+              <div class="ai-typing-dot"></div>
+            </div>
+
+            <div class="ai-input-bar">
+              <span>Ask me anything about properties…</span>
+              <div class="ai-send-btn">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#9d88ff" stroke-width="2.5" stroke-linecap="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating suggestion chips -->
+          <div style="position:absolute;top:14px;left:14px;display:flex;flex-direction:column;gap:6px;">
+            <div style="background:rgba(100,60,255,0.22);border:1px solid rgba(100,60,255,0.3);backdrop-filter:blur(8px);border-radius:8px;padding:5px 10px;font-size:.58rem;font-weight:600;color:#c4b5ff;white-space:nowrap;">💡 "Best areas for families in Lagos?"</div>
+            <div style="background:rgba(100,60,255,0.15);border:1px solid rgba(100,60,255,0.2);backdrop-filter:blur(8px);border-radius:8px;padding:5px 10px;font-size:.58rem;font-weight:600;color:#c4b5ff;white-space:nowrap;">💡 "Compare Lekki vs Victoria Island"</div>
+          </div>
+        </div>
+
+        <!-- Body -->
+        <div class="fp-body">
+          <div class="fp-tag" style="color:rgba(100,60,255,0.8);">ProPifyAI</div>
+          <h3>Your AI property<br/>advisor — coming soon.</h3>
+          <p>ProPifyAI will answer your real estate questions, help you compare neighbourhoods, estimate fair prices, and guide you through the entire property journey — available 24/7, completely free.</p>
+
+          <div class="fp-chips">
+            <span class="fp-chip amber">Price estimates</span>
+            <span class="fp-chip amber">Neighbourhood guide</span>
+            <span class="fp-chip amber">Market insights</span>
+          </div>
+
+          <button class="fp-btn-coming" disabled>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;">
+              <path d="M12 2a4 4 0 014 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0 014-4zm0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4z"/>
+            </svg>
+            Chat with ProPifyAI
+            <span class="coming-badge">Coming Soon</span>
+          </button>
+        </div>
+      </div>
+
+    </div><!-- /fp-grid -->
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PROPERTY REQUEST MODAL
+═══════════════════════════════════════════════════════════ -->
+<div id="req-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title" onclick="handleOverlayClick(event)">
+  <div id="req-modal">
+    <div class="modal-header">
+      <div class="modal-header-tag">Property Request</div>
+      <h3 id="modal-title">What are you looking for?</h3>
+      <p>Fill in your requirements and our team will match you with the best verified listings within 24 hours.</p>
+      <button class="modal-close" onclick="closeReqModal()" aria-label="Close">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <!-- Progress indicator -->
+      <div class="modal-progress">
+        <div class="mp-step active"></div>
+        <div class="mp-step active"></div>
+        <div class="mp-step"></div>
+        <span class="mp-step-label">Step 2 of 3 — Property Details</span>
+      </div>
+
+      <div class="modal-form" id="req-form">
+
+        <div class="modal-row">
+          <div class="modal-field-group">
+            <label class="modal-label">First Name</label>
+            <input class="modal-field" type="text" placeholder="e.g. Chukwuma"/>
+          </div>
+          <div class="modal-field-group">
+            <label class="modal-label">Last Name</label>
+            <input class="modal-field" type="text" placeholder="e.g. Eze"/>
+          </div>
+        </div>
+
+        <div class="modal-row">
+          <div class="modal-field-group">
+            <label class="modal-label">Email Address</label>
+            <input class="modal-field" type="email" placeholder="you@example.com"/>
+          </div>
+          <div class="modal-field-group">
+            <label class="modal-label">Phone Number</label>
+            <input class="modal-field" type="tel" placeholder="+234 800 000 0000"/>
+          </div>
+        </div>
+
+        <div class="modal-row">
+          <div class="modal-field-group">
+            <label class="modal-label">Property Type</label>
+            <select class="modal-field modal-select">
+              <option value="">Select type</option>
+              <option>Apartment / Flat</option>
+              <option>Detached House</option>
+              <option>Semi-Detached</option>
+              <option>Duplex / Terrace</option>
+              <option>Shortlet</option>
+              <option>Commercial Space</option>
+              <option>Land</option>
+            </select>
+          </div>
+          <div class="modal-field-group">
+            <label class="modal-label">Listing Purpose</label>
+            <select class="modal-field modal-select">
+              <option value="">Select purpose</option>
+              <option>For Rent</option>
+              <option>For Sale</option>
+              <option>For Lease</option>
+              <option>Shortlet</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal-row">
+          <div class="modal-field-group">
+            <label class="modal-label">No. of Bedrooms</label>
+            <select class="modal-field modal-select">
+              <option value="">Select</option>
+              <option>Self-contain</option>
+              <option>1 Bedroom</option>
+              <option>2 Bedrooms</option>
+              <option>3 Bedrooms</option>
+              <option>4 Bedrooms</option>
+              <option>5+ Bedrooms</option>
+            </select>
+          </div>
+          <div class="modal-field-group">
+            <label class="modal-label">Preferred Location</label>
+            <input class="modal-field" type="text" placeholder="e.g. Lekki Phase 1, Lagos"/>
+          </div>
+        </div>
+
+        <div class="modal-field-group">
+          <label class="modal-label">Budget Range</label>
+          <select class="modal-field modal-select">
+            <option value="">Select budget</option>
+            <option>Under ₦500k/yr</option>
+            <option>₦500k – ₦1M/yr</option>
+            <option>₦1M – ₦2M/yr</option>
+            <option>₦2M – ₦3.5M/yr</option>
+            <option>₦3.5M – ₦5M/yr</option>
+            <option>₦5M – ₦10M/yr</option>
+            <option>Above ₦10M/yr</option>
+          </select>
+        </div>
+
+        <div class="modal-field-group">
+          <label class="modal-label">Additional Requirements (optional)</label>
+          <textarea class="modal-field" rows="3" placeholder="e.g. Must have 24/7 security, generator, parking space, close to a school…" style="min-height:80px;resize:none;"></textarea>
+        </div>
+
+        <div id="modal-success" style="display:none;background:rgba(22,163,74,0.08);border:1.5px solid rgba(22,163,74,0.25);border-radius:10px;padding:14px 18px;color:var(--green);font-size:.83rem;font-weight:600;align-items:center;gap:10px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>
+          Request submitted! Our team will match you with verified listings within 24 hours.
+        </div>
+
+        <button class="modal-submit" onclick="submitRequest(event)">
+          Submit My Property Request
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+
+        <p style="font-size:.7rem;color:var(--muted);text-align:center;line-height:1.5;">By submitting, you agree to our Terms of Service. We'll never share your details without consent.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
 <section id="how">
   <div class="section-inner">
     <div class="how-header reveal">
-      <div class="section-tag" style="justify-content:center;margin-bottom:14px;">Simple Process</div>
+      <div class="section-tag" style="justify-content:center;">Simple Process</div>
       <h2>How MyPropifyNG Works</h2>
       <p style="margin-top:14px;">A structured, transparent process for both property seekers and owners — with no stress and no guesswork.</p>
     </div>
-
-    <!-- Tabs -->
     <div class="how-tabs">
       <button class="how-tab active" onclick="switchTab('seekers',this)">🔍 For Property Seekers</button>
       <button class="how-tab" onclick="switchTab('owners',this)">🏡 For Owners &amp; Agents</button>
     </div>
-
-    <!-- Seekers panel -->
     <div class="how-panel active" id="panel-seekers">
       <div class="how-steps">
-        <div class="how-step reveal d1">
-          <div class="step-num">01</div>
-          <h4>Browse Verified Homes</h4>
-          <p>Explore trusted listings for rent, sale, lease, or shortlet — all verified before they go live on the platform.</p>
-        </div>
-        <div class="how-step reveal d2">
-          <div class="step-num">02</div>
-          <h4>Book an Inspection</h4>
-          <p>Pick a date and time that works for you — no agent back-and-forth, no phone tag. Just pick and confirm.</p>
-        </div>
-        <div class="how-step reveal d3">
-          <div class="step-num">03</div>
-          <h4>Make Secure Payments</h4>
-          <p>Pay directly on the platform with full transparency. Every kobo tracked and protected throughout the process.</p>
-        </div>
-        <div class="how-step reveal d4">
-          <div class="step-num">04</div>
-          <h4>Move In Stress-Free</h4>
-          <p>We handle the process so you don't have to. From paperwork to hand-over, we've got you covered end-to-end.</p>
-        </div>
+        <div class="how-step reveal d1"><div class="step-num">01</div><h4>Browse Verified Homes</h4><p>Explore trusted listings for rent, sale, lease, or shortlet — all verified before they go live on the platform.</p></div>
+        <div class="how-step reveal d2"><div class="step-num">02</div><h4>Book an Inspection</h4><p>Pick a date and time that works for you — no agent back-and-forth, no phone tag. Just pick and confirm.</p></div>
+        <div class="how-step reveal d3"><div class="step-num">03</div><h4>Make Secure Payments</h4><p>Pay directly on the platform with full transparency. Every kobo tracked and protected throughout the process.</p></div>
+        <div class="how-step reveal d4"><div class="step-num">04</div><h4>Move In Stress-Free</h4><p>We handle the process so you don't have to. From paperwork to hand-over, we've got you covered end-to-end.</p></div>
       </div>
     </div>
-
-    <!-- Owners panel -->
     <div class="how-panel" id="panel-owners">
       <div class="how-steps three">
-        <div class="how-step reveal d1">
-          <div class="step-num">01</div>
-          <h4>Sign Up &amp; Get Verified</h4>
-          <p>Complete a quick KYC to start listing. Verification builds trust with serious buyers and reduces time-wasters.</p>
-        </div>
-        <div class="how-step reveal d2">
-          <div class="step-num">02</div>
-          <h4>List Your Property</h4>
-          <p>Upload details, photos, and pricing to reach thousands of serious users actively searching for properties like yours.</p>
-        </div>
-        <div class="how-step reveal d3">
-          <div class="step-num">03</div>
-          <h4>Get Paid Seamlessly</h4>
-          <p>Receive payments directly with commissions handled automatically. No manual invoicing, no chasing clients.</p>
-        </div>
+        <div class="how-step reveal d1"><div class="step-num">01</div><h4>Sign Up &amp; Get Verified</h4><p>Complete a quick KYC to start listing. Verification builds trust with serious buyers and reduces time-wasters.</p></div>
+        <div class="how-step reveal d2"><div class="step-num">02</div><h4>List Your Property</h4><p>Upload details, photos, and pricing to reach thousands of serious users actively searching for properties like yours.</p></div>
+        <div class="how-step reveal d3"><div class="step-num">03</div><h4>Get Paid Seamlessly</h4><p>Receive payments directly with commissions handled automatically. No manual invoicing, no chasing clients.</p></div>
       </div>
     </div>
-
-    <!-- Why it works strip -->
     <div class="why-strip reveal">
-      <div class="why-item">
-        <div class="why-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-        Verified listings only
-      </div>
-      <div class="why-item">
-        <div class="why-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-        No agent stress
-      </div>
-      <div class="why-item">
-        <div class="why-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-        Structured process
-      </div>
-      <div class="why-item">
-        <div class="why-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-        Secure payments
-      </div>
+      <div class="why-item"><div class="why-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>Verified listings only</div>
+      <div class="why-item"><div class="why-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>No agent stress</div>
+      <div class="why-item"><div class="why-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>Structured process</div>
+      <div class="why-item"><div class="why-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>Secure payments</div>
     </div>
   </div>
 </section>
 
-<!-- FEATURES -->
+<!-- FEATURES BENTO -->
 <section id="trust">
   <div class="section-inner">
     <div class="trust-header">
-      <div class="reveal">
-        <div class="section-tag">What We Offer</div>
-        <h2>Affordable &amp; Scalable Plans for Every Stage.</h2>
-      </div>
+      <div class="reveal"><div class="section-tag">What We Offer</div><h2>Affordable &amp; Scalable Plans for Every Stage.</h2></div>
       <p class="reveal d2">MyPropifyNG offers transparent plans that fit every stage of your property journey — built to scale with your needs and backed by brands that believe in innovation.</p>
     </div>
     <div class="bento">
@@ -799,15 +1586,12 @@ footer{border-top:1px solid var(--border);padding:40px;background:var(--surface)
 <section id="founder">
   <div class="founder-inner reveal">
     <div class="founder-photo-wrap">
-      <img src="ade.png" alt="Adewunmi E. Adeniji" class="founder-photo"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <img src="ade.png" alt="Adewunmi E. Adeniji" class="founder-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
       <div class="founder-avatar-fallback" style="display:none;">AA</div>
       <div class="founder-role-chip">Founder &amp; CEO</div>
     </div>
     <div>
-      <p class="founder-quote">
-        When I started MyPropifyNG, I envisioned a platform that would simplify property transactions for Nigerians. Having experienced the challenges of property search and management firsthand, I knew there had to be a better way. Our mission is to create a seamless, transparent, and efficient real estate ecosystem that empowers both property seekers and owners.
-      </p>
+      <p class="founder-quote">When I started MyPropifyNG, I envisioned a platform that would simplify property transactions for Nigerians. Having experienced the challenges of property search and management firsthand, I knew there had to be a better way. Our mission is to create a seamless, transparent, and efficient real estate ecosystem that empowers both property seekers and owners.</p>
       <div class="founder-name">Adewunmi E. Adeniji</div>
       <div class="founder-title">Founder &amp; CEO, MyPropifyNG</div>
     </div>
@@ -822,37 +1606,9 @@ footer{border-top:1px solid var(--border);padding:40px;background:var(--surface)
       <h2 style="font-size:clamp(2rem,4vw,3rem);letter-spacing:-.04em;margin-top:12px;color:var(--txt);">Driving Real Estate Transformation.</h2>
     </div>
     <div class="values-grid">
-      <div class="value-card reveal d1">
-        <div class="card-eyebrow">Our Mission</div>
-        <h3>Transparent, Accessible &amp; Efficient.</h3>
-        <p>To revolutionise Nigeria's real estate industry by creating a platform that connects property seekers with verified listings and trusted partners.</p>
-        <div class="value-chips">
-          <span class="vchip">Simplify property discovery</span>
-          <span class="vchip">Ensure transaction transparency</span>
-          <span class="vchip">Empower both seekers and owners</span>
-        </div>
-      </div>
-      <div class="value-card reveal d2">
-        <div class="card-eyebrow">Our Vision</div>
-        <h3>Nigeria's Most Trusted Property Platform.</h3>
-        <p>To become the first choice for Nigerians seeking their dream properties — setting new standards for property transactions across the country.</p>
-        <div class="value-chips">
-          <span class="vchip">Lead industry innovation</span>
-          <span class="vchip">Expand nationwide coverage</span>
-          <span class="vchip">Build lasting trust relationships</span>
-        </div>
-      </div>
-      <div class="value-card reveal d3">
-        <div class="card-eyebrow">Key Objectives</div>
-        <h3>Measurable Outcomes. Real Impact.</h3>
-        <p>We are committed to achieving outcomes that drive value for our users and transform the real estate experience across Nigeria.</p>
-        <div class="value-chips">
-          <span class="vchip">10,000+ verified listings by 2026</span>
-          <span class="vchip">Reduce property search time by 70%</span>
-          <span class="vchip">95% user satisfaction rate</span>
-          <span class="vchip">Expand to 5 major Nigerian cities</span>
-        </div>
-      </div>
+      <div class="value-card reveal d1"><div class="card-eyebrow">Our Mission</div><h3>Transparent, Accessible &amp; Efficient.</h3><p>To revolutionise Nigeria's real estate industry by creating a platform that connects property seekers with verified listings and trusted partners.</p><div class="value-chips"><span class="vchip">Simplify property discovery</span><span class="vchip">Ensure transaction transparency</span><span class="vchip">Empower both seekers and owners</span></div></div>
+      <div class="value-card reveal d2"><div class="card-eyebrow">Our Vision</div><h3>Nigeria's Most Trusted Property Platform.</h3><p>To become the first choice for Nigerians seeking their dream properties — setting new standards for property transactions across the country.</p><div class="value-chips"><span class="vchip">Lead industry innovation</span><span class="vchip">Expand nationwide coverage</span><span class="vchip">Build lasting trust relationships</span></div></div>
+      <div class="value-card reveal d3"><div class="card-eyebrow">Key Objectives</div><h3>Measurable Outcomes. Real Impact.</h3><p>We are committed to achieving outcomes that drive value for our users and transform the real estate experience across Nigeria.</p><div class="value-chips"><span class="vchip">10,000+ verified listings by 2026</span><span class="vchip">Reduce property search time by 70%</span><span class="vchip">95% user satisfaction rate</span><span class="vchip">Expand to 5 major Nigerian cities</span></div></div>
     </div>
   </div>
 </section>
@@ -866,26 +1622,10 @@ footer{border-top:1px solid var(--border);padding:40px;background:var(--surface)
       <p style="margin-top:14px;">From concept to reality — our journey transforming real estate in Nigeria.</p>
     </div>
     <div class="timeline">
-      <div class="tl-item reveal d1">
-        <div class="tl-left"><div class="tl-quarter">Q2 2025</div><div class="tl-title">Concept Born</div><div class="tl-desc">The idea for MyPropifyNG was conceived to address the challenges of property discovery in Nigeria's real estate market.</div></div>
-        <div class="tl-center"><div class="tl-dot done">✓</div></div>
-        <div class="tl-right"></div>
-      </div>
-      <div class="tl-item reveal d2">
-        <div class="tl-left"></div>
-        <div class="tl-center"><div class="tl-dot done">✓</div></div>
-        <div class="tl-right"><div class="tl-quarter">Q3 2025</div><div class="tl-title">Development Begins</div><div class="tl-desc">Our team started building the platform with a focus on user experience and rigorous verification processes.</div></div>
-      </div>
-      <div class="tl-item reveal d3">
-        <div class="tl-left"><div class="tl-quarter">Q3 2025</div><div class="tl-title">First Partners</div><div class="tl-desc">We onboarded our first verified real estate partners, establishing trust and credibility in our platform from day one.</div></div>
-        <div class="tl-center"><div class="tl-dot done">✓</div></div>
-        <div class="tl-right"></div>
-      </div>
-      <div class="tl-item reveal d4">
-        <div class="tl-left"></div>
-        <div class="tl-center"><div class="tl-dot">Q4</div></div>
-        <div class="tl-right"><div class="tl-quarter">Q4 2025</div><div class="tl-title">Platform Launch</div><div class="tl-desc">We will be launching MyPropifyNG officially, connecting Nigerians with verified properties and trusted partners nationwide.</div></div>
-      </div>
+      <div class="tl-item reveal d1"><div class="tl-left"><div class="tl-quarter">Q2 2025</div><div class="tl-title">Concept Born</div><div class="tl-desc">The idea for MyPropifyNG was conceived to address the challenges of property discovery in Nigeria's real estate market.</div></div><div class="tl-center"><div class="tl-dot done">✓</div></div><div class="tl-right"></div></div>
+      <div class="tl-item reveal d2"><div class="tl-left"></div><div class="tl-center"><div class="tl-dot done">✓</div></div><div class="tl-right"><div class="tl-quarter">Q3 2025</div><div class="tl-title">Development Begins</div><div class="tl-desc">Our team started building the platform with a focus on user experience and rigorous verification processes.</div></div></div>
+      <div class="tl-item reveal d3"><div class="tl-left"><div class="tl-quarter">Q3 2025</div><div class="tl-title">First Partners</div><div class="tl-desc">We onboarded our first verified real estate partners, establishing trust and credibility in our platform from day one.</div></div><div class="tl-center"><div class="tl-dot done">✓</div></div><div class="tl-right"></div></div>
+      <div class="tl-item reveal d4"><div class="tl-left"></div><div class="tl-center"><div class="tl-dot">Q4</div></div><div class="tl-right"><div class="tl-quarter">Q4 2025</div><div class="tl-title">Platform Launch</div><div class="tl-desc">We will be launching MyPropifyNG officially, connecting Nigerians with verified properties and trusted partners nationwide.</div></div></div>
     </div>
   </div>
 </section>
@@ -899,46 +1639,11 @@ footer{border-top:1px solid var(--border);padding:40px;background:var(--surface)
       <p style="margin-top:14px;">A dedicated team working tirelessly to transform property transactions in Nigeria.</p>
     </div>
     <div class="team-grid">
-      <div class="team-card reveal d1">
-        <div class="team-photo-wrap">
-          <img src="ade.png" alt="Adewunmi Adeniji" class="team-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="team-avatar av-1" style="display:none;">AA</div>
-        </div>
-        <div class="team-name">Adewunmi Adeniji</div>
-        <div class="team-role">Founder &amp; CEO</div>
-      </div>
-      <div class="team-card reveal d2">
-        <div class="team-photo-wrap">
-          <img src="Busola.png" alt="Oluwabusola Noah" class="team-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="team-avatar av-2" style="display:none;">ON</div>
-        </div>
-        <div class="team-name">Oluwabusola Noah</div>
-        <div class="team-role">Product Manager</div>
-      </div>
-      <div class="team-card reveal d3">
-        <div class="team-photo-wrap">
-          <img src="austin.png" alt="Austin Aiyedatiwa" class="team-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="team-avatar av-3" style="display:none;">AA</div>
-        </div>
-        <div class="team-name">Austin Aiyedatiwa</div>
-        <div class="team-role">Lead Consultant</div>
-      </div>
-      <div class="team-card reveal d4">
-        <div class="team-photo-wrap">
-          <img src="alice.png" alt="Adeagbo Titilayo" class="team-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="team-avatar av-4" style="display:none;">AT</div>
-        </div>
-        <div class="team-name">Adeagbo Titilayo</div>
-        <div class="team-role">Client Relationship Manager</div>
-      </div>
-      <div class="team-card reveal d5">
-        <div class="team-photo-wrap away">
-          <img src="moses.png" alt="Peter Moses" class="team-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="team-avatar av-5" style="display:none;">MO</div>
-        </div>
-        <div class="team-name">Peter Moses</div>
-        <div class="team-role">Digital Marketer</div>
-      </div>
+      <div class="team-card reveal d1"><div class="team-photo-wrap"><img src="ade.png" alt="Adewunmi Adeniji" class="team-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="team-avatar av-1" style="display:none;">AA</div></div><div class="team-name">Adewunmi Adeniji</div><div class="team-role">Founder &amp; CEO</div></div>
+      <div class="team-card reveal d2"><div class="team-photo-wrap"><img src="Busola.png" alt="Oluwabusola Noah" class="team-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="team-avatar av-2" style="display:none;">ON</div></div><div class="team-name">Oluwabusola Noah</div><div class="team-role">Product Manager</div></div>
+      <div class="team-card reveal d3"><div class="team-photo-wrap"><img src="austin.png" alt="Austin Aiyedatiwa" class="team-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="team-avatar av-3" style="display:none;">AA</div></div><div class="team-name">Austin Aiyedatiwa</div><div class="team-role">Lead Consultant</div></div>
+      <div class="team-card reveal d4"><div class="team-photo-wrap"><img src="alice.png" alt="Adeagbo Titilayo" class="team-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="team-avatar av-4" style="display:none;">AT</div></div><div class="team-name">Adeagbo Titilayo</div><div class="team-role">Client Relationship Manager</div></div>
+      <div class="team-card reveal d5"><div class="team-photo-wrap away"><img src="moses.png" alt="Peter Moses" class="team-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="team-avatar av-5" style="display:none;">MO</div></div><div class="team-name">Peter Moses</div><div class="team-role">Digital Marketer</div></div>
     </div>
   </div>
 </section>
@@ -952,21 +1657,9 @@ footer{border-top:1px solid var(--border);padding:40px;background:var(--surface)
       <p style="font-size:.88rem;color:var(--muted2);margin-top:12px;line-height:1.65;">Trusted by property seekers and real estate professionals across Nigeria.</p>
     </div>
     <div class="testimonials">
-      <div class="tcard reveal d1">
-        <div class="tcard-stars">★★★★★</div>
-        <p class="tcard-quote">"MyPropifyNG helped me find my dream home in Lekki within 2 weeks. The verification process gave me complete confidence in the transaction. I never felt alone in the process."</p>
-        <div class="tcard-author"><div class="tcard-avatar tav-a">CE</div><div><div class="tcard-name">Chukwuma Eze</div><div class="tcard-role">Property Investor · Lagos</div></div></div>
-      </div>
-      <div class="tcard reveal d2">
-        <div class="tcard-stars">★★★★★</div>
-        <p class="tcard-quote">"Listing my properties on MyPropifyNG has increased my sales by 40%. The platform connects me directly with serious buyers — no time-wasters, no middlemen eating my margins."</p>
-        <div class="tcard-author"><div class="tcard-avatar tav-b">FI</div><div><div class="tcard-name">Fatima Ibrahim</div><div class="tcard-role">Property Developer · Port Harcourt</div></div></div>
-      </div>
-      <div class="tcard reveal d3">
-        <div class="tcard-stars">★★★★★</div>
-        <p class="tcard-quote">"As a student on a budget, MyPropifyNG helped me find affordable, verified accommodation near campus. The platform is incredibly easy to use — I found a place in three days."</p>
-        <div class="tcard-author"><div class="tcard-avatar tav-c">NO</div><div><div class="tcard-name">Nneka Okoro</div><div class="tcard-role">Student · University of Lagos</div></div></div>
-      </div>
+      <div class="tcard reveal d1"><div class="tcard-stars">★★★★★</div><p class="tcard-quote">"MyPropifyNG helped me find my dream home in Lekki within 2 weeks. The verification process gave me complete confidence in the transaction. I never felt alone in the process."</p><div class="tcard-author"><div class="tcard-avatar tav-a">CE</div><div><div class="tcard-name">Chukwuma Eze</div><div class="tcard-role">Property Investor · Lagos</div></div></div></div>
+      <div class="tcard reveal d2"><div class="tcard-stars">★★★★★</div><p class="tcard-quote">"Listing my properties on MyPropifyNG has increased my sales by 40%. The platform connects me directly with serious buyers — no time-wasters, no middlemen eating my margins."</p><div class="tcard-author"><div class="tcard-avatar tav-b">FI</div><div><div class="tcard-name">Fatima Ibrahim</div><div class="tcard-role">Property Developer · Port Harcourt</div></div></div></div>
+      <div class="tcard reveal d3"><div class="tcard-stars">★★★★★</div><p class="tcard-quote">"As a student on a budget, MyPropifyNG helped me find affordable, verified accommodation near campus. The platform is incredibly easy to use — I found a place in three days."</p><div class="tcard-author"><div class="tcard-avatar tav-c">NO</div><div><div class="tcard-name">Nneka Okoro</div><div class="tcard-role">Student · University of Lagos</div></div></div></div>
     </div>
   </div>
 </section>
@@ -983,9 +1676,7 @@ footer{border-top:1px solid var(--border);padding:40px;background:var(--surface)
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     APP COMING SOON
-═══════════════════════════════════════════════════════════ -->
+<!-- APP COMING SOON -->
 <section id="app">
   <div class="section-inner">
     <div class="app-inner">
@@ -993,56 +1684,34 @@ footer{border-top:1px solid var(--border);padding:40px;background:var(--surface)
         <div class="section-tag">Coming Soon</div>
         <h2 style="margin-top:12px;">MyPropifyNG<br/>In Your Pocket.</h2>
         <p style="margin-top:14px;">The MyPropifyNG mobile app is on its way — bringing verified listings, instant inspection booking, and secure payments right to your fingertips. Be the first to know when we launch.</p>
-
         <div class="app-badges">
           <div class="app-badge"><div class="b-dot"></div>Android App</div>
           <div class="app-badge"><div class="b-dot"></div>iOS App</div>
           <div class="app-badge"><div class="b-dot" style="background:var(--amber);"></div>Coming Q1 2026</div>
         </div>
-
         <div class="app-stores">
           <a href="#" class="store-btn" style="pointer-events:none;opacity:.7;" title="Coming soon to Google Play">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" opacity=".85">
-              <path d="M3.18 23.4c.28.16.6.2.92.12l11.2-6.48-2.78-2.78-9.34 9.14zm-1.1-19.8C1.72 3.9 1.5 4.3 1.5 4.8v14.4c0 .5.22.9.58 1.2l.08.06 8.07-8.07v-.18L2.08 3.6zm14.58 9.44-2.68-2.68-1.72 1.72 2.68 2.68 3.02-1.74c-.32-.2-.9-.52-1.3-.74zM4.1.6C3.78.52 3.46.56 3.18.72L12.5 10.04l-2.78 2.78L3.18.72z"/>
-            </svg>
-            <div class="store-btn-text">
-              <div class="store-btn-label">Get it on</div>
-              <div class="store-btn-name">Google Play</div>
-            </div>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" opacity=".85"><path d="M3.18 23.4c.28.16.6.2.92.12l11.2-6.48-2.78-2.78-9.34 9.14zm-1.1-19.8C1.72 3.9 1.5 4.3 1.5 4.8v14.4c0 .5.22.9.58 1.2l.08.06 8.07-8.07v-.18L2.08 3.6zm14.58 9.44-2.68-2.68-1.72 1.72 2.68 2.68 3.02-1.74c-.32-.2-.9-.52-1.3-.74zM4.1.6C3.78.52 3.46.56 3.18.72L12.5 10.04l-2.78 2.78L3.18.72z"/></svg>
+            <div class="store-btn-text"><div class="store-btn-label">Get it on</div><div class="store-btn-name">Google Play</div></div>
           </a>
           <a href="#" class="store-btn" style="pointer-events:none;opacity:.7;" title="Coming soon to App Store">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" opacity=".85">
-              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-            </svg>
-            <div class="store-btn-text">
-              <div class="store-btn-label">Download on the</div>
-              <div class="store-btn-name">App Store</div>
-            </div>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" opacity=".85"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <div class="store-btn-text"><div class="store-btn-label">Download on the</div><div class="store-btn-name">App Store</div></div>
           </a>
         </div>
         <p style="font-size:.72rem;color:var(--muted);margin-top:14px;">Notify me when it launches → <a href="#cta" style="color:var(--accent);font-weight:600;text-decoration:none;">Get Early Access</a></p>
       </div>
-
-      <!-- Phone mockup -->
       <div class="app-right reveal d2">
         <div class="phone-mockup">
-          <div class="phone-ring"></div>
-          <div class="phone-ring"></div>
-          <div class="phone-ring"></div>
+          <div class="phone-ring"></div><div class="phone-ring"></div><div class="phone-ring"></div>
           <div class="phone-shell">
             <div class="phone-screen">
               <div class="phone-notch"></div>
               <div class="phone-screen-inner">
-                <div class="phone-logo">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <polyline points="9 22 9 12 15 12 15 22" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </div>
+                <div class="phone-logo"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="9 22 9 12 15 12 15 22" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
                 <div class="phone-title">MyPropifyNG</div>
                 <div class="phone-sub">Find, verify &amp; secure<br/>your dream property</div>
                 <div class="phone-soon">Coming Soon</div>
-                <!-- Mini UI preview inside phone -->
                 <div style="margin-top:18px;background:rgba(255,255,255,.1);border-radius:10px;padding:10px;text-align:left;">
                   <div style="font-size:.6rem;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">Top Match</div>
                   <div style="font-size:.78rem;font-weight:700;color:#fff;margin-bottom:3px;">3-Bed · Lekki Phase 1</div>
@@ -1067,32 +1736,14 @@ footer{border-top:1px solid var(--border);padding:40px;background:var(--surface)
         <div class="section-tag">FAQs</div>
         <h2 style="margin-top:10px;">Property Questions Answered.</h2>
         <p style="margin-top:14px;">Get answers to common questions about property search, verification, and transactions on our platform.</p>
-        <a href="#cta" class="btn-primary-lg" style="display:inline-flex;margin-top:22px;font-size:.82rem;padding:11px 20px;">
-          Contact Support
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+        <a href="#cta" class="btn-primary-lg" style="display:inline-flex;margin-top:22px;font-size:.82rem;padding:11px 20px;">Contact Support<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
       <div class="faq-list reveal d2">
-        <div class="faq-item open">
-          <div class="faq-q" onclick="toggleFaq(this)">How does MyPropifyNG verify property listings?<div class="faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg></div></div>
-          <div class="faq-a">We employ a rigorous 3-step verification process that includes document authentication, physical inspection where possible, and partner validation. Our team ensures every listing meets our quality standards before going live on the platform.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">What are the costs for using MyPropifyNG services?<div class="faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg></div></div>
-          <div class="faq-a">Property seekers pay zero fees to search, browse, and connect with verified listings on our platform. We offer affordable and scalable plans for property owners and agents looking to list and market their properties.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">How long does it take to find a property through your platform?<div class="faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg></div></div>
-          <div class="faq-a">Our AI matching engine delivers your first property recommendations within 24 hours of completing your profile. Most users find shortlisted properties within 2–7 days depending on their requirements and city.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">What support do you provide during property transactions?<div class="faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg></div></div>
-          <div class="faq-a">We offer 24/7 support throughout your transaction journey — from initial search to key collection. This includes secure messaging, document verification assistance, and structured payment guidance.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">Which Nigerian cities does MyPropifyNG currently cover?<div class="faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg></div></div>
-          <div class="faq-a">We currently serve Lagos, Abuja, and Port Harcourt with verified listings. We're expanding to 5 major Nigerian cities by 2026 — including Ibadan, Kano, and Enugu — as our verified partner network grows.</div>
-        </div>
+        <div class="faq-item open"><div class="faq-q" onclick="toggleFaq(this)">How does MyPropifyNG verify property listings?<div class="faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg></div></div><div class="faq-a">We employ a rigorous 3-step verification process that includes document authentication, physical inspection where possible, and partner validation. Our team ensures every listing meets our quality standards before going live on the platform.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What are the costs for using MyPropifyNG services?<div class="faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg></div></div><div class="faq-a">Property seekers pay zero fees to search, browse, and connect with verified listings on our platform. We offer affordable and scalable plans for property owners and agents looking to list and market their properties.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How long does it take to find a property through your platform?<div class="faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg></div></div><div class="faq-a">Our AI matching engine delivers your first property recommendations within 24 hours of completing your profile. Most users find shortlisted properties within 2–7 days depending on their requirements and city.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What support do you provide during property transactions?<div class="faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg></div></div><div class="faq-a">We offer 24/7 support throughout your transaction journey — from initial search to key collection. This includes secure messaging, document verification assistance, and structured payment guidance.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Which Nigerian cities does MyPropifyNG currently cover?<div class="faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg></div></div><div class="faq-a">We currently serve Lagos, Abuja, and Port Harcourt with verified listings. We're expanding to 5 major Nigerian cities by 2026 — including Ibadan, Kano, and Enugu — as our verified partner network grows.</div></div>
       </div>
     </div>
   </div>
@@ -1107,36 +1758,21 @@ footer{border-top:1px solid var(--border);padding:40px;background:var(--surface)
         <h2 style="margin-top:10px;">Let's Help You Find Your Dream Property.</h2>
         <p style="margin-top:14px;">Use the form to get in touch, or reach us directly. We'll get back to you as soon as possible.</p>
         <div class="cta-contact-items">
-          <div class="cta-contact-item">
-            <div class="cta-ci"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 015 12a19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
-            <div><div class="cta-cl">Call Us</div><div class="cta-cv">+234 815 665 5091</div></div>
-          </div>
-          <div class="cta-contact-item">
-            <div class="cta-ci"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-            <div><div class="cta-cl">Email Us</div><div class="cta-cv">hello@mypropify.ng</div></div>
-          </div>
-          <div class="cta-contact-item">
-            <div class="cta-ci"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-            <div><div class="cta-cl">Support Hours</div><div class="cta-cv">24/7 · Always Available</div></div>
-          </div>
+          <div class="cta-contact-item"><div class="cta-ci"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 015 12a19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div><div class="cta-cl">Call Us</div><div class="cta-cv">+234 815 665 5091</div></div></div>
+          <div class="cta-contact-item"><div class="cta-ci"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="cta-cl">Email Us</div><div class="cta-cv">hello@mypropify.ng</div></div></div>
+          <div class="cta-contact-item"><div class="cta-ci"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="cta-cl">Support Hours</div><div class="cta-cv">24/7 · Always Available</div></div></div>
         </div>
       </div>
       <div class="reveal d2">
         <div class="form-box">
           <div class="form-box-title">Send Us a Message</div>
           <div class="contact-form">
-            <div class="form-row">
-              <input class="form-field" type="text" placeholder="First name"/>
-              <input class="form-field" type="text" placeholder="Last name"/>
-            </div>
+            <div class="form-row"><input class="form-field" type="text" placeholder="First name"/><input class="form-field" type="text" placeholder="Last name"/></div>
             <input class="form-field" type="email" placeholder="Enter email address"/>
             <input class="form-field" type="tel" placeholder="Phone number"/>
             <textarea class="form-field" placeholder="Put the message here…"></textarea>
             <div id="form-success">✓ Message sent! We'll get back to you soon.</div>
-            <button class="btn-primary-lg" onclick="handleContact(event)" style="justify-content:center;cursor:none;">
-              Send Message
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </button>
+            <button class="btn-primary-lg" onclick="handleContact(event)" style="justify-content:center;cursor:none;">Send Message<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
           </div>
         </div>
       </div>
@@ -1159,33 +1795,29 @@ footer{border-top:1px solid var(--border);padding:40px;background:var(--surface)
       <li><a href="#" class="ul-link">Terms of Use</a></li>
       <li><a href="#cta" class="ul-link">Contact Us</a></li>
     </ul>
-    <div class="footer-copy">
-      MyPropifyNG © 2025 — All Rights Reserved.<br/>
-      <span style="opacity:.5;">hello@mypropify.ng · +234 815 665 5091</span>
-    </div>
+    <div class="footer-copy">MyPropifyNG © 2025 — All Rights Reserved.<br/><span style="opacity:.5;">hello@mypropify.ng · +234 815 665 5091</span></div>
   </div>
 </footer>
 
 <script>
-/* ── Custom cursor ─────────── */
+/* ── Custom cursor ── */
 const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
 (function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
-document.querySelectorAll('a,button,.bento-card,.tcard,.team-card,.value-card,.faq-q,.stat-item,.how-step,.hero-photo-wrap').forEach(el=>{
+document.querySelectorAll('a,button,.bento-card,.tcard,.team-card,.value-card,.faq-q,.stat-item,.how-step,.hero-photo-wrap,.fp-col').forEach(el=>{
   el.addEventListener('mouseenter',()=>{cur.style.width='18px';cur.style.height='18px';ring.style.width='54px';ring.style.height='54px';ring.style.opacity='.5';});
   el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';ring.style.width='36px';ring.style.height='36px';ring.style.opacity='1';});
 });
 
-/* ── Theme toggle ─────────── */
+/* ── Theme toggle ── */
 const html=document.documentElement;
 const themeBtn=document.getElementById('theme-btn');
 const saved=localStorage.getItem('mpng-theme')||'light';
 html.setAttribute('data-theme',saved);
 themeBtn.addEventListener('click',()=>{
   const next=html.getAttribute('data-theme')==='dark'?'light':'dark';
-  html.setAttribute('data-theme',next);
-  localStorage.setItem('mpng-theme',next);
+  html.setAttribute('data-theme',next);localStorage.setItem('mpng-theme',next);
 });
 
 /* ── Scroll progress + back to top ── */
@@ -1199,7 +1831,7 @@ window.addEventListener('scroll',()=>{
 });
 topBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-/* ── Hamburger ─────────── */
+/* ── Hamburger ── */
 const ham=document.getElementById('hamburger'),drawer=document.getElementById('mob-drawer');
 ham.addEventListener('click',()=>{
   drawer.classList.toggle('open');
@@ -1209,28 +1841,27 @@ ham.addEventListener('click',()=>{
 });
 drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{drawer.classList.remove('open');ham.querySelectorAll('span').forEach(s=>{s.style.transform='';s.style.opacity='';});}));
 
-/* ── Scroll reveal ─────────── */
+/* ── Scroll reveal ── */
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});},{threshold:.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-/* ── How It Works tabs ─────── */
+/* ── How It Works tabs ── */
 function switchTab(panel,btn){
   document.querySelectorAll('.how-tab').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('.how-panel').forEach(p=>p.classList.remove('active'));
   btn.classList.add('active');
   document.getElementById('panel-'+panel).classList.add('active');
-  // Re-trigger reveals for newly shown panel
   document.querySelectorAll('#panel-'+panel+' .reveal:not(.on)').forEach(el=>obs.observe(el));
 }
 
-/* ── FAQ toggle ─────────── */
+/* ── FAQ toggle ── */
 function toggleFaq(el){
   const item=el.closest('.faq-item'),was=item.classList.contains('open');
   document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
   if(!was) item.classList.add('open');
 }
 
-/* ── Contact form ─────────── */
+/* ── Contact form ── */
 function handleContact(e){
   e.preventDefault();
   const msg=document.getElementById('form-success');
@@ -1238,7 +1869,55 @@ function handleContact(e){
   setTimeout(()=>msg.style.display='none',5000);
 }
 
-/* ── Keyframes ─────────── */
+/* ═══════════════════════════════════════════════
+   PROPERTY REQUEST MODAL
+═══════════════════════════════════════════════ */
+function openReqModal(){
+  const overlay=document.getElementById('req-modal-overlay');
+  overlay.classList.add('open');
+  document.body.style.overflow='hidden';
+  // Re-focus to first input for a11y
+  setTimeout(()=>{
+    const first=overlay.querySelector('input,select,textarea');
+    if(first) first.focus();
+  },350);
+}
+
+function closeReqModal(){
+  document.getElementById('req-modal-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function handleOverlayClick(e){
+  if(e.target===document.getElementById('req-modal-overlay')) closeReqModal();
+}
+
+// Close on Escape
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape') closeReqModal();
+});
+
+function submitRequest(e){
+  e.preventDefault();
+  const success=document.getElementById('modal-success');
+  const submitBtn=e.currentTarget;
+  submitBtn.textContent='Submitting…';
+  submitBtn.disabled=true;
+  setTimeout(()=>{
+    success.style.display='flex';
+    submitBtn.style.display='none';
+    // Auto-close after 3s
+    setTimeout(()=>{
+      closeReqModal();
+      // Reset
+      submitBtn.style.display='flex';
+      submitBtn.disabled=false;
+      submitBtn.innerHTML='Submit My Property Request <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+      success.style.display='none';
+    },2800);
+  },1200);
+}
+
 const s=document.createElement('style');
 s.textContent='@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}';
 document.head.appendChild(s);
