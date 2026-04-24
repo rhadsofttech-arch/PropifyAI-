@@ -261,13 +261,7 @@ svg{display:block;}
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: border-color .3s, box-shadow .3s, transform .3s;
   box-shadow: var(--shadow);
-}
-.fp-col:hover {
-  border-color: var(--border2);
-  transform: translateY(-4px);
-  box-shadow: 0 16px 52px rgba(34,3,168,.12);
 }
 
 /* Featured image area — compact */
@@ -836,10 +830,6 @@ svg{display:block;}
 /* Teal col accent */
 .fp-col-teal {
   border-color: rgba(13,148,136,0.2);
-}
-.fp-col-teal:hover {
-  border-color: rgba(13,148,136,0.4);
-  box-shadow: 0 16px 52px rgba(13,148,136,0.1);
 }
 
 /* AI col */
@@ -2177,24 +2167,68 @@ document.addEventListener('keydown',e=>{
   }
 });
 
-function submitForm(e,successId,btnId,overlayId){
+/* ═══════════════════════════════════════════════
+   FORM SUBMISSION — sends to request@mypropify.com.ng via Formspree
+═══════════════════════════════════════════════ */
+async function submitForm(e, successId, btnId, overlayId) {
   e.preventDefault();
-  const btn=document.getElementById(btnId);
-  const success=document.getElementById(successId);
-  const origHTML=btn.innerHTML;
-  btn.textContent='Submitting…';
-  btn.disabled=true;
-  setTimeout(()=>{
-    success.style.display='flex';
-    btn.style.display='none';
-    setTimeout(()=>{
-      closeModal(overlayId);
-      btn.style.display='flex';
-      btn.disabled=false;
-      btn.innerHTML=origHTML;
-      success.style.display='none';
-    },2800);
-  },1200);
+  const btn = document.getElementById(btnId);
+  const success = document.getElementById(successId);
+  const origHTML = btn.innerHTML;
+  btn.textContent = 'Submitting…';
+  btn.disabled = true;
+
+  // Collect all field values in the modal
+  const overlay = document.getElementById(overlayId);
+  const fields = {};
+  overlay.querySelectorAll('input, select, textarea').forEach((el, i) => {
+    const labelEl = el.closest('.modal-field-group')?.querySelector('.modal-label');
+    const label = labelEl ? labelEl.textContent.trim() : ('field_' + i);
+    if (el.value) fields[label] = el.value;
+  });
+
+  // Collect selected category pills (neighbourhood form)
+  const pills = overlay.querySelectorAll('.cat-pill.selected');
+  if (pills.length) fields['Categories'] = [...pills].map(p => p.textContent.trim()).join(', ');
+
+  // Collect star rating (neighbourhood form)
+  const stars = overlay.querySelectorAll('.star-btn.selected');
+  if (stars.length) fields['Overall Rating'] = stars.length + ' / 5 stars';
+
+  const formType = overlayId === 'req-modal-overlay' ? 'Property Request' : 'Neighbourhood Insights';
+
+  try {
+    const res = await fetch('https://formspree.io/f/xpwrleqe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: formType + ' — MyPropifyNG',
+        _replyto: fields['Email Address'] || fields['Phone / Email'] || '',
+        form_type: formType,
+        ...fields
+      })
+    });
+
+    if (res.ok) {
+      success.style.display = 'flex';
+      btn.style.display = 'none';
+      setTimeout(() => {
+        closeModal(overlayId);
+        btn.style.display = 'flex';
+        btn.disabled = false;
+        btn.innerHTML = origHTML;
+        success.style.display = 'none';
+      }, 2800);
+    } else {
+      btn.textContent = 'Something went wrong — try again';
+      btn.disabled = false;
+      setTimeout(() => { btn.innerHTML = origHTML; }, 3000);
+    }
+  } catch (err) {
+    btn.textContent = 'Connection error — try again';
+    btn.disabled = false;
+    setTimeout(() => { btn.innerHTML = origHTML; }, 3000);
+  }
 }
 
 /* ── Neighbourhood star rating ── */
